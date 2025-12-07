@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appbibliotecauniversitaria.ControlloreHome">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#salvaArchivio" text="Salva" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Registra...">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#visualizzaRegistrazioneUtente" text="Utente" />
+                  <MenuItem mnemonicParsing="false" onAction="#visualizzaRegistrazioneLibro" text="Libro" />
+                  <MenuItem mnemonicParsing="false" onAction="#visualizzaRegistrazionePrestito" text="Prestito" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Visualizza...">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#visualizzaListaUtenti" text="Lista Utenti" />
+                  <MenuItem mnemonicParsing="false" onAction="#visualizzaListaLibri" text="Lista Libri" />
+                  <MenuItem mnemonicParsing="false" onAction="#visualizzaListaPrestiti" text="Lista Prestiti" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.29797979797979796" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="800.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="573.0" prefWidth="235.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="571.0" stroke="BLACK" strokeType="INSIDE" width="235.0" StackPane.alignment="TOP_CENTER">
+                           <fill>
+                              <LinearGradient endX="0.981042654028436" endY="0.44075829383886256" startY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Rectangle>
+                        <fx:include fx:id="pannelloRegistrazioneUtente" source="../gestioneutente/registrazione/PannelloRegUtenteFXML.fxml" />
+                        <fx:include fx:id="pannelloRegistrazioneLibro" source="../gestionelibro/registrazione/PannelloRegLibroFXML.fxml" />
+                        <fx:include fx:id="pannelloRegistrazionePrestito" source="../gestioneprestito/registrazione/PannelloRegPrestitoFXML.fxml" />
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="573.0" prefWidth="557.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="571.0" stroke="BLACK" strokeType="INSIDE" width="557.0">
+                           <fill>
+                              <LinearGradient endX="0.3744075829383886" endY="0.07582938388625601" startX="1.0" startY="0.7725118483412322">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Rectangle>
+                        <fx:include fx:id="pannelloVisualizzazioneUtenti" source="../gestioneutente/visualizzazione/PannelloVisUtentiFXML.fxml" />
+                        <fx:include fx:id="pannelloVisualizzazioneLibri" source="../gestionelibro/visualizzazione/PannelloVisLibriFXML.fxml" />
+                        <fx:include fx:id="pannelloVisualizzazionePrestiti" source="../gestioneprestito/visualizzazione/PannelloVisPrestitiFXML.fxml" />
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>
