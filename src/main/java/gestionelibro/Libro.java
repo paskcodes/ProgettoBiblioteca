@@ -76,23 +76,25 @@ public class Libro implements Comparable, Serializable{
     }
     
     
+    //statiche per rendere le verifiche utilizzabili ovunque
     
-    
-    public boolean isDataValida(){
+    public static boolean isDataValida(LocalDate daValidare){
         return true;
     }
     
-    public boolean isNumCopieValido(){
+    public static boolean isNumCopieValido(int daValidare){
             return true;
     }
     
     
+   
+    
+
     
     
     
     
-    
-    public boolean isCopieDisponibili(){
+    public boolean isCopiaDisponibile(){
         return true;
     }
 

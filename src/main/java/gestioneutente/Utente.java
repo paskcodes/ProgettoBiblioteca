@@ -81,19 +81,18 @@ public class Utente implements Comparable<Utente>, Serializable{
         return this.prestiti;
     }
 
-
     
+    //statiche per rendere le verifiche utilizzabili ovunque
     
-    
-    public boolean isNomeCognomeValido(){
+    public static boolean isNomeCognomeValido(String daValidare){
         return true;
     }
     
-    public boolean isMailValida(){
+    public static boolean isMailValida(String daValidare){
         return true;
     }
     
-    public boolean isMatricolaValida(){
+    public static boolean isMatricolaValida(String daValidare){
         return true;
     }
     
