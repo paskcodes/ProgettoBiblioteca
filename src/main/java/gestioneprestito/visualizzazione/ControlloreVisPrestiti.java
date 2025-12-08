@@ -59,4 +59,11 @@ public class ControlloreVisPrestiti implements Initializable {
         return this.listaPrestiti;
     }
     
+    public void inserisciNuovoPrestito(Prestito prestito){
+    }
+    
+    public boolean isPrestitoEsistente(Prestito prestito){
+        return true;
+    }
+    
 }

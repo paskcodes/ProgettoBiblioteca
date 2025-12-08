@@ -72,8 +72,11 @@ public class ControlloreVisUtenti implements Initializable {
     private void aggiornaMatricolaUtenti(TableColumn.CellEditEvent<Utente, String> event) {
     }
     
-    public ObservableList<Utente> getListaUtenti(){
-        return this.listaUtenti;
+    public void inserisciNuovoUtente(Utente utente){
+    }
+    
+    public boolean isUtentePresente(Utente utente){
+        return true;
     }
     
 }

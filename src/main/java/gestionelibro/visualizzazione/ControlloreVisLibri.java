@@ -77,8 +77,10 @@ public class ControlloreVisLibri implements Initializable {
     private void aggiornaNumCopieLibri(TableColumn.CellEditEvent<Libro, Integer> event) {
     }
     
-    public ObservableList<Libro> getListaLibri(){
-        return this.listaLibri;
+    public void inserisciNuovoLibro(Libro libro){
     }
     
+    public boolean isLibroPresente(Libro libro){
+        return true;
+    }
 }
