@@ -68,9 +68,6 @@ public class ControlloreVisUtenti implements Initializable {
     private void aggiornaMailUtenti(TableColumn.CellEditEvent<Utente, String> event) {
     }
 
-    @FXML
-    private void aggiornaMatricolaUtenti(TableColumn.CellEditEvent<Utente, String> event) {
-    }
     
     public void inserisciNuovoUtente(Utente utente){
     }

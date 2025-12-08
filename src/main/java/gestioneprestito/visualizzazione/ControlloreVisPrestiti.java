@@ -55,9 +55,6 @@ public class ControlloreVisPrestiti implements Initializable {
     private void estinguiPrestito(ActionEvent event) {
     }
     
-    public ObservableList<Prestito> getListaPrestiti(){
-        return this.listaPrestiti;
-    }
     
     public void inserisciNuovoPrestito(Prestito prestito){
     }

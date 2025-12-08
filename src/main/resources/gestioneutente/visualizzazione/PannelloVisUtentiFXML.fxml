@@ -20,7 +20,7 @@
           <TableColumn fx:id="colonnaNomeTabellaUtenti" onEditCommit="#aggiornaNomeUtenti" prefWidth="75.0" text="Nome" />
           <TableColumn fx:id="colonnaCognomeTabellaUtenti" onEditCommit="#aggiornaCognomeUtenti" prefWidth="75.0" text="Cognome" />
             <TableColumn fx:id="colonnaMailTabellaUtenti" onEditCommit="#aggiornaMailUtenti" prefWidth="75.0" text="Mail" />
-            <TableColumn fx:id="colonnaMatricolaTabellaUtenti" onEditCommit="#aggiornaMatricolaUtenti" prefWidth="75.0" text="Matricola" />
+            <TableColumn fx:id="colonnaMatricolaTabellaUtenti" prefWidth="75.0" text="Matricola" />
             <TableColumn fx:id="colonnaCopiePrestitiTabellaUtente" prefWidth="75.0" text="Libri in prestito" />
         </columns>
          <columnResizePolicy>
