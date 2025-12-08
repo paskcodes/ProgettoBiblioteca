@@ -6,6 +6,7 @@
 package appbibliotecauniversitaria;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -80,6 +81,13 @@ public class ControlloreHome implements Initializable {
     }
     
     public void mostraFinestraEccezione(Exception ex){
+    }
+    
+    private void mostraPannello(AnchorPane pannelloDaMostrare, List<AnchorPane> pannelliDaNascondere){
+        pannelloDaMostrare.setVisible(true);
+        for(AnchorPane p : pannelliDaNascondere){
+            p.setVisible(false);
+        }
     }
 
     
