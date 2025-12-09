@@ -1,17 +1,20 @@
 package appbibliotecauniversitaria;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 /**
  * @class ControlloreHome
@@ -36,6 +39,10 @@ public class ControlloreHome implements Initializable {
     private AnchorPane pannelloRegistrazionePrestito;
     @FXML
     private AnchorPane pannelloVisualizzazionePrestiti;
+    @FXML
+    private StackPane pannelliRegistrazione;
+    @FXML
+    private StackPane pannelliVisualizzazione;
 
     /** \endcond */
     
@@ -69,6 +76,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaRegistrazioneUtente(ActionEvent event) {
+        mostraPannello(pannelloRegistrazioneUtente, pannelliRegistrazione.getChildren());
     }
 
     /**
@@ -77,6 +85,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaRegistrazioneLibro(ActionEvent event) {
+        mostraPannello(pannelloRegistrazioneLibro, pannelliRegistrazione.getChildren());
     }
 
     /**
@@ -85,6 +94,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaRegistrazionePrestito(ActionEvent event) {
+        mostraPannello(pannelloRegistrazionePrestito, pannelliRegistrazione.getChildren());
     }
 
     /**
@@ -93,6 +103,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaListaUtenti(ActionEvent event) {
+        mostraPannello(pannelloVisualizzazioneUtenti, pannelliVisualizzazione.getChildren());
     }
 
     /**
@@ -101,6 +112,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaListaLibri(ActionEvent event) {
+        mostraPannello(pannelloVisualizzazioneLibri, pannelliVisualizzazione.getChildren());
     }
 
     /**
@@ -109,13 +121,14 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaListaPrestiti(ActionEvent event) {
+        mostraPannello(pannelloVisualizzazionePrestiti, pannelliVisualizzazione.getChildren());
     }
     
     /**
      * @brief Mostra una finestra di eccezione con il messaggio dell'eccezione.
      * @param ex L'eccezione da mostrare.
      */
-    public void mostraFinestraEccezione(Exception ex){
+    public static void mostraFinestraEccezione(Exception ex){
     }
     
     /**
@@ -123,11 +136,11 @@ public class ControlloreHome implements Initializable {
      * @param pannelloDaMostrare Il pannello da mostrare.
      * @param pannelliDaNascondere La lista dei pannelli da nascondere.
      */
-    private void mostraPannello(AnchorPane pannelloDaMostrare, List<AnchorPane> pannelliDaNascondere){
-        pannelloDaMostrare.setVisible(true);
-        for(AnchorPane p : pannelliDaNascondere){
+    private void mostraPannello(AnchorPane pannelloDaMostrare, List<Node> pannelliDaNascondere){
+        for(Node p : pannelliDaNascondere){
             p.setVisible(false);
         }
+        pannelloDaMostrare.setVisible(true);
     }
 
     
