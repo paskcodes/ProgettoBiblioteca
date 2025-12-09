@@ -1,29 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestioneprestito.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class PrestitoDataScadenzaException
+ * @brief Eccezione lanciata quando la data di scadenza di un prestito non è valida
  */
 public class PrestitoDataScadenzaException extends PrestitoInvalidoException{
 
     /**
-     * Creates a new instance of <code>PrestitoDataScadenzaException</code>
-     * without detail message.
+     * @brief Costruttore di default
      */
     public PrestitoDataScadenzaException() {
     }
 
     /**
-     * Constructs an instance of <code>PrestitoDataScadenzaException</code> with
-     * the specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato
+     * @param msg Messaggio di errore
      */
     public PrestitoDataScadenzaException(String msg) {
         super(msg);

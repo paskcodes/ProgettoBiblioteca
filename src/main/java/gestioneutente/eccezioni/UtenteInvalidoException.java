@@ -1,29 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestioneutente.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class UtenteInvalidoException
+ * @brief Eccezione lanciata quando un utente non risulta valido
  */
 public class UtenteInvalidoException extends Exception{
 
     /**
-     * Creates a new instance of <code>UtenteInvalidoException</code> without
-     * detail message.
+     * @brief Costruttore di default
      */
     public UtenteInvalidoException() {
     }
 
     /**
-     * Constructs an instance of <code>UtenteInvalidoException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato
+     * @param msg Messaggio di errore
      */
     public UtenteInvalidoException(String msg) {
         super(msg);

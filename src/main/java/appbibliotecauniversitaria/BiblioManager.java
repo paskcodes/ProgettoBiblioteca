@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package appbibliotecauniversitaria;
 
 import javafx.application.Application;
@@ -12,10 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class BiblioManager
+ * * @brief Classe principale dell'applicazione BiblioManager.
+ * * Questa classe estende Application e gestisce l'avvio dell'applicazione JavaFX.
+ * * @details La classe BiblioManager carica il file FXML che definisce l'interfaccia utente
+ * * e imposta la scena principale dell'applicazione.
  */
+
 public class BiblioManager extends Application {
     
     @Override
@@ -29,9 +27,6 @@ public class BiblioManager extends Application {
         stage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }

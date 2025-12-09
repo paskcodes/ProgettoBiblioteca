@@ -1,29 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestionelibro.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class LibroDataPubblicazioneException
+ * @brief Eccezione lanciata quando la data di pubblicazione di un libro non è valida.
  */
 public class LibroDataPubblicazioneException extends LibroInvalidoException{
 
     /**
-     * Creates a new instance of <code>LibroDataPubblicazioneException</code>
-     * without detail message.
+     * @brief Costruttore di default.
      */
     public LibroDataPubblicazioneException() {
     }
 
     /**
-     * Constructs an instance of <code>LibroDataPubblicazioneException</code>
-     * with the specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato.
+     * @param msg Messaggio di errore.
      */
     public LibroDataPubblicazioneException(String msg) {
         super(msg);

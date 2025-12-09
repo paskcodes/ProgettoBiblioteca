@@ -1,29 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestionelibro.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class LibroInvalidoException
+ * @brief Classe che rappresenta l'eccezione lanciata quando un libro
+ *        non rispetta i vincoli imposti.
  */
 public class LibroInvalidoException extends Exception{
 
     /**
-     * Creates a new instance of <code>LibroInvalidoException</code> without
-     * detail message.
+     * @brief Costruttore di default della classe LibroInvalidoException.
      */
     public LibroInvalidoException() {
     }
 
     /**
-     * Constructs an instance of <code>LibroInvalidoException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore della classe LibroInvalidoException che accetta un
+     *        messaggio di errore.
+     * @param msg Messaggio di errore associato all'eccezione.
      */
     public LibroInvalidoException(String msg) {
         super(msg);

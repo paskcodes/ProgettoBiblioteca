@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestionelibro.registrazione;
 
 import java.net.URL;
@@ -16,13 +11,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Arc;
 
 /**
- * FXML Controller class
- *
- * @author Antonio Franco
+ * @class ControlloreRegLibro
+ * @brief Classe controller per la registrazione di un nuovo libro.
  * 
  */
 public class ControlloreRegLibro implements Initializable {
-
+    /**
+     * \cond Doxygen_Skip
+     */
     @FXML
     private AnchorPane pannelloRegLibro;
     @FXML
@@ -37,15 +33,22 @@ public class ControlloreRegLibro implements Initializable {
     private TextField testoRegistraNumCopieLibro;
     @FXML
     private Button bottoneAggiungiLibro;
+    /**
+     * \endcond
+     */
 
     /**
-     * Initializes the controller class.
+     * @brief Inizializza il controller della scena di registrazione del libro.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
+    /**
+     * @brief Gestisce l'evento di registrazione di un nuovo libro.
+     * @param event L'evento generato dal click sul bottone di registrazione.
+     */
     @FXML
     private void registraLibro(ActionEvent event) {
     }

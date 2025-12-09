@@ -1,31 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestioneutente.eccezioni;
 
 
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class UtenteMailException
+ * @brief Eccezione lanciata quando la mail di un utente non rispetta il formato stabilito.
  */
 public class UtenteMailException extends UtenteInvalidoException{
 
     /**
-     * Creates a new instance of <code>UtenteMailException</code> without detail
-     * message.
+     * @brief Costruttore di default.
      */
     public UtenteMailException() {
     }
 
     /**
-     * Constructs an instance of <code>UtenteMailException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato.
+     * @param msg Messaggio di errore.
      */
     public UtenteMailException(String msg) {
         super(msg);

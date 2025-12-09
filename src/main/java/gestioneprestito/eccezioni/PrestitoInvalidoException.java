@@ -1,29 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestioneprestito.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class PrestitoInvalidoException
+ * @brief Eccezione lanciata quando si tenta di creare un prestito non valido
  */
 public class PrestitoInvalidoException extends Exception{
 
     /**
-     * Creates a new instance of <code>PrestitoInvalidoException</code> without
-     * detail message.
+     * @brief Costruttore di default
      */
     public PrestitoInvalidoException() {
     }
 
     /**
-     * Constructs an instance of <code>PrestitoInvalidoException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato
+     * @param msg Messaggio di errore
      */
     public PrestitoInvalidoException(String msg) {
         super(msg);

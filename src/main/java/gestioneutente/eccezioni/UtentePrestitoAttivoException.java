@@ -1,29 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestioneutente.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class UtentePrestitoAttivoException
+ * @brief Eccezione lanciata quando si tenta di eliminare un utente che ha prestiti attivi.
  */
 public class UtentePrestitoAttivoException extends Exception{
 
     /**
-     * Creates a new instance of <code>UtentePrestitoAttivoException</code>
-     * without detail message.
+     * @brief Costruttore di default
      */
     public UtentePrestitoAttivoException() {
     }
 
     /**
-     * Constructs an instance of <code>UtentePrestitoAttivoException</code> with
-     * the specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato
+     * @param msg Messaggio di errore
      */
     public UtentePrestitoAttivoException(String msg) {
         super(msg);

@@ -1,30 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestioneutente.eccezioni;
 
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class UtenteNomeCognomeException
+ * @brief Eccezione lanciata quando il nome o il cognome di un utente non sono validi
  */
 public class UtenteNomeCognomeException extends UtenteInvalidoException{
 
     /**
-     * Creates a new instance of <code>UtenteNomeCognomeException</code> without
-     * detail message.
+     * @brief Costruttore di default
      */
     public UtenteNomeCognomeException() {
     }
 
     /**
-     * Constructs an instance of <code>UtenteNomeCognomeException</code> with
-     * the specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato
+     * @param msg Messaggio di errore
      */
     public UtenteNomeCognomeException(String msg) {
         super(msg);

@@ -1,28 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestionelibro.eccezioni;
 
 /**
- *
- * @author Antonio Franco
+ * @class LibroPrestitoAttivoException
+ * @brief Eccezione lanciata quando si tenta di eliminare un libro che ha prestiti attivi.
  */
 public class LibroPrestitoAttivoException extends Exception{
 
     /**
-     * Creates a new instance of <code>LibroPrestitoAttivoException</code>
-     * without detail message.
+     * @brief Costruttore di default.
      */
     public LibroPrestitoAttivoException() {
     }
 
     /**
-     * Constructs an instance of <code>LibroPrestitoAttivoException</code> with
-     * the specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato.
+     * @param msg Messaggio di errore.
      */
     public LibroPrestitoAttivoException(String msg) {
         super(msg);

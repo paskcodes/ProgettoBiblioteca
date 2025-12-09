@@ -1,29 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestionelibro.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ * @class LibroDuplicatoException
+ * @brief Eccezione lanciata quando si tenta di aggiungere un libro che gia' esiste nella collezione.
  */
 public class LibroDuplicatoException extends LibroInvalidoException{
 
     /**
-     * Creates a new instance of <code>LibroDuplicatoException</code> without
-     * detail message.
+     * @brief Costruttore di default.
      */
     public LibroDuplicatoException() {
     }
 
     /**
-     * Constructs an instance of <code>LibroDuplicatoException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato.
+     * @param msg Messaggio di errore.
      */
     public LibroDuplicatoException(String msg) {
         super(msg);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestioneutente.registrazione;
 
 import java.net.URL;
@@ -15,13 +10,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * FXML Controller class
- *
- * @author Antonio Franco
- * 
+ * @class ControlloreRegUtente
+ * @brief Classe controller per la registrazione di un nuovo utente
  */
 public class ControlloreRegUtente implements Initializable {
 
+    /**
+     * \cond DOXY_SKIP
+     */
     @FXML
     private TextField testoRegistraNomeUtente;
     @FXML
@@ -34,17 +30,25 @@ public class ControlloreRegUtente implements Initializable {
     private Button bottoneAggiungiUtente;
     @FXML
     private AnchorPane pannelloRegUtente;
-    
+    /**
+     * \endcond
+     */
     
 
     /**
-     * Initializes the controller class.
+     * @brief Inizializza il controller della scena di registrazione utente
+     * @param url L'URL della risorsa
+     * @param rb Il ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
+    /**
+     * @brief Gestisce l'evento di registrazione di un nuovo utente
+     * @param event L'evento generato dal click sul bottone di registrazione
+     */
     @FXML
     private void registraUtente(ActionEvent event) {
     }

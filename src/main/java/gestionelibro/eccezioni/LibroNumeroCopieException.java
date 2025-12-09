@@ -1,29 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestionelibro.eccezioni;
 
 /**
- *
- * @author Antonio Franco
- * 
+ *  @class LibroNumeroCopieException
+ *  @brief Eccezione lanciata quando il numero di copie di un libro non risulta
+ *         valido (minore di 0).
  */
 public class LibroNumeroCopieException extends LibroInvalidoException{
 
     /**
-     * Creates a new instance of <code>LibroNumeroCopieException</code> without
-     * detail message.
+     * @brief Costruttore di default.
      */
     public LibroNumeroCopieException() {
     }
 
     /**
-     * Constructs an instance of <code>LibroNumeroCopieException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato.
+     * @param msg Messaggio di errore.
      */
     public LibroNumeroCopieException(String msg) {
         super(msg);
