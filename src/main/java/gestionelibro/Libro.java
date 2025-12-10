@@ -5,6 +5,8 @@
  */
 package gestionelibro;
 
+import gestionelibro.eccezioni.LibroDataPubblicazioneException;
+import gestionelibro.eccezioni.LibroNumeroCopieException;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -41,7 +43,7 @@ public class Libro implements Comparable, Serializable{
      * @brief Imposta il titolo del libro
      * @param titolo Il nuovo titolo del libro
      */
-    public void setTitolo(String titolo) {
+    public void setTitolo(String titolo){
         this.titolo = titolo;
     }
 
@@ -57,7 +59,7 @@ public class Libro implements Comparable, Serializable{
      * @brief Imposta la data di pubblicazione del libro
      * @param dataPubblicazione La nuova data di pubblicazione del libro
      */
-    public void setDataPubblicazione(LocalDate dataPubblicazione) {
+    public void setDataPubblicazione(LocalDate dataPubblicazione) throws LibroDataPubblicazioneException{
         this.dataPubblicazione = dataPubblicazione;
     }
 
@@ -65,7 +67,7 @@ public class Libro implements Comparable, Serializable{
      * @brief Imposta il numero di copie disponibili del libro
      * @param copie Il nuovo numero di copie disponibili del libro
      */
-    public void setCopie(int copie) {
+    public void setCopie(int copie) throws LibroNumeroCopieException{
         this.copie = copie;
     }
   
@@ -117,7 +119,7 @@ public class Libro implements Comparable, Serializable{
      * @param daValidare La data da verificare
      * @return true se la data è valida, false altrimenti
      */
-    public static boolean isDataValida(LocalDate daValidare){
+    public static boolean isDataPubblicazioneValida(LocalDate daValidare){
         return true;
     }
     

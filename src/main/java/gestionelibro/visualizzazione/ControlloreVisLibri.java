@@ -1,5 +1,6 @@
 package gestionelibro.visualizzazione;
 
+import appbibliotecauniversitaria.Archivio;
 import gestionelibro.Libro;
 import java.net.URL;
 import java.time.LocalDate;
@@ -12,6 +13,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * @class ControlloreVisLibri
@@ -41,7 +44,6 @@ public class ControlloreVisLibri implements Initializable {
     @FXML
     private ChoiceBox<String> filtroRicercaLibri;
     
-    private ObservableList<Libro> listaLibri;
     /**
      * \endcond
      */
@@ -88,34 +90,28 @@ public class ControlloreVisLibri implements Initializable {
     }
 
     /**
-     * @brief Aggiorna l'ISBN di un libro selezionato dalla tabella.
-     * @param event Evento di azione generato dal pulsante di rimozione.
-     */
-    @FXML
-    private void aggiornaISBNLibri(TableColumn.CellEditEvent<Libro, String> event) {
-    }
-
-    /**
      * @brief Aggiorna il numero di copie di un libro selezionato dalla tabella.
      * @param event Evento di azione generato dal pulsante di rimozione.
      */
     @FXML
     private void aggiornaNumCopieLibri(TableColumn.CellEditEvent<Libro, Integer> event) {
     }
-
+    
     /**
-     * @brief Inserisce un nuovo libro nella tabella.
-     * @param libro Il libro da inserire.
+     * @brief Gestisce la ricerca dei libri filtrando i risultati.
+     * @param event Evento di tastiera generato dall'input di ricerca.
      */
-    public void inserisciNuovoLibro(Libro libro){
+    @FXML
+    private void ricercaLibri(KeyEvent event) {
     }
     
     /**
-     * @brief Verifica se un libro è presente nella tabella.
-     * @param libro Il libro da verificare.
-     * @return true se il libro è presente, false altrimenti.
+     * @brief Gestisce la selezione di un libro nella tabella.
+     * @param event Evento di click del mouse sulla tabella.
      */
-    public boolean isLibroPresente(Libro libro){
-        return true;
+    @FXML
+    private void selezionaLibro(MouseEvent event) {
     }
+
+
 }

@@ -1,6 +1,9 @@
 package gestioneutente;
 
 import gestionelibro.Libro;
+import gestioneutente.eccezioni.UtenteInvalidoException;
+import gestioneutente.eccezioni.UtenteMailException;
+import gestioneutente.eccezioni.UtenteNomeCognomeException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,10 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param matricola Matricola dell'utente.
      */
     public Utente(String nome, String cognome, String mail, String matricola){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.mail = mail;
+        this.matricola = matricola;
     }
     
     
@@ -39,7 +46,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @brief Imposta il nome dell'utente.
      * @param nome Nome da impostare.
      */
-    public void setNome(String nome) {
+    public void setNome(String nome) throws UtenteNomeCognomeException{
         this.nome = nome;
     }
 
@@ -47,7 +54,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @brief Imposta il cognome dell'utente.
      * @param cognome Cognome da impostare.
      */
-    public void setCognome(String cognome) {
+    public void setCognome(String cognome) throws UtenteNomeCognomeException{
         this.cognome = cognome;
     }
 
@@ -55,27 +62,9 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @brief Imposta l'indirizzo email dell'utente.
      * @param mail Email da impostare.
      */
-    public void setMail(String mail) {
+    public void setMail(String mail) throws UtenteMailException{
         this.mail = mail;
-    }
-
-    /**
-     * @brief Imposta la matricola dell'utente.
-     * @param matricola Matricola da impostare.
-     */
-    public void setMatricola(String matricola) {
-        this.matricola = matricola;
-    }
-
-    /**
-     * @brief Imposta il numero di prestiti dell'utente.
-     * @param prestiti Numero di prestiti da impostare.
-     */
-    public void setPrestiti(int prestiti) {
-        this.prestiti = prestiti;
-    }
-    
-    
+    }  
     
     
     

@@ -12,11 +12,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
  * @class ControlloreVisPrestiti
- * @brief Classe controller della schermata di visualizzazione dei prestiti
+ * @brief Controller della schermata di visualizzazione dei prestiti.
+ * @details Gestisce tabella, filtri e azioni di estinzione prestiti nella UI.
  */
 public class ControlloreVisPrestiti implements Initializable {
 
@@ -33,12 +35,9 @@ public class ControlloreVisPrestiti implements Initializable {
     private TableColumn<Prestito, String> colonnaLibroTabellaPrestiti;
     @FXML
     private TableColumn<Prestito, LocalDate> colonnaDataScadenzaTabellaPrestiti;
-    @FXML
-    private TextField testoRicercaPrestiti;
-    @FXML
-    private ChoiceBox<String> filtroRicercaPrestiti;
+
+
     
-    private ObservableList<Prestito> listaPrestiti;
     /**
      * \endcond
      */
@@ -62,19 +61,11 @@ public class ControlloreVisPrestiti implements Initializable {
     }
     
     /**
-     * @brief Inserisce un nuovo prestito
-     * @param prestito Il prestito da inserire
+     * @brief Esegue la ricerca e il filtraggio dei prestiti nella tabella.
+     * @param event Evento di tastiera generato dall'input di ricerca.
      */
-    public void inserisciNuovoPrestito(Prestito prestito){
-    }
-
-    /**
-     * @brief Controlla se un prestito esiste
-     * @param prestito Il prestito da controllare
-     * @return true se il prestito esiste, false altrimenti
-     */
-    public boolean isPrestitoEsistente(Prestito prestito){
-        return true;
+    @FXML
+    private void ricercaPrestiti(KeyEvent event) {
     }
     
 }

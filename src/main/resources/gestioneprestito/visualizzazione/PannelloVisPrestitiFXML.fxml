@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" fx:id="pannelloVisPrestiti" prefHeight="573.0" prefWidth="557.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestioneprestito.visualizzazione.ControlloreVisPrestiti">
@@ -32,8 +29,5 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <Label layoutX="464.0" layoutY="501.0" text="RICERCA PER:" />
-      <TextField fx:id="testoRicercaPrestiti" layoutX="305.0" layoutY="525.0" />
-      <ChoiceBox fx:id="filtroRicercaPrestiti" layoutX="464.0" layoutY="525.0" prefHeight="25.0" prefWidth="73.0" />
    </children>
 </AnchorPane>

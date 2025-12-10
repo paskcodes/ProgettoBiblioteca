@@ -1,5 +1,10 @@
 package gestioneutente.registrazione;
 
+import appbibliotecauniversitaria.Archivio;
+import appbibliotecauniversitaria.ControlloreHome;
+import gestioneutente.Utente;
+import gestioneutente.eccezioni.UtenteInvalidoException;
+import gestioneutente.visualizzazione.ControlloreVisUtenti;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -50,7 +55,15 @@ public class ControlloreRegUtente implements Initializable {
      * @param event L'evento generato dal click sul bottone di registrazione
      */
     @FXML
-    private void registraUtente(ActionEvent event) {
+    private void registraUtente(ActionEvent event){
+        Utente u = new Utente(testoRegistraNomeUtente.getText(), testoRegistraCognomeUtente.getText(), testoRegistraMailUtente.getText(), testoRegistraMatricolaUtente.getText());
+        
+        try{
+            Archivio.inserisciNuovoUtente(u);
+        }catch(UtenteInvalidoException ex){                        //mettere solo la super classe eccezione o specificare ogni tipo di eccezione?
+            ControlloreHome.mostraFinestraEccezione(ex);
+        }
+        
     }
     
 }

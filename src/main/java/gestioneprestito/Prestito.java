@@ -1,4 +1,4 @@
-
+        
 package gestioneprestito;
 
 import java.io.Serializable;
@@ -14,10 +14,12 @@ import java.time.LocalDate;
  *          la data di scadenza del prestito e lo stato del prestito.
  */
 public class Prestito implements Comparable, Serializable{
-    private String utente;
-    private String libro;
+    private Utente utente;
+    private Libro libro;
     private LocalDate dataScadenza;
     private Stato stato;
+    private static Utente utentePrePrestito;
+    private static Libro libroPrePrestito;
     
     /**
      * @brief Costruttore della classe Prestito
@@ -25,7 +27,7 @@ public class Prestito implements Comparable, Serializable{
      * @param libro Il libro prestato
      * @param dataScadenza La data di scadenza del prestito
      */
-    public Prestito(String utente, String libro, LocalDate dataScadenza){
+    public Prestito(Utente utente, Libro libro, LocalDate dataScadenza){
         this.utente = utente;
         this.libro = libro;
         this.dataScadenza = dataScadenza;
@@ -35,7 +37,7 @@ public class Prestito implements Comparable, Serializable{
      * @brief Imposta l'utente che ha effettuato il prestito
      * @param utente L'utente che ha effettuato il prestito
      */
-    public void setUtente(String utente) {
+    public void setUtente(Utente utente) {
         this.utente = utente;
     }
 
@@ -43,7 +45,7 @@ public class Prestito implements Comparable, Serializable{
      * @brief Imposta il libro prestato
      * @param libro Il libro prestato
      */
-    public void setLibro(String libro) {
+    public void setLibro(Libro libro) {
         this.libro = libro;
     }
 
@@ -54,12 +56,26 @@ public class Prestito implements Comparable, Serializable{
     public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
+    
+    /**
+     * @brief Imposta l'utente da utilizzare prima della creazione del prestito.
+     * @param utente Utente preselezionato per il prestito.
+     */
+    public static void setUtentePrePrestito(Utente utente){
+    }
+    
+    /**
+     * @brief Imposta il libro da utilizzare prima della creazione del prestito.
+     * @param libro Libro preselezionato per il prestito.
+     */
+    public static void setLibroPrePrestito(Libro libro){
+    }
 
     /**
      * @brief Restituisce l'utente che ha effettuato il prestito
      * @return L'utente che ha effettuato il prestito
      */
-    public String getUtente() {
+    public Utente getUtente() {
         return this.utente;
     }
 
@@ -67,7 +83,7 @@ public class Prestito implements Comparable, Serializable{
      * @brief Restituisce il libro prestato
      * @return Il libro prestato
      */
-    public String getLibro() {
+    public Libro getLibro() {
         return this.libro;
     }
 
@@ -80,11 +96,20 @@ public class Prestito implements Comparable, Serializable{
     }
 
     /**
-     * @brief Restituisce lo stato del prestito
-     * @param stato Lo stato del prestito
+     * @brief Restituisce lo stato del prestito.
+     * @return Stato attuale del prestito.
      */
     public Stato getStato(){
         return this.stato;
+    }
+    
+    /**
+     * @brief Verifica se la data di scadenza è valida.
+     * @param daValidare Data di scadenza da controllare.
+     * @return true se la data è valida, false altrimenti.
+     */
+    public static boolean isDataScadenzaValida(LocalDate daValidare){
+        return true;
     }
 
     /**
@@ -107,8 +132,10 @@ public class Prestito implements Comparable, Serializable{
     }
     
     /**
-     * @brief Compara due prestiti
-     * @param o l'oggetto da comparare 
+     * @brief Compara due prestiti.
+     * @param o l'oggetto da comparare.
+     * @return Valore negativo, zero o positivo secondo l'ordinamento definito.
+     * @throws UnsupportedOperationException se il confronto non è implementato.
      */
     @Override
     public int compareTo(Object o) {
