@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['initialize_0',['initialize',['../classappbibliotecauniversitaria_1_1_controllore_home.html#a84faab08beff4fa51fb176dbc493e9a8',1,'appbibliotecauniversitaria.ControlloreHome.initialize()'],['../classgestionelibro_1_1registrazione_1_1_controllore_reg_libro.html#a4c72804c87d0c077a231e14f13f57ca9',1,'gestionelibro.registrazione.ControlloreRegLibro.initialize()'],['../classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html#a9b2e485e33b0323ad4dce5c54102d83f',1,'gestionelibro.visualizzazione.ControlloreVisLibri.initialize()'],['../classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito.html#a490ae77f28633c8a8c1f10060ac77f96',1,'gestioneprestito.registrazione.ControlloreRegPrestito.initialize()'],['../classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.html#afa5a9ce0aa1b3873fce5a9c856cbf916',1,'gestioneprestito.visualizzazione.ControlloreVisPrestiti.initialize()'],['../classgestioneutente_1_1registrazione_1_1_controllore_reg_utente.html#a286adb431a6386d8d431fe57d646ac27',1,'gestioneutente.registrazione.ControlloreRegUtente.initialize()'],['../classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html#ac6eec250e8cf0697d6c0567f6eacb641',1,'gestioneutente.visualizzazione.ControlloreVisUtenti.initialize()']]],
+  ['inprestitoattivolibro_1',['inPrestitoAttivoLibro',['../classappbibliotecauniversitaria_1_1_archivio.html#a4463a54046ab50bf7405a3cb0ff358da',1,'appbibliotecauniversitaria::Archivio']]],
+  ['inprestitoattivoutente_2',['inPrestitoAttivoUtente',['../classappbibliotecauniversitaria_1_1_archivio.html#a5fd14595cf337ccb5d1a888ea7565967',1,'appbibliotecauniversitaria::Archivio']]],
+  ['inseriscinuovolibro_3',['inserisciNuovoLibro',['../classappbibliotecauniversitaria_1_1_archivio.html#a22fdb515feaeb13328ee46dfabf7272b',1,'appbibliotecauniversitaria::Archivio']]],
+  ['inseriscinuovoprestito_4',['inserisciNuovoPrestito',['../classappbibliotecauniversitaria_1_1_archivio.html#a0710186b4040dab2c936ee078b48d94b',1,'appbibliotecauniversitaria::Archivio']]],
+  ['inseriscinuovoutente_5',['inserisciNuovoUtente',['../classappbibliotecauniversitaria_1_1_archivio.html#aabcc4fc0dd9588ac5086b28cff89830a',1,'appbibliotecauniversitaria::Archivio']]],
+  ['iscopiadisponibile_6',['isCopiaDisponibile',['../classgestionelibro_1_1_libro.html#a809e2b794c85b4c456bf0cdfb60ae6e2',1,'gestionelibro::Libro']]],
+  ['isdatapubblicazionevalida_7',['isDataPubblicazioneValida',['../classgestionelibro_1_1_libro.html#a733524c47099d55cbdd56bd66b8ce1bb',1,'gestionelibro::Libro']]],
+  ['isdatascadenzavalida_8',['isDataScadenzaValida',['../classgestioneprestito_1_1_prestito.html#a9aba554475d1f213ca6d67a1fc825d0a',1,'gestioneprestito::Prestito']]],
+  ['islibropresente_9',['isLibroPresente',['../classappbibliotecauniversitaria_1_1_archivio.html#a62fd14c6540ce1442c241b87f9083239',1,'appbibliotecauniversitaria::Archivio']]],
+  ['islimiteprestitiraggiunto_10',['isLimitePrestitiRaggiunto',['../classgestioneutente_1_1_utente.html#a55b0caf7cd78ba779c6aa42a6e4e936f',1,'gestioneutente::Utente']]],
+  ['ismailvalida_11',['isMailValida',['../classgestioneutente_1_1_utente.html#ac88a08aa3840af0d4ddf00870ec311e3',1,'gestioneutente::Utente']]],
+  ['ismatricolavalida_12',['isMatricolaValida',['../classgestioneutente_1_1_utente.html#aa11e116fa6bd4b66c78ece29a085af7f',1,'gestioneutente::Utente']]],
+  ['isnomecognomevalido_13',['isNomeCognomeValido',['../classgestioneutente_1_1_utente.html#a405fc598bb02f2b51a39f39e24ccab4a',1,'gestioneutente::Utente']]],
+  ['isnumcopievalido_14',['isNumCopieValido',['../classgestionelibro_1_1_libro.html#a65fa205ef767bb3970ff707a73cb548a',1,'gestionelibro::Libro']]],
+  ['isprestitopresente_15',['isPrestitoPresente',['../classappbibliotecauniversitaria_1_1_archivio.html#a2b85941cca4df2853e17245e9f242e7b',1,'appbibliotecauniversitaria::Archivio']]],
+  ['isutentepresente_16',['isUtentePresente',['../classappbibliotecauniversitaria_1_1_archivio.html#acdd20a97ad5d37f588f87f15aed5de35',1,'appbibliotecauniversitaria::Archivio']]]
+];
