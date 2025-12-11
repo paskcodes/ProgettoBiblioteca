@@ -16,12 +16,13 @@ import javafx.stage.Stage;
 
 public class BiblioManager extends Application {
     
-    @Override
+
     /**
      * @brief Avvia l'applicazione JavaFX caricando la vista principale.
      * @param stage Stage principale fornito dal runtime JavaFX.
      * @throws Exception se il caricamento della risorsa FXML fallisce.
      */
+    @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("VistaFXML.fxml"));
         

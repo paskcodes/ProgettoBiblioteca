@@ -33,7 +33,7 @@ import javafx.collections.transformation.SortedList;
 public class Archivio {
     private static ObservableList<Utente> listaUtenti = FXCollections.observableArrayList();
     private static ObservableList<Libro> listaLibri = FXCollections.observableArrayList();
-    public static ObservableList<Prestito> listaPrestiti = FXCollections.observableArrayList();
+    private static ObservableList<Prestito> listaPrestiti = FXCollections.observableArrayList();
     /**
      * @brief Inserisce un nuovo utente nell'archivio.
      * @param nuovoUtente Utente da inserire.
