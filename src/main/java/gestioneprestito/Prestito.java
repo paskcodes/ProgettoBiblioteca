@@ -13,7 +13,7 @@ import java.time.LocalDate;
  *          come l'utente che ha effettuato il prestito, il libro prestato,
  *          la data di scadenza del prestito e lo stato del prestito.
  */
-public class Prestito implements Comparable, Serializable{
+public class Prestito implements Comparable<Prestito>, Serializable{
     private Utente utente;
     private Libro libro;
     private LocalDate dataScadenza;
@@ -138,7 +138,7 @@ public class Prestito implements Comparable, Serializable{
      * @throws UnsupportedOperationException se il confronto non è implementato.
      */
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Prestito o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

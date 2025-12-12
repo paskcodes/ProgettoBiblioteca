@@ -16,7 +16,7 @@ import java.time.LocalDate;
  * @details La classe Libro implementa un libro con i suoi attributi principali come titolo, autori, data di pubblicazione, ISBN e numero di copie disponibili.
  *          Fornisce metodi per accedere e modificare questi attributi, confrontare libri e per verificare la disponibilità delle copie.
  */
-public class Libro implements Comparable, Serializable{
+public class Libro implements Comparable<Libro>, Serializable{
     private String titolo;
     private String autori;
     private LocalDate dataPubblicazione;
@@ -164,7 +164,7 @@ public class Libro implements Comparable, Serializable{
      * @param o L'oggetto da confrontare
      */
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Libro o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

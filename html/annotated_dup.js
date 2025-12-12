@@ -1,7 +1,8 @@
 var annotated_dup =
 [
     [ "appbibliotecauniversitaria", null, [
-      [ "BiblioManager", "classappbibliotecauniversitaria_1_1_biblio_manager.html", null ],
+      [ "Archivio", "classappbibliotecauniversitaria_1_1_archivio.html", null ],
+      [ "BiblioManager", "classappbibliotecauniversitaria_1_1_biblio_manager.html", "classappbibliotecauniversitaria_1_1_biblio_manager" ],
       [ "ControlloreHome", "classappbibliotecauniversitaria_1_1_controllore_home.html", "classappbibliotecauniversitaria_1_1_controllore_home" ]
     ] ],
     [ "com", null, [
@@ -23,13 +24,16 @@ var annotated_dup =
       [ "visualizzazione", null, [
         [ "ControlloreVisLibri", "classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html", "classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri" ]
       ] ],
+      [ "ComparatoreTitoloLibro", "classgestionelibro_1_1_comparatore_titolo_libro.html", "classgestionelibro_1_1_comparatore_titolo_libro" ],
       [ "Libro", "classgestionelibro_1_1_libro.html", "classgestionelibro_1_1_libro" ]
     ] ],
     [ "gestioneprestito", null, [
       [ "eccezioni", null, [
+        [ "PrestitoCopieEsauriteException", "classgestioneprestito_1_1eccezioni_1_1_prestito_copie_esaurite_exception.html", "classgestioneprestito_1_1eccezioni_1_1_prestito_copie_esaurite_exception" ],
         [ "PrestitoDataScadenzaException", "classgestioneprestito_1_1eccezioni_1_1_prestito_data_scadenza_exception.html", "classgestioneprestito_1_1eccezioni_1_1_prestito_data_scadenza_exception" ],
         [ "PrestitoDuplicatoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_duplicato_exception.html", "classgestioneprestito_1_1eccezioni_1_1_prestito_duplicato_exception" ],
-        [ "PrestitoInvalidoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_invalido_exception.html", "classgestioneprestito_1_1eccezioni_1_1_prestito_invalido_exception" ]
+        [ "PrestitoInvalidoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_invalido_exception.html", "classgestioneprestito_1_1eccezioni_1_1_prestito_invalido_exception" ],
+        [ "PrestitoLimitePrestitiRaggiuntoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_limite_prestiti_raggiunto_exception.html", "classgestioneprestito_1_1eccezioni_1_1_prestito_limite_prestiti_raggiunto_exception" ]
       ] ],
       [ "registrazione", null, [
         [ "ControlloreRegPrestito", "classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito.html", "classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito" ]
@@ -54,6 +58,7 @@ var annotated_dup =
       [ "visualizzazione", null, [
         [ "ControlloreVisUtenti", "classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html", "classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti" ]
       ] ],
+      [ "ComparatoreCognomeNomeUtente", "classgestioneutente_1_1_comparatore_cognome_nome_utente.html", "classgestioneutente_1_1_comparatore_cognome_nome_utente" ],
       [ "Utente", "classgestioneutente_1_1_utente.html", "classgestioneutente_1_1_utente" ]
     ] ]
 ];

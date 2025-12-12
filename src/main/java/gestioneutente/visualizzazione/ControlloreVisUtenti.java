@@ -118,7 +118,7 @@ public class ControlloreVisUtenti implements Initializable {
      * @param event Evento di click del mouse sulla tabella.
      */
     @FXML
-    private void selezionaLibro(MouseEvent event) {
+    private void selezionaUtente(MouseEvent event) {
     }
 
     

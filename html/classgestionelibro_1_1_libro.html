@@ -109,9 +109,9 @@ Membri pubblici</h2></td></tr>
 <tr class="memdesc:a167cccfb257d1ec51b947a6a4a97ddfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il titolo del libro.  <br /></td></tr>
 <tr class="memitem:a6929938009f5ab4b76380b38aa5363bd" id="r_a6929938009f5ab4b76380b38aa5363bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6929938009f5ab4b76380b38aa5363bd">setAutori</a> (String autori)</td></tr>
 <tr class="memdesc:a6929938009f5ab4b76380b38aa5363bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta gli autori del libro.  <br /></td></tr>
-<tr class="memitem:a215bfe9ed1c8e6fce05b8478a4a90e47" id="r_a215bfe9ed1c8e6fce05b8478a4a90e47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a215bfe9ed1c8e6fce05b8478a4a90e47">setDataPubblicazione</a> (LocalDate dataPubblicazione)</td></tr>
+<tr class="memitem:a215bfe9ed1c8e6fce05b8478a4a90e47" id="r_a215bfe9ed1c8e6fce05b8478a4a90e47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a215bfe9ed1c8e6fce05b8478a4a90e47">setDataPubblicazione</a> (LocalDate dataPubblicazione)  throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_data_pubblicazione_exception.html">LibroDataPubblicazioneException</a></td></tr>
 <tr class="memdesc:a215bfe9ed1c8e6fce05b8478a4a90e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta la data di pubblicazione del libro.  <br /></td></tr>
-<tr class="memitem:ab724964849208412ed15c88c35889b90" id="r_ab724964849208412ed15c88c35889b90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab724964849208412ed15c88c35889b90">setCopie</a> (int copie)</td></tr>
+<tr class="memitem:ab724964849208412ed15c88c35889b90" id="r_ab724964849208412ed15c88c35889b90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab724964849208412ed15c88c35889b90">setCopie</a> (int copie)  throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_numero_copie_exception.html">LibroNumeroCopieException</a></td></tr>
 <tr class="memdesc:ab724964849208412ed15c88c35889b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il numero di copie disponibili del libro.  <br /></td></tr>
 <tr class="memitem:a82a88378a4c778ecc6e03c6d15b0fd34" id="r_a82a88378a4c778ecc6e03c6d15b0fd34"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82a88378a4c778ecc6e03c6d15b0fd34">getTitolo</a> ()</td></tr>
 <tr class="memdesc:a82a88378a4c778ecc6e03c6d15b0fd34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il titolo del libro.  <br /></td></tr>
@@ -136,8 +136,8 @@ Membri pubblici</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Membri pubblici statici</h2></td></tr>
-<tr class="memitem:ab7ca3a22c9f2acb436877d59e3c49ba3" id="r_ab7ca3a22c9f2acb436877d59e3c49ba3"><td class="memItemLeft" align="right" valign="top">static boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7ca3a22c9f2acb436877d59e3c49ba3">isDataValida</a> (LocalDate daValidare)</td></tr>
-<tr class="memdesc:ab7ca3a22c9f2acb436877d59e3c49ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se una data è valida.  <br /></td></tr>
+<tr class="memitem:a733524c47099d55cbdd56bd66b8ce1bb" id="r_a733524c47099d55cbdd56bd66b8ce1bb"><td class="memItemLeft" align="right" valign="top">static boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a733524c47099d55cbdd56bd66b8ce1bb">isDataPubblicazioneValida</a> (LocalDate daValidare)</td></tr>
+<tr class="memdesc:a733524c47099d55cbdd56bd66b8ce1bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se una data è valida.  <br /></td></tr>
 <tr class="memitem:a65fa205ef767bb3970ff707a73cb548a" id="r_a65fa205ef767bb3970ff707a73cb548a"><td class="memItemLeft" align="right" valign="top">static boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65fa205ef767bb3970ff707a73cb548a">isNumCopieValido</a> (int daValidare)</td></tr>
 <tr class="memdesc:a65fa205ef767bb3970ff707a73cb548a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un numero di copie è valido.  <br /></td></tr>
 </table>
@@ -385,8 +385,8 @@ Membri pubblici statici</h2></td></tr>
 
 </div>
 </div>
-<a id="ab7ca3a22c9f2acb436877d59e3c49ba3" name="ab7ca3a22c9f2acb436877d59e3c49ba3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7ca3a22c9f2acb436877d59e3c49ba3">&#9670;&#160;</a></span>isDataValida()</h2>
+<a id="a733524c47099d55cbdd56bd66b8ce1bb" name="a733524c47099d55cbdd56bd66b8ce1bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a733524c47099d55cbdd56bd66b8ce1bb">&#9670;&#160;</a></span>isDataPubblicazioneValida()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -395,7 +395,7 @@ Membri pubblici statici</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">boolean gestionelibro.Libro.isDataValida </td>
+          <td class="memname">boolean gestionelibro.Libro.isDataPubblicazioneValida </td>
           <td>(</td>
           <td class="paramtype">LocalDate</td>          <td class="paramname"><span class="paramname"><em>daValidare</em></span></td><td>)</td>
           <td></td>
@@ -488,7 +488,7 @@ Membri pubblici statici</h2></td></tr>
           <td class="memname">void gestionelibro.Libro.setCopie </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>copie</em></span></td><td>)</td>
-          <td></td>
+          <td> throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_numero_copie_exception.html">LibroNumeroCopieException</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -513,7 +513,7 @@ Membri pubblici statici</h2></td></tr>
           <td class="memname">void gestionelibro.Libro.setDataPubblicazione </td>
           <td>(</td>
           <td class="paramtype">LocalDate</td>          <td class="paramname"><span class="paramname"><em>dataPubblicazione</em></span></td><td>)</td>
-          <td></td>
+          <td> throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_data_pubblicazione_exception.html">LibroDataPubblicazioneException</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

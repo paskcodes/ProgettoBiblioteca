@@ -12,8 +12,6 @@ var classgestioneutente_1_1_utente =
     [ "isLimitePrestitiRaggiunto", "classgestioneutente_1_1_utente.html#a55b0caf7cd78ba779c6aa42a6e4e936f", null ],
     [ "setCognome", "classgestioneutente_1_1_utente.html#ab3c581ce57fa31098a5e2cf9243746d4", null ],
     [ "setMail", "classgestioneutente_1_1_utente.html#a1bdab19ca6629fe228972f0eb2bcb7c0", null ],
-    [ "setMatricola", "classgestioneutente_1_1_utente.html#afda414535808b6be73ff15abb46205cc", null ],
     [ "setNome", "classgestioneutente_1_1_utente.html#a007d633ca70d7e1eaad5b3b5419a5fe0", null ],
-    [ "setPrestiti", "classgestioneutente_1_1_utente.html#af0dcdbc1d58f83541d48023cf99f8863", null ],
     [ "toString", "classgestioneutente_1_1_utente.html#a1c5a6092ab54d375ce8a4353bef77449", null ]
 ];

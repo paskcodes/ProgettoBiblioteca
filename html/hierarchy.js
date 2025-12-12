@@ -4,10 +4,15 @@ var hierarchy =
       [ "appbibliotecauniversitaria.BiblioManager", "classappbibliotecauniversitaria_1_1_biblio_manager.html", null ]
     ] ],
     [ "com.libraryproject.AppTest", "classcom_1_1libraryproject_1_1_app_test.html", null ],
+    [ "appbibliotecauniversitaria.Archivio", "classappbibliotecauniversitaria_1_1_archivio.html", null ],
     [ "Comparable", null, [
       [ "gestionelibro.Libro", "classgestionelibro_1_1_libro.html", null ],
       [ "gestioneprestito.Prestito", "classgestioneprestito_1_1_prestito.html", null ],
       [ "gestioneutente.Utente", "classgestioneutente_1_1_utente.html", null ]
+    ] ],
+    [ "Comparator", null, [
+      [ "gestionelibro.ComparatoreTitoloLibro", "classgestionelibro_1_1_comparatore_titolo_libro.html", null ],
+      [ "gestioneutente.ComparatoreCognomeNomeUtente", "classgestioneutente_1_1_comparatore_cognome_nome_utente.html", null ]
     ] ],
     [ "Exception", null, [
       [ "gestionelibro.eccezioni.LibroInvalidoException", "classgestionelibro_1_1eccezioni_1_1_libro_invalido_exception.html", [
@@ -17,8 +22,10 @@ var hierarchy =
       ] ],
       [ "gestionelibro.eccezioni.LibroPrestitoAttivoException", "classgestionelibro_1_1eccezioni_1_1_libro_prestito_attivo_exception.html", null ],
       [ "gestioneprestito.eccezioni.PrestitoInvalidoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_invalido_exception.html", [
+        [ "gestioneprestito.eccezioni.PrestitoCopieEsauriteException", "classgestioneprestito_1_1eccezioni_1_1_prestito_copie_esaurite_exception.html", null ],
         [ "gestioneprestito.eccezioni.PrestitoDataScadenzaException", "classgestioneprestito_1_1eccezioni_1_1_prestito_data_scadenza_exception.html", null ],
-        [ "gestioneprestito.eccezioni.PrestitoDuplicatoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_duplicato_exception.html", null ]
+        [ "gestioneprestito.eccezioni.PrestitoDuplicatoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_duplicato_exception.html", null ],
+        [ "gestioneprestito.eccezioni.PrestitoLimitePrestitiRaggiuntoException", "classgestioneprestito_1_1eccezioni_1_1_prestito_limite_prestiti_raggiunto_exception.html", null ]
       ] ],
       [ "gestioneutente.eccezioni.UtenteInvalidoException", "classgestioneutente_1_1eccezioni_1_1_utente_invalido_exception.html", [
         [ "gestioneutente.eccezioni.UtenteDuplicatoException", "classgestioneutente_1_1eccezioni_1_1_utente_duplicato_exception.html", null ],
