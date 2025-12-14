@@ -2,11 +2,13 @@ package gestioneprestito.visualizzazione;
 
 import gestionearchivio.Archiviabile;
 import gestionelibro.Libro;
+import gestionelibro.eccezioni.LibroPrestitoAttivoException;
 import gestionelibro.visualizzazione.ControlloreVisLibri;
 import gestioneprestito.Prestito;
 import gestioneprestito.eccezioni.PrestitoDuplicatoException;
 import gestioneprestito.eccezioni.PrestitoInvalidoException;
 import gestioneutente.Utente;
+import gestioneutente.eccezioni.UtentePrestitoAttivoException;
 import gestioneutente.visualizzazione.ControlloreVisUtenti;
 import java.net.URL;
 import java.time.LocalDate;
@@ -94,12 +96,21 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
         return this.archivioPrestiti;
     }
     
-    public boolean inPrestitoAttivoUtente(Utente indagato){
-        return archivioPrestiti.stream().anyMatch(p -> p.getUtente().getMatricola().equals(indagato.getMatricola()) &&  p.getUtente().getNumPrestitiAttivi() > 0);
+    public boolean inPrestitoAttivoUtente(Utente indagato) throws UtentePrestitoAttivoException{
+
+        if(archivioPrestiti.stream().anyMatch(p -> p.getUtente().getMatricola().equals(indagato.getMatricola()) &&  p.getUtente().getNumPrestitiAttivi() > 0)){
+            throw new UtentePrestitoAttivoException();
+        }
+
+        return false;
     }
     
-    public boolean inPrestitoAttivoUtente(Libro indagato){
-        return archivioPrestiti.stream().anyMatch(p -> p.getLibro().getISBN().equals(indagato.getISBN()) &&  p.getLibro().getNumPrestitiAttivi() > 0);
+    public boolean inPrestitoAttivoLibro(Libro indagato) throws LibroPrestitoAttivoException{
+        if(archivioPrestiti.stream().anyMatch(p -> p.getLibro().getISBN().equals(indagato.getISBN()) &&  p.getLibro().getNumPrestitiAttivi() > 0)){
+            throw new LibroPrestitoAttivoException();
+        }
+        
+        return false;
     }
     
 }
