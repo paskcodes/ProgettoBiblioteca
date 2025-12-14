@@ -21,7 +21,7 @@ public class ComparatoreTitoloLibro implements Comparator<Libro>{
      * @param l1 Primo libro da confrontare.
      * @param l2 Secondo libro da confrontare.
      * @return Valore negativo, zero o positivo se il titolo di l1 è rispettivamente
-     *         precedente, uguale o successivo al titolo di l2.
+     *    precedente, uguale o successivo in ordine alfabetico al titolo di l2.
      */
     @Override
     public int compare(Libro l1, Libro l2) {
