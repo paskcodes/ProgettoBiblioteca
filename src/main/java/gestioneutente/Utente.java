@@ -32,10 +32,10 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param mail Indirizzo email dell'utente.
      * @param matricola Matricola dell'utente.
      */
-    public Utente(String nome, String cognome, String mail, String matricola){
-        this.nome = nome;
-        this.cognome = cognome;
-        this.mail = mail;
+    public Utente(String nome, String cognome, String mail, String matricola) throws UtenteNomeCognomeException, UtenteMailException {
+        setNome(nome);
+        setCognome(cognome);
+        setMail(mail);
         this.matricola = matricola;
     }
     
@@ -47,6 +47,9 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param nome Nome da impostare.
      */
     public void setNome(String nome) throws UtenteNomeCognomeException{
+        if (nome == null || !Pattern.matches("[a-zA-Z\\s]+", nome)) {
+            throw new UtenteNomeCognomeException("Nome non valido");
+        }
         this.nome = nome;
     }
 
@@ -55,6 +58,9 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param cognome Cognome da impostare.
      */
     public void setCognome(String cognome) throws UtenteNomeCognomeException{
+        if (cognome == null || !Pattern.matches("[a-zA-Z\\s]+", cognome)) {
+            throw new UtenteNomeCognomeException("Cognome non valido");
+        }
         this.cognome = cognome;
     }
 
@@ -63,6 +69,9 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param mail Email da impostare.
      */
     public void setMail(String mail) throws UtenteMailException{
+        if (mail == null || !Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", mail)) {
+            throw new UtenteMailException("Email non valida");
+        }
         this.mail = mail;
     }  
     
@@ -131,36 +140,6 @@ public class Utente implements Comparable<Utente>, Serializable{
         return this.prestitiAttivi;
     }
 
-    
-    //statiche per rendere le verifiche utilizzabili ovunque
-    
-    /**
-     * @brief Verifica se il nome o cognome sono validi.
-     * @param daValidare Stringa da validare.
-     * @return true se validi, false altrimenti.
-     */
-    public boolean isNomeCognomeValido(String daValidare){
-        return true;
-    }
-    
-    /**
-     * @brief Verifica se l'email è valida.
-     * @param daValidare Email da validare.
-     * @return true se valida, false altrimenti.
-     */
-    public static boolean isMailValida(String daValidare){
-        return true;
-    }
-    
-    /**
-     * @brief Verifica se la matricola è valida.
-     * @param daValidare Matricola da validare.
-     * @return true se valida, false altrimenti.
-     */
-    public static boolean isMatricolaValida(String daValidare){
-        return true;
-    }
-    
     
     
     /**
