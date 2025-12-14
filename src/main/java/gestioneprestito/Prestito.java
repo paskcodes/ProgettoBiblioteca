@@ -1,4 +1,4 @@
-        
+
 package gestioneprestito;
 
 import java.io.Serializable;
@@ -13,21 +13,21 @@ import java.time.LocalDate;
  *          come l'utente che ha effettuato il prestito, il libro prestato,
  *          la data di scadenza del prestito e lo stato del prestito.
  */
-public class Prestito implements Comparable<Prestito>, Serializable{
+public class Prestito implements Comparable<Prestito>, Serializable {
     private Utente utente;
     private Libro libro;
     private LocalDate dataScadenza;
     private Stato stato;
     private static Utente utentePrePrestito;
     private static Libro libroPrePrestito;
-    
+
     /**
      * @brief Costruttore della classe Prestito
-     * @param utente L'utente che ha effettuato il prestito
-     * @param libro Il libro prestato
+     * @param utente       L'utente che ha effettuato il prestito
+     * @param libro        Il libro prestato
      * @param dataScadenza La data di scadenza del prestito
      */
-    public Prestito(Utente utente, Libro libro, LocalDate dataScadenza){
+    public Prestito(Utente utente, Libro libro, LocalDate dataScadenza) {
         this.utente = utente;
         this.libro = libro;
         this.dataScadenza = dataScadenza;
@@ -56,19 +56,21 @@ public class Prestito implements Comparable<Prestito>, Serializable{
     public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
-    
+
     /**
      * @brief Imposta l'utente da utilizzare prima della creazione del prestito.
      * @param utente Utente preselezionato per il prestito.
      */
-    public static void setUtentePrePrestito(Utente utente){
+    public static void setUtentePrePrestito(Utente utente) {
+        utentePrePrestito = utente;
     }
-    
+
     /**
      * @brief Imposta il libro da utilizzare prima della creazione del prestito.
      * @param libro Libro preselezionato per il prestito.
      */
-    public static void setLibroPrePrestito(Libro libro){
+    public static void setLibroPrePrestito(Libro libro) {
+        libroPrePrestito = libro;
     }
 
     /**
@@ -99,58 +101,62 @@ public class Prestito implements Comparable<Prestito>, Serializable{
      * @brief Restituisce lo stato del prestito.
      * @return Stato attuale del prestito.
      */
-    public Stato getStato(){
-        return this.stato;
+    public Stato getStato() {
+        if (dataScadenza != null && LocalDate.now().isAfter(dataScadenza))
+            return Stato.SCADUTO;
+        return Stato.REGOLARE;
     }
-    
+
     /**
      * @brief Verifica se la data di scadenza è valida.
      * @param daValidare Data di scadenza da controllare.
      * @return true se la data è valida, false altrimenti.
      */
-    public static boolean isDataScadenzaValida(LocalDate daValidare){
-        return true;
+    public static boolean isDataScadenzaValida(LocalDate daValidare) {
+        return daValidare != null && daValidare.isAfter(LocalDate.now());
     }
 
     /**
      * @brief Verifica se due prestiti sono uguali
-     * @param o l'oggetto da comparare 
+     * @param o l'oggetto da comparare
      * @return true se sono uguali, false altrimenti
      */
     @Override
-    public boolean equals(Object o){
-        return true;
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Prestito p = (Prestito) o;
+        return utente.equals(p.utente) && libro.equals(p.libro);
     }
-    
+
     /**
      * @brief Restituisce l'hashcode del prestito
      * @return l'hashcode del prestito
      */
     @Override
-    public int hashCode(){
-        return 0;
+    public int hashCode() {
+        return utente.hashCode() + libro.hashCode();
     }
-    
+
     /**
      * @brief Compara due prestiti.
      * @param o l'oggetto da comparare.
      * @return Valore negativo, zero o positivo secondo l'ordinamento definito.
-     * @throws UnsupportedOperationException se il confronto non è implementato.
      */
     @Override
     public int compareTo(Prestito o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataScadenza.compareTo(o.dataScadenza);
     }
-    
+
     /**
      * @brief Restituisce la rappresentazione in stringa del prestito
      * @return la rappresentazione in stringa del prestito
      */
     @Override
-    public String toString(){
-        return "PRESTITO";
+    public String toString() {
+        return utente.getCognome() + " " + libro.getTitolo();
     }
-    
 
-    
 }
