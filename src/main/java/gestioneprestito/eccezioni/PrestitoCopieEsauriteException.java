@@ -17,6 +17,7 @@ public class PrestitoCopieEsauriteException extends PrestitoInvalidoException{
      * @brief Crea una nuova eccezione senza messaggio di dettaglio.
      */
     public PrestitoCopieEsauriteException() {
+        super("Il libro non ha più nessuna copia disponibile per un prestito!");
     }
 
     /**
