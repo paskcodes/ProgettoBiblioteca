@@ -3,6 +3,7 @@ package gestioneutente;
 import gestionelibro.Libro;
 import gestioneutente.eccezioni.UtenteInvalidoException;
 import gestioneutente.eccezioni.UtenteMailException;
+import gestioneutente.eccezioni.UtenteMatricolaException;
 import gestioneutente.eccezioni.UtenteNomeCognomeException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,11 +33,16 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param mail Indirizzo email dell'utente.
      * @param matricola Matricola dell'utente.
      */
-    public Utente(String nome, String cognome, String mail, String matricola) throws UtenteNomeCognomeException, UtenteMailException {
-        setNome(nome);
-        setCognome(cognome);
-        setMail(mail);
-        this.matricola = matricola;
+    public Utente(String nome, String cognome, String mail, String matricola) throws UtenteNomeCognomeException, UtenteMailException , UtenteMatricolaException{
+        if(!isNomeCognomeValido(nome)) throw  new UtenteNomeCognomeException();
+            this.nome = nome;
+        if(!isNomeCognomeValido(cognome)) throw  new UtenteNomeCognomeException();
+            this.cognome = cognome;
+        if(!isMailValida(mail)) throw  new UtenteMailException();
+            this.mail = mail;
+        if(!isMatricolaValida(matricola)) throw new UtenteMatricolaException();
+            this.matricola = matricola;
+
     }
     
     
@@ -47,7 +53,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param nome Nome da impostare.
      */
     public void setNome(String nome) throws UtenteNomeCognomeException{
-        if (nome == null || !Pattern.matches("[a-zA-Z\\s]+", nome)) {
+        if (isNomeCognomeValido(nome)) {
             throw new UtenteNomeCognomeException("Nome non valido");
         }
         this.nome = nome;
@@ -58,7 +64,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param cognome Cognome da impostare.
      */
     public void setCognome(String cognome) throws UtenteNomeCognomeException{
-        if (cognome == null || !Pattern.matches("[a-zA-Z\\s]+", cognome)) {
+        if (isNomeCognomeValido(cognome)) {
             throw new UtenteNomeCognomeException("Cognome non valido");
         }
         this.cognome = cognome;
@@ -69,8 +75,8 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param mail Email da impostare.
      */
     public void setMail(String mail) throws UtenteMailException{
-        if (mail == null || !Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", mail)) {
-            throw new UtenteMailException("Email non valida");
+        if (isMailValida(mail)) {
+            throw new UtenteMailException();
         }
         this.mail = mail;
     }  
@@ -108,20 +114,12 @@ public class Utente implements Comparable<Utente>, Serializable{
         return this.mail;
     }
 
-    /**
+     /**
      * @brief Restituisce la matricola dell'utente.
      * @return Matricola dell'utente.
      */
     public String getMatricola(){
         return this.matricola;
-    }
-    
-    public void prendiCopia(Libro copia){
-        libriInPrestito.add(copia);
-    }
-    
-    public void restituisciCopia(Libro copia){
-        libriInPrestito.remove(copia);
     }
     
     /**
@@ -139,18 +137,53 @@ public class Utente implements Comparable<Utente>, Serializable{
     public int getNumPrestitiAttivi(){
         return this.prestitiAttivi;
     }
-
     
+    //statiche per rendere le verifiche utilizzabili ovunque
+    
+    /**
+     * @brief Verifica se il nome o cognome sono validi.
+     * @param daValidare Stringa da validare.
+     * @return true se validi, false altrimenti.
+     */
+    public boolean isNomeCognomeValido(String daValidare){
+        return (daValidare != null && Pattern.matches("^[a-zA-Z][a-zA-Z\\s]*$", daValidare));
+    }
+    
+    /**
+     * @brief Verifica se l'email è valida.
+     * @param daValidare Email da validare.
+     * @return true se valida, false altrimenti.
+     */
+    public boolean isMailValida(String daValidare){
+        return (daValidare != null && Pattern.matches("^[a-zA-Z0-9.]+@studenti\\.unisa\\.it$", daValidare));
+    }
+    
+    /**
+     * @brief Verifica se la matricola è valida.
+     * @param daValidare Matricola da validare.
+     * @return true se valida, false altrimenti.
+     */
+    public static boolean isMatricolaValida(String daValidare){
+        return (daValidare != null && Pattern.matches("[0-9]+", daValidare));
+    }
     
     /**
      * @brief Verifica se l'utente ha raggiunto il limite di prestiti.
      * @return true se ha raggiunto il limite, false altrimenti.
      */
     public boolean isLimitePrestitiRaggiunto(){
-        return true;
+        return prestitiAttivi == 3;
     }
     
+    public void prendiCopia(Libro copia){
+        libriInPrestito.add(copia);
+        prestitiAttivi++;
+    }
     
+    public void restituisciCopia(Libro copia){
+        libriInPrestito.remove(copia);
+        prestitiAttivi--;
+    }
     
     
     
