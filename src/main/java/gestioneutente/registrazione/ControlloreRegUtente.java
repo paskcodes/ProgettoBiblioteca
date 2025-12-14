@@ -62,9 +62,8 @@ public class ControlloreRegUtente implements Initializable {
      */
     @FXML
     private void registraUtente(ActionEvent event){
-        Utente u = new Utente(testoRegistraNomeUtente.getText(), testoRegistraCognomeUtente.getText(), testoRegistraMailUtente.getText(), testoRegistraMatricolaUtente.getText());
-        
         try{
+            Utente u = new Utente(testoRegistraNomeUtente.getText(), testoRegistraCognomeUtente.getText(), testoRegistraMailUtente.getText(), testoRegistraMatricolaUtente.getText());
             cvu.inserisciNuovoElemento(u);
         }catch(UtenteInvalidoException ex){
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
