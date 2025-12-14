@@ -25,6 +25,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -72,16 +74,25 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //aggiunge i filtri possibili
         filtroRicercaUtenti.getItems().addAll("Cognome", "Matricola");
+        
+        //imposta un filtro di default
         filtroRicercaUtenti.setValue("Cognome");
+        
+        //permette di visualizzare il valore di ogni campo dell'utente nella rispettiva colonna
         colonnaNomeTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getNome()));
         colonnaCognomeTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getCognome()));
         colonnaMailTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getMail()));
         colonnaMatricolaTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getMatricola()));
         colonnaCopiePrestitiTabellaUtente.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getLibriInPrestito().toString()));
+        
+        //permette di modificare il valore della cella nella tabella
         colonnaNomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaCognomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaMailTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        //imposta l'archivioUtenti come lista osservabile da cui prendere i dati
         tabellaUtenti.setItems(archivioUtenti);
     }
 
@@ -91,6 +102,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      */
     @FXML
     private void aggiornaNomeUtenti(TableColumn.CellEditEvent<Utente, String> event) {
+        //modifica il campo nome dell'elemento all'interno dell'archivioUtenti, corrispondente a quella riga nella tabella, con il testo inserito a mano per la modifica
         try{
             event.getRowValue().setNome(event.getNewValue());
         }catch(UtenteNomeCognomeException ex){
@@ -104,6 +116,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      */
     @FXML
     private void aggiornaCognomeUtenti(TableColumn.CellEditEvent<Utente, String> event) {
+        //modifica il campo cognome dell'elemento all'interno dell'archivioUtenti, corrispondente a quella riga nella tabella, con il testo inserito a mano per la modifica
         try{
             event.getRowValue().setCognome(event.getNewValue());
         }catch(UtenteNomeCognomeException ex){
@@ -117,6 +130,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      */
     @FXML
     private void aggiornaMailUtenti(TableColumn.CellEditEvent<Utente, String> event) {
+        //modifica il campo mail dell'elemento all'interno dell'archivioUtenti, corrispondente a quella riga nella tabella, con il testo inserito a mano per la modifica
         try{
             event.getRowValue().setMail(event.getNewValue());
         }catch(UtenteMailException ex){
@@ -129,10 +143,19 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      * @param event Evento di azione generato dal comando di rimozione.
      */
     @FXML
-    private void rimuoviUtente(ActionEvent event) throws UtenteInvalidoException{
+    private void rimuoviUtente(ActionEvent event) {
+        //mantiene il riferimento all'utente selezionato
         Utente daEliminare = tabellaUtenti.getSelectionModel().getSelectedItem();
-        if(cvp.inPrestitoAttivoUtente(daEliminare)) throw new UtentePrestitoAttivoException();
-        archivioUtenti.remove(daEliminare);
+        
+        //verifica che non abbia prestiti attivi e rimuove l'utente, altrimenti cattura un eccezione
+        try{
+            cvp.inPrestitoAttivoUtente(daEliminare);
+            archivioUtenti.remove(daEliminare);
+        }catch(UtenteInvalidoException ex){
+            
+        }
+        
+        //aggiorna il valore di utentePrePrestito
     }    
     
     /**
@@ -149,31 +172,42 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      */
     @FXML
     private void selezionaUtente(MouseEvent event) {
-        crp.setUtentePrePrestito(tabellaUtenti.getSelectionModel().getSelectedItem());
+        //carica l'utente selezionato nell'utentePrePrestito, altrimenti cattura un'eccezione
+        try{
+            crp.setUtentePrePrestito(tabellaUtenti.getSelectionModel().getSelectedItem());
+        }catch(NullPointerException ex){
+            Alert a = new Alert(Alert.AlertType.WARNING, "Seleziona un utente se presente!", ButtonType.CLOSE);
+            a.showAndWait();
+        }
+                
     }
 
     @Override
     public void inserisciNuovoElemento(Utente nuovoElemento) throws UtenteDuplicatoException {
+        //se l'utente è già presente allora lancia un'eccezione
         if(isElementoPresente(nuovoElemento) == true) throw new UtenteDuplicatoException();
         archivioUtenti.add(nuovoElemento);
+        
+        //altrimenti aggiunge l'elemento all'archivioUtenti
         FXCollections.sort(archivioUtenti, new ComparatoreCognomeNomeUtente());
         System.out.println("AGGIUNTO");
     }
 
     @Override
     public boolean isElementoPresente(Utente daCercare) {
+        //verifica che in archivioUtenti ci sia l'utente daCercare
         return archivioUtenti.stream().anyMatch(u -> u.getMatricola().equals(daCercare.getMatricola()));
     }
 
     @Override
     public ObservableList<Utente> getListaElementi() {
+        //ritorna l'archivioUtenti
         return this.archivioUtenti;
     }
     
     public void registraCopiaPrestata(Utente noleggiatore, Libro prestato){
         for(Utente u : archivioUtenti){
             if(u.equals(u)){
-                u.setNumPrestitiAttivi((u.getNumPrestitiAttivi())+1);
                 u.prendiCopia(prestato);
             }
         }
@@ -182,7 +216,6 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
     public void registraCopiaRestituita(Utente noleggiatore, Libro prestato){
         for(Utente u : archivioUtenti){
             if(u.equals(u)){
-                u.setNumPrestitiAttivi((u.getNumPrestitiAttivi())-1);
                 u.restituisciCopia(prestato);
             }
         }
