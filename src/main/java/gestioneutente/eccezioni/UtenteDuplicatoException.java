@@ -11,6 +11,7 @@ public class UtenteDuplicatoException extends UtenteInvalidoException{
      * @brief Costruttore di default
      */
     public UtenteDuplicatoException() {
+        super("L'utente è già registrato!");
     }
 
     /**

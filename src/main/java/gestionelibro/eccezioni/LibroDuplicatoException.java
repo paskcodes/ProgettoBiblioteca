@@ -10,6 +10,7 @@ public class LibroDuplicatoException extends LibroInvalidoException{
      * @brief Costruttore di default.
      */
     public LibroDuplicatoException() {
+        super("Libro già presente in archivio!");
     }
 
     /**

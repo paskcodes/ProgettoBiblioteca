@@ -11,6 +11,7 @@ public class LibroNumeroCopieException extends LibroInvalidoException{
      * @brief Costruttore di default.
      */
     public LibroNumeroCopieException() {
+        super("Numero delle copie vuoto o non valido!");
     }
 
     /**

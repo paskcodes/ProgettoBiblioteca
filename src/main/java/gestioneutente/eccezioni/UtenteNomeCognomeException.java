@@ -11,6 +11,7 @@ public class UtenteNomeCognomeException extends UtenteInvalidoException{
      * @brief Costruttore di default
      */
     public UtenteNomeCognomeException() {
+        super("Nome vuoto o non valido!");
     }
 
     /**

@@ -12,6 +12,7 @@ public class UtenteMailException extends UtenteInvalidoException{
      * @brief Costruttore di default.
      */
     public UtenteMailException() {
+        super("Mail vuota o non valida!");
     }
 
     /**

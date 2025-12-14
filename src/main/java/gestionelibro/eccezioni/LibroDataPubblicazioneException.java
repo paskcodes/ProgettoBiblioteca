@@ -10,6 +10,7 @@ public class LibroDataPubblicazioneException extends LibroInvalidoException{
      * @brief Costruttore di default.
      */
     public LibroDataPubblicazioneException() {
+        super("Data di pubblicazione vuota o non valida!");
     }
 
     /**

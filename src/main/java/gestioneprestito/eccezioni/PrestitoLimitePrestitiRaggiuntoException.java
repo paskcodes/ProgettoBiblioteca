@@ -17,6 +17,7 @@ public class PrestitoLimitePrestitiRaggiuntoException extends PrestitoInvalidoEx
      * @brief Crea una nuova eccezione senza messaggio di dettaglio.
      */
     public PrestitoLimitePrestitiRaggiuntoException() {
+        super("L'utente ha già 3 prestiti attivi!");
     }
 
     /**

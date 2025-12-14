@@ -10,6 +10,7 @@ public class LibroPrestitoAttivoException extends LibroInvalidoException{
      * @brief Costruttore di default.
      */
     public LibroPrestitoAttivoException() {
+        super("Il libro è ancora in prestito a degli utenti!");
     }
 
     /**

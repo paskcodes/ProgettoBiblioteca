@@ -10,6 +10,7 @@ public class PrestitoDataScadenzaException extends PrestitoInvalidoException{
      * @brief Costruttore di default
      */
     public PrestitoDataScadenzaException() {
+        super("Data di scadenza del prestito vuota o non valida!");
     }
 
     /**

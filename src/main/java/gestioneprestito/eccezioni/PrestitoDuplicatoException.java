@@ -10,6 +10,7 @@ public class PrestitoDuplicatoException extends PrestitoInvalidoException{
      * @brief Costruttore di default
      */
     public PrestitoDuplicatoException() {
+        super("Il prestito è già registrato in archivio!");
     }
 
     /**
