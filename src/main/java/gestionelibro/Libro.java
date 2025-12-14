@@ -61,6 +61,9 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @param dataPubblicazione La nuova data di pubblicazione del libro
      */
     public void setDataPubblicazione(LocalDate dataPubblicazione) throws LibroDataPubblicazioneException{
+        if(!isDataPubblicazioneValida(dataPubblicazione)) {
+            throw new LibroDataPubblicazioneException("La data di pubblicazione non può essere futura");
+        }
         this.dataPubblicazione = dataPubblicazione;
     }
 
@@ -69,11 +72,15 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @param copie Il nuovo numero di copie disponibili del libro
      */
     public void setCopie(int copie) throws LibroNumeroCopieException{
+        if(!isNumCopieValido(copie)) {
+            throw new LibroNumeroCopieException("Il numero di copie deve essere almeno 1");
+        }
         this.copie = copie;
     }
     
     public void setNumPrestitiAttivi(int prestitiAttivi){
-        
+
+        this.prestitiAttivi = prestitiAttivi;
     }
   
     /**
@@ -129,7 +136,7 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @return true se la data è valida, false altrimenti
      */
     public static boolean isDataPubblicazioneValida(LocalDate daValidare){
-        return true;
+        return !daValidare.isAfter(LocalDate.now());
     }
     
     /**
@@ -138,7 +145,7 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @return true se il numero di copie è valido, false altrimenti
      */
     public static boolean isNumCopieValido(int daValidare){
-            return true;
+        return daValidare >= 1;
     }
     
     /**
@@ -156,7 +163,10 @@ public class Libro implements Comparable<Libro>, Serializable{
      */
     @Override
     public boolean equals(Object o){
-        return true;
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Libro libro = (Libro) o;
+        return this.ISBN.equals(libro.ISBN);
     }
     
     /**
@@ -165,7 +175,7 @@ public class Libro implements Comparable<Libro>, Serializable{
      */
     @Override
     public int hashCode(){
-        return 0;
+        return this.ISBN.hashCode();
     }
     
     /**
@@ -174,7 +184,7 @@ public class Libro implements Comparable<Libro>, Serializable{
      */
     @Override
     public int compareTo(Libro o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.titolo.compareTo(o.titolo);
     }
     
     /**
@@ -183,9 +193,11 @@ public class Libro implements Comparable<Libro>, Serializable{
      */
     @Override
     public String toString(){
-        return "LIBRO";
+        return titolo + " - " + autori + " (" + ISBN + ")";
+    }
     }
 
     
     
 }
+
