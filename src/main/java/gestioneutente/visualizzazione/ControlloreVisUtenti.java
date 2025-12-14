@@ -106,8 +106,12 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         try{
             event.getRowValue().setNome(event.getNewValue());
         }catch(UtenteNomeCognomeException ex){
-            ControlloreHome.mostraFinestraEccezione(ex);
+            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+            a.showAndWait();
         }
+        
+        //aggiorna la visualizzazione della tabella nella pagina
+        tabellaUtenti.refresh();
     }
 
     /**
@@ -120,8 +124,12 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         try{
             event.getRowValue().setCognome(event.getNewValue());
         }catch(UtenteNomeCognomeException ex){
-            ControlloreHome.mostraFinestraEccezione(ex);
+            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+            a.showAndWait();
         }
+        
+        //aggiorna la visualizzazione della tabella nella pagina
+        tabellaUtenti.refresh();
     }
 
     /**
@@ -134,8 +142,12 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         try{
             event.getRowValue().setMail(event.getNewValue());
         }catch(UtenteMailException ex){
-            ControlloreHome.mostraFinestraEccezione(ex);
+            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+            a.showAndWait();
         }
+        
+        //aggiorna la visualizzazione della tabella nella pagina
+        tabellaUtenti.refresh();
     }
     
     /**
