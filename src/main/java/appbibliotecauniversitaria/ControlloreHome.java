@@ -79,17 +79,18 @@ public class ControlloreHome implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //stabilisce i collegamenti tra i controllori
         pannelloRegistrazioneUtenteController.setControlloreVisualizzazione(pannelloVisualizzazioneUtentiController);
         pannelloRegistrazioneLibroController.setControlloreVisualizzazione(pannelloVisualizzazioneLibriController);
         pannelloRegistrazionePrestitoController.setControlloreVisualizzazione(pannelloVisualizzazionePrestitiController);
         pannelloVisualizzazioneUtentiController.setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
         pannelloVisualizzazioneLibriController.setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
-        pannelloRegistrazioneUtente.setVisible(true);
-        pannelloVisualizzazioneUtenti.setVisible(true);
-        pannelloRegistrazioneLibro.setVisible(false);
-        pannelloVisualizzazioneLibri.setVisible(false);
-        pannelloRegistrazionePrestito.setVisible(false);
-        pannelloVisualizzazionePrestiti.setVisible(false);
+        pannelloVisualizzazioneUtentiController.setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
+        pannelloVisualizzazioneLibriController.setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
+        
+        //mostra le schermate di registrazione utente e visualizzazione utenti di default
+        mostraPannello(pannelloRegistrazioneUtente, pannelliRegistrazione.getChildren());
+        mostraPannello(pannelloVisualizzazioneUtenti, pannelliVisualizzazione.getChildren());
     }    
 
     /**
@@ -106,6 +107,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaRegistrazioneUtente(ActionEvent event) {
+        //mostra il pannello registrazione utente e nasconde gli altri pannelli registrazione
         mostraPannello(pannelloRegistrazioneUtente, pannelliRegistrazione.getChildren());
     }
 
@@ -115,6 +117,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaRegistrazioneLibro(ActionEvent event) {
+        //mostra il pannello registrazione libro e nasconde gli altri pannelli registrazione
         mostraPannello(pannelloRegistrazioneLibro, pannelliRegistrazione.getChildren());
     }
 
@@ -124,6 +127,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaRegistrazionePrestito(ActionEvent event) {
+        //mostra il pannello registrazione prestito e nasconde gli altri pannelli registrazione
         mostraPannello(pannelloRegistrazionePrestito, pannelliRegistrazione.getChildren());
     }
 
@@ -133,6 +137,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaListaUtenti(ActionEvent event) {
+        //mostra il pannello visualizzazione utenti e nasconde gli altri pannelli registrazione
         mostraPannello(pannelloVisualizzazioneUtenti, pannelliVisualizzazione.getChildren());
     }
 
@@ -142,6 +147,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaListaLibri(ActionEvent event) {
+        //mostra il pannello visualizzazione libri e nasconde gli altri pannelli registrazione
         mostraPannello(pannelloVisualizzazioneLibri, pannelliVisualizzazione.getChildren());
     }
 
@@ -151,6 +157,7 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void visualizzaListaPrestiti(ActionEvent event) {
+        //mostra il pannello visualizzazione prestiti e nasconde gli altri pannelli registrazione
         mostraPannello(pannelloVisualizzazionePrestiti, pannelliVisualizzazione.getChildren());
     }
     
@@ -167,9 +174,12 @@ public class ControlloreHome implements Initializable {
      * @param pannelliDaNascondere La lista dei pannelli da nascondere.
      */
     private void mostraPannello(AnchorPane pannelloDaMostrare, List<Node> pannelliDaNascondere){
+        //nasconde tutti i pannelli
         for(Node p : pannelliDaNascondere){
             p.setVisible(false);
         }
+        
+        //mostra l'unico da visualizzare
         pannelloDaMostrare.setVisible(true);
     }
 

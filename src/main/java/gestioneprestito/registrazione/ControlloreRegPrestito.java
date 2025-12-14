@@ -60,8 +60,9 @@ public class ControlloreRegPrestito implements Initializable {
     }
 
     public void setUtentePrePrestito(Utente utenteDelPrestito){
-        utentePrePrestito = utenteDelPrestito;
-        selezioneRegistraUtentePrestito.setText(utenteDelPrestito.getMatricola());
+        //aggiorna l'utentePrePrestito con l'utente passato come paramentro e visualizza il suo nome
+            utentePrePrestito = utenteDelPrestito;
+            selezioneRegistraUtentePrestito.setText(utenteDelPrestito.getMatricola());
     }
     
     public void setLibroPrePrestito(Libro libroDelPrestito){
