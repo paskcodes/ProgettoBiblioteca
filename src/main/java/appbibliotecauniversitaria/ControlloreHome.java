@@ -1,5 +1,11 @@
 package appbibliotecauniversitaria;
 
+import gestionelibro.registrazione.ControlloreRegLibro;
+import gestionelibro.visualizzazione.ControlloreVisLibri;
+import gestioneprestito.registrazione.ControlloreRegPrestito;
+import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
+import gestioneutente.registrazione.ControlloreRegUtente;
+import gestioneutente.visualizzazione.ControlloreVisUtenti;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 
 /**
  * @class ControlloreHome
@@ -43,6 +50,24 @@ public class ControlloreHome implements Initializable {
     private StackPane pannelliRegistrazione;
     @FXML
     private StackPane pannelliVisualizzazione;
+    
+    @FXML 
+    private ControlloreRegUtente pannelloRegistrazioneUtenteController;
+    
+    @FXML 
+    private ControlloreVisUtenti pannelloVisualizzazioneUtentiController;
+    
+    @FXML 
+    private ControlloreRegLibro pannelloRegistrazioneLibroController;
+    
+    @FXML 
+    private ControlloreVisLibri pannelloVisualizzazioneLibriController;
+    
+    @FXML 
+    private ControlloreRegPrestito pannelloRegistrazionePrestitoController;
+    
+    @FXML 
+    private ControlloreVisPrestiti pannelloVisualizzazionePrestitiController;
 
     /** \endcond */
     
@@ -54,6 +79,11 @@ public class ControlloreHome implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        pannelloRegistrazioneUtenteController.setControlloreVisualizzazione(pannelloVisualizzazioneUtentiController);
+        pannelloRegistrazioneLibroController.setControlloreVisualizzazione(pannelloVisualizzazioneLibriController);
+        pannelloRegistrazionePrestitoController.setControlloreVisualizzazione(pannelloVisualizzazionePrestitiController);
+        pannelloVisualizzazioneUtentiController.setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
+        pannelloVisualizzazioneLibriController.setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
         pannelloRegistrazioneUtente.setVisible(true);
         pannelloVisualizzazioneUtenti.setVisible(true);
         pannelloRegistrazioneLibro.setVisible(false);

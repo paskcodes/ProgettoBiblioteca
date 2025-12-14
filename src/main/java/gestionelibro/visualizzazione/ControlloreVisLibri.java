@@ -1,10 +1,16 @@
 package gestionelibro.visualizzazione;
 
-import appbibliotecauniversitaria.Archivio;
+import gestionearchivio.Archiviabile;
+import appbibliotecauniversitaria.ControlloreHome;
 import gestionelibro.Libro;
+import gestionelibro.eccezioni.LibroDuplicatoException;
+import gestionelibro.eccezioni.LibroInvalidoException;
+import gestioneprestito.registrazione.ControlloreRegPrestito;
+import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +28,7 @@ import javafx.scene.input.MouseEvent;
  * Gestisce l'interazione con la tabella dei libri, inclusa l'aggiunta,
  * la rimozione e l'aggiornamento delle informazioni sui libri.
  */
-public class ControlloreVisLibri implements Initializable {
+public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, LibroInvalidoException> {
 
     /**
      * \cond Doxygen_skip
@@ -43,6 +49,12 @@ public class ControlloreVisLibri implements Initializable {
     private TextField testoRicercaLibri;
     @FXML
     private ChoiceBox<String> filtroRicercaLibri;
+    
+    private ControlloreRegPrestito crp;
+    
+    private ControlloreVisPrestiti cvp;
+    
+    private ObservableList<Libro> archivioLibri = FXCollections.observableArrayList();
     
     /**
      * \endcond
@@ -111,7 +123,31 @@ public class ControlloreVisLibri implements Initializable {
      */
     @FXML
     private void selezionaLibro(MouseEvent event) {
+        crp.setLibroPrePrestito(tabellaLibri.getSelectionModel().getSelectedItem());
     }
 
+    @Override
+    public void inserisciNuovoElemento(Libro nuovoElemento) throws LibroInvalidoException {
+        if((isElementoPresente(nuovoElemento))) throw new LibroDuplicatoException();
+            archivioLibri.add(nuovoElemento);
+    }
+
+    @Override
+    public boolean isElementoPresente(Libro daCercare) {
+        return archivioLibri.stream().anyMatch(l -> l.getISBN().equals(daCercare.getISBN()));
+    }
+
+    @Override
+    public ObservableList<Libro> getListaElementi() {
+        return this.archivioLibri;
+    }
+    
+    public void setControlloreRegistrazionePrestiti(ControlloreRegPrestito crp){
+        this.crp = crp;
+    }
+    
+    public void setControlloreVisualizzazionePrestiti(ControlloreVisPrestiti cvp){
+        this.cvp = cvp;
+    }
 
 }

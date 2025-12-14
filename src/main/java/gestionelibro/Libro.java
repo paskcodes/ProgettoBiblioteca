@@ -22,6 +22,7 @@ public class Libro implements Comparable<Libro>, Serializable{
     private LocalDate dataPubblicazione;
     private final String ISBN;
     private int copie;
+    private int prestitiAttivi = 0;
     
     /**
      * @brief Costruttore della classe Libro
@@ -70,6 +71,10 @@ public class Libro implements Comparable<Libro>, Serializable{
     public void setCopie(int copie) throws LibroNumeroCopieException{
         this.copie = copie;
     }
+    
+    public void setNumPrestitiAttivi(int prestitiAttivi){
+        
+    }
   
     /**
      * @brief Restituisce il titolo del libro
@@ -109,6 +114,10 @@ public class Libro implements Comparable<Libro>, Serializable{
      */
     public int getCopie() {
         return this.copie;
+    }
+    
+    public int getNumPrestitiAttivi(){
+        return 1;
     }
     
     

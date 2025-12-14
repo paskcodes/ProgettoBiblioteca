@@ -1,5 +1,6 @@
 package gestionelibro.registrazione;
 
+import gestionelibro.visualizzazione.ControlloreVisLibri;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -36,7 +37,9 @@ public class ControlloreRegLibro implements Initializable {
     /**
      * \endcond
      */
-
+    
+    private ControlloreVisLibri cvl;
+    
     /**
      * @brief Inizializza il controller della scena di registrazione del libro.
      */
@@ -51,6 +54,10 @@ public class ControlloreRegLibro implements Initializable {
      */
     @FXML
     private void registraLibro(ActionEvent event) {
+    }
+    
+    public void setControlloreVisualizzazione(ControlloreVisLibri cvl){
+        this.cvl = cvl;
     }
     
 }

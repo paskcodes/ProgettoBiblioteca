@@ -1,16 +1,21 @@
 package gestioneutente.registrazione;
 
-import appbibliotecauniversitaria.Archivio;
 import appbibliotecauniversitaria.ControlloreHome;
+import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
 import gestioneutente.Utente;
+import gestioneutente.eccezioni.UtenteDuplicatoException;
 import gestioneutente.eccezioni.UtenteInvalidoException;
 import gestioneutente.visualizzazione.ControlloreVisUtenti;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -39,6 +44,7 @@ public class ControlloreRegUtente implements Initializable {
      * \endcond
      */
     
+    private ControlloreVisUtenti cvu;
 
     /**
      * @brief Inizializza il controller della scena di registrazione utente
@@ -47,7 +53,7 @@ public class ControlloreRegUtente implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     /**
@@ -59,11 +65,14 @@ public class ControlloreRegUtente implements Initializable {
         Utente u = new Utente(testoRegistraNomeUtente.getText(), testoRegistraCognomeUtente.getText(), testoRegistraMailUtente.getText(), testoRegistraMatricolaUtente.getText());
         
         try{
-            Archivio.inserisciNuovoUtente(u);
-        }catch(UtenteInvalidoException ex){                        //mettere solo la super classe eccezione o specificare ogni tipo di eccezione?
-            ControlloreHome.mostraFinestraEccezione(ex);
+            cvu.inserisciNuovoElemento(u);
+        }catch(UtenteInvalidoException ex){
+            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+            a.showAndWait();
         }
-        
     }
     
+    public void setControlloreVisualizzazione(ControlloreVisUtenti cvu){
+        this.cvu = cvu;
+    }
 }

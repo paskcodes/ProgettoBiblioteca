@@ -4,7 +4,7 @@ package gestionelibro.eccezioni;
  * @class LibroPrestitoAttivoException
  * @brief Eccezione lanciata quando si tenta di eliminare un libro che ha prestiti attivi.
  */
-public class LibroPrestitoAttivoException extends Exception{
+public class LibroPrestitoAttivoException extends LibroInvalidoException{
 
     /**
      * @brief Costruttore di default.

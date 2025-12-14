@@ -1,5 +1,8 @@
 package gestioneprestito.registrazione;
 
+import gestionelibro.Libro;
+import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
+import gestioneutente.Utente;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -32,6 +35,12 @@ public class ControlloreRegPrestito implements Initializable {
      * \endcond
      */
 
+    ControlloreVisPrestiti cvp;
+    
+    private Utente utentePrePrestito;
+    
+    private Libro libroPrePrestito;
+    
     /**
      * @brief Inizializza il controller della schermata di registrazione di un prestito
      * @param url L'URL della risorsa
@@ -39,7 +48,7 @@ public class ControlloreRegPrestito implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }
     
     /**
@@ -48,6 +57,20 @@ public class ControlloreRegPrestito implements Initializable {
      */
     @FXML
     private void registraPrestito(ActionEvent event) {
+    }
+
+    public void setUtentePrePrestito(Utente utenteDelPrestito){
+        utentePrePrestito = utenteDelPrestito;
+        selezioneRegistraUtentePrestito.setText(utenteDelPrestito.getMatricola());
+    }
+    
+    public void setLibroPrePrestito(Libro libroDelPrestito){
+        libroPrePrestito = libroDelPrestito;
+        selezioneRegistraLibroPrestito.setText(libroDelPrestito.getISBN());
+    }
+    
+    public void setControlloreVisualizzazione(ControlloreVisPrestiti cvp) {
+        this.cvp = cvp;
     }
     
 }

@@ -20,8 +20,8 @@ public class Utente implements Comparable<Utente>, Serializable{
     private String cognome;  ///< R2.2
     private String mail;          ///< R2.3
     private String matricola; ///< R2.4
-    private ObservableList<Libro> libriInPrestito;
-    private int prestiti = 0;
+    private List<Libro> libriInPrestito = new ArrayList<>();
+    private int prestitiAttivi = 0;
     
     
     
@@ -66,7 +66,13 @@ public class Utente implements Comparable<Utente>, Serializable{
         this.mail = mail;
     }  
     
+    public void setLibriInPrestito(ArrayList<Libro> libriInPrestito) {
+        this.libriInPrestito = libriInPrestito;
+    }  
     
+    public void setNumPrestitiAttivi(int prestitiAttivi){
+        this.prestitiAttivi = prestitiAttivi;
+    }
     
     
     /**
@@ -82,7 +88,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @return Cognome dell'utente.
      */
     public String getCognome(){
-        return this.nome;
+        return this.cognome;
     }
     
     /**
@@ -90,7 +96,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @return Email dell'utente.
      */
     public String getMail(){
-        return this.nome;
+        return this.mail;
     }
 
     /**
@@ -98,15 +104,31 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @return Matricola dell'utente.
      */
     public String getMatricola(){
-        return this.nome;
+        return this.matricola;
+    }
+    
+    public void prendiCopia(Libro copia){
+        libriInPrestito.add(copia);
+    }
+    
+    public void restituisciCopia(Libro copia){
+        libriInPrestito.remove(copia);
+    }
+    
+    /**
+     * @brief Restituisce dei libri in prestito dell'utente.
+     * @return Libri in prestito dell'utente.
+     */
+    public List<Libro> getLibriInPrestito(){
+        return this.libriInPrestito;
     }
     
     /**
      * @brief Restituisce il numero di prestiti dell'utente.
      * @return Numero di prestiti dell'utente.
      */
-    public int getNumPrestiti(){
-        return this.prestiti;
+    public int getNumPrestitiAttivi(){
+        return this.prestitiAttivi;
     }
 
     
@@ -117,7 +139,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param daValidare Stringa da validare.
      * @return true se validi, false altrimenti.
      */
-    public static boolean isNomeCognomeValido(String daValidare){
+    public boolean isNomeCognomeValido(String daValidare){
         return true;
     }
     

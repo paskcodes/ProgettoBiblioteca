@@ -5,10 +5,18 @@
  */
 package gestioneutente.visualizzazione;
 
-import appbibliotecauniversitaria.Archivio;
+import gestionearchivio.Archiviabile;
 import appbibliotecauniversitaria.ControlloreHome;
 import gestioneutente.Utente;
+import gestionelibro.Libro;
+import gestioneprestito.registrazione.ControlloreRegPrestito;
+import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
+import gestioneutente.ComparatoreCognomeNomeUtente;
+import gestioneutente.eccezioni.UtenteDuplicatoException;
+import gestioneutente.eccezioni.UtenteInvalidoException;
+import gestioneutente.eccezioni.UtenteMailException;
 import gestioneutente.eccezioni.UtenteNomeCognomeException;
+import gestioneutente.eccezioni.UtentePrestitoAttivoException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,7 +40,7 @@ import javafx.scene.input.MouseEvent;
  * @details Gestisce tabella, filtri di ricerca e operazioni di modifica/rimozione utenti.
  * @author Antonio Franco
  */
-public class ControlloreVisUtenti implements Initializable {
+public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente, UtenteInvalidoException>{
 
     @FXML
     private TableView<Utente> tabellaUtenti;
@@ -45,13 +53,18 @@ public class ControlloreVisUtenti implements Initializable {
     @FXML
     private TableColumn<Utente, String> colonnaMatricolaTabellaUtenti;
     @FXML
-    private TableColumn<Utente, ObservableList<String>> colonnaCopiePrestitiTabellaUtente;
+    private TableColumn<Utente, String> colonnaCopiePrestitiTabellaUtente;
     @FXML
     private TextField testoRicercaUtenti;
     @FXML
     private ChoiceBox<String> filtroRicercaUtenti;
     
-
+    private ControlloreRegPrestito crp;
+    
+    private ControlloreVisPrestiti cvp;
+    
+   private ObservableList<Utente> archivioUtenti = FXCollections.observableArrayList();
+    
     /**
      * @brief Inizializza il controller della vista utenti.
      * @param url URL di riferimento.
@@ -62,9 +75,14 @@ public class ControlloreVisUtenti implements Initializable {
         filtroRicercaUtenti.getItems().addAll("Cognome", "Matricola");
         filtroRicercaUtenti.setValue("Cognome");
         colonnaNomeTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getNome()));
-        //colonnaNomeTabellaUtenti.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        colonnaCognomeTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getCognome()));
+        colonnaMailTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getMail()));
+        colonnaMatricolaTabellaUtenti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getMatricola()));
+        colonnaCopiePrestitiTabellaUtente.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getLibriInPrestito().toString()));
         colonnaNomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
-        tabellaUtenti.setItems(Archivio.getListaUtenti());
+        colonnaCognomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
+        colonnaMailTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
+        tabellaUtenti.setItems(archivioUtenti);
     }
 
     /**
@@ -86,6 +104,11 @@ public class ControlloreVisUtenti implements Initializable {
      */
     @FXML
     private void aggiornaCognomeUtenti(TableColumn.CellEditEvent<Utente, String> event) {
+        try{
+            event.getRowValue().setCognome(event.getNewValue());
+        }catch(UtenteNomeCognomeException ex){
+            ControlloreHome.mostraFinestraEccezione(ex);
+        }
     }
 
     /**
@@ -94,6 +117,11 @@ public class ControlloreVisUtenti implements Initializable {
      */
     @FXML
     private void aggiornaMailUtenti(TableColumn.CellEditEvent<Utente, String> event) {
+        try{
+            event.getRowValue().setMail(event.getNewValue());
+        }catch(UtenteMailException ex){
+            ControlloreHome.mostraFinestraEccezione(ex);
+        }
     }
     
     /**
@@ -101,8 +129,10 @@ public class ControlloreVisUtenti implements Initializable {
      * @param event Evento di azione generato dal comando di rimozione.
      */
     @FXML
-    private void rimuoviUtente(ActionEvent event) {
-        
+    private void rimuoviUtente(ActionEvent event) throws UtenteInvalidoException{
+        Utente daEliminare = tabellaUtenti.getSelectionModel().getSelectedItem();
+        if(cvp.inPrestitoAttivoUtente(daEliminare)) throw new UtentePrestitoAttivoException();
+        archivioUtenti.remove(daEliminare);
     }    
     
     /**
@@ -119,7 +149,52 @@ public class ControlloreVisUtenti implements Initializable {
      */
     @FXML
     private void selezionaUtente(MouseEvent event) {
+        crp.setUtentePrePrestito(tabellaUtenti.getSelectionModel().getSelectedItem());
     }
 
+    @Override
+    public void inserisciNuovoElemento(Utente nuovoElemento) throws UtenteDuplicatoException {
+        if(isElementoPresente(nuovoElemento) == true) throw new UtenteDuplicatoException();
+        archivioUtenti.add(nuovoElemento);
+        FXCollections.sort(archivioUtenti, new ComparatoreCognomeNomeUtente());
+        System.out.println("AGGIUNTO");
+    }
+
+    @Override
+    public boolean isElementoPresente(Utente daCercare) {
+        return archivioUtenti.stream().anyMatch(u -> u.getMatricola().equals(daCercare.getMatricola()));
+    }
+
+    @Override
+    public ObservableList<Utente> getListaElementi() {
+        return this.archivioUtenti;
+    }
     
+    public void registraCopiaPrestata(Utente noleggiatore, Libro prestato){
+        for(Utente u : archivioUtenti){
+            if(u.equals(u)){
+                u.setNumPrestitiAttivi((u.getNumPrestitiAttivi())+1);
+                u.prendiCopia(prestato);
+            }
+        }
+    }
+    
+    public void registraCopiaRestituita(Utente noleggiatore, Libro prestato){
+        for(Utente u : archivioUtenti){
+            if(u.equals(u)){
+                u.setNumPrestitiAttivi((u.getNumPrestitiAttivi())-1);
+                u.restituisciCopia(prestato);
+            }
+        }
+    }
+    
+    public void setControlloreRegistrazionePrestiti(ControlloreRegPrestito crp){
+        this.crp = crp;
+    }
+    
+    
+    public void setControlloreVisualizzazionePrestiti(ControlloreVisPrestiti cvp){
+        this.cvp = cvp;
+    }
+
 }
