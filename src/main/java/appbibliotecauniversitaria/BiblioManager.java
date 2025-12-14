@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 
 public class BiblioManager extends Application {
     
-
     /**
      * @brief Avvia l'applicazione JavaFX caricando la vista principale.
      * @param stage Stage principale fornito dal runtime JavaFX.
