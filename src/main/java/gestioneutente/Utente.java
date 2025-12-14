@@ -36,7 +36,7 @@ public class Utente implements Comparable<Utente>, Serializable{
     public Utente(String nome, String cognome, String mail, String matricola) throws UtenteNomeCognomeException, UtenteMailException , UtenteMatricolaException{
         if(!isNomeCognomeValido(nome)) throw  new UtenteNomeCognomeException();
             this.nome = nome;
-        if(!isNomeCognomeValido(cognome)) throw  new UtenteNomeCognomeException();
+        if(!isNomeCognomeValido(cognome)) throw  new UtenteNomeCognomeException("Cognome vuoto o non valido!");
             this.cognome = cognome;
         if(!isMailValida(mail)) throw  new UtenteMailException();
             this.mail = mail;
@@ -53,8 +53,8 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param nome Nome da impostare.
      */
     public void setNome(String nome) throws UtenteNomeCognomeException{
-        if (isNomeCognomeValido(nome)) {
-            throw new UtenteNomeCognomeException("Nome non valido");
+        if (!isNomeCognomeValido(nome)) {
+            throw new UtenteNomeCognomeException();
         }
         this.nome = nome;
     }
@@ -64,8 +64,8 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param cognome Cognome da impostare.
      */
     public void setCognome(String cognome) throws UtenteNomeCognomeException{
-        if (isNomeCognomeValido(cognome)) {
-            throw new UtenteNomeCognomeException("Cognome non valido");
+        if (!isNomeCognomeValido(cognome)) {
+            throw new UtenteNomeCognomeException("Cognome vuoto o non valido!");
         }
         this.cognome = cognome;
     }
@@ -75,7 +75,7 @@ public class Utente implements Comparable<Utente>, Serializable{
      * @param mail Email da impostare.
      */
     public void setMail(String mail) throws UtenteMailException{
-        if (isMailValida(mail)) {
+        if (!isMailValida(mail)) {
             throw new UtenteMailException();
         }
         this.mail = mail;
