@@ -22,6 +22,8 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -91,6 +93,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         colonnaNomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaCognomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaMailTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
+        
         
         //imposta l'archivioUtenti come lista osservabile da cui prendere i dati
         tabellaUtenti.setItems(archivioUtenti);
@@ -176,6 +179,24 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      */
     @FXML
     private void ricercaUtenti(KeyEvent event) {
+        String filtro = testoRicercaUtenti.getText();
+        String tipo = filtroRicercaUtenti.getValue();
+        FilteredList<Utente> archivioUtentiFiltrato = new FilteredList<>(archivioUtenti, p -> true);;
+        tabellaUtenti.setItems(archivioUtentiFiltrato);
+        
+        if (filtro == null || filtro.length() == 0) {
+            tabellaUtenti.setItems(archivioUtenti);
+        } else {
+            archivioUtentiFiltrato.setPredicate(u -> {
+                if (tipo.equals("Cognome")) {
+                    return u.getCognome().toLowerCase().contains(filtro.toLowerCase());
+                } else if (tipo.equals("Matricola")) {
+                    return u.getMatricola().toLowerCase().contains(filtro.toLowerCase());
+                }
+                return false;
+            });
+        }
+        //archivioUtenti.sort(new ComparatoreCognomeNomeUtente());
     }
     
     /**

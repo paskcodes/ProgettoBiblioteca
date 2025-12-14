@@ -35,7 +35,7 @@
          </contextMenu>
       </TableView>
       <Label layoutX="464.0" layoutY="501.0" text="RICERCA PER:" />
-      <TextField fx:id="testoRicercaUtenti" layoutX="305.0" layoutY="525.0" onKeyTyped="#ricercaUtenti" />
+      <TextField fx:id="testoRicercaUtenti" layoutX="305.0" layoutY="525.0" onKeyReleased="#ricercaUtenti" />
       <ChoiceBox fx:id="filtroRicercaUtenti" layoutX="464.0" layoutY="525.0" prefHeight="25.0" prefWidth="73.0" />
    </children>
 </AnchorPane>
