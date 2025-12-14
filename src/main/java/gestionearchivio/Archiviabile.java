@@ -12,9 +12,12 @@ import javafx.collections.ObservableList;
  * @author Antonio Franco
  */
 public interface Archiviabile <T, E extends Exception>{
+    //permette di inserire un nuovo elemento in archivio
     public void inserisciNuovoElemento(T nuovoElemento) throws E;
     
+    //verifica la presenza dell'elemento in archivio
     public boolean isElementoPresente(T daCercare);
     
+    //restituisce la lista degli elementi dell'archivio
     public ObservableList<T> getListaElementi();
 }
