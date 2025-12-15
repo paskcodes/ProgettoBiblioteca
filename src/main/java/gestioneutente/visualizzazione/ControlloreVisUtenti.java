@@ -19,6 +19,8 @@ import gestioneutente.eccezioni.UtenteNomeCognomeException;
 import gestioneutente.eccezioni.UtentePrestitoAttivoException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,12 +32,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
 /**
  * @class ControlloreVisUtenti
@@ -66,11 +70,11 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
     
     private ControlloreVisPrestiti cvp;
     
-   private ObservableList<Utente> archivioUtenti = FXCollections.observableArrayList();
+   private final ObservableList<Utente> archivioUtenti = FXCollections.observableArrayList();
    
-   private SortedList<Utente> archivioUtentiOrdinato = new SortedList<>(archivioUtenti, new ComparatoreCognomeNomeUtente());
+   private final SortedList<Utente> archivioUtentiOrdinato = new SortedList<>(archivioUtenti, new ComparatoreCognomeNomeUtente());
    
-   private FilteredList<Utente> archivioUtentiFiltrato = new FilteredList<>(archivioUtentiOrdinato);
+   private final FilteredList<Utente> archivioUtentiFiltrato = new FilteredList<>(archivioUtentiOrdinato);
     
     /**
      * @brief Inizializza il controller della vista utenti.
@@ -96,7 +100,28 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         colonnaNomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaCognomeTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaMailTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
-        
+        colonnaCopiePrestitiTabellaUtente.setCellFactory(cell ->{
+            return new TableCell<Utente, String>() {
+                private final javafx.scene.text.Text nodoTesto = new javafx.scene.text.Text();
+
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty || item == null) {
+                        setGraphic(null);
+                        setText(null);
+                    } else {
+                        nodoTesto.setText(item);
+
+                        nodoTesto.wrappingWidthProperty().bind(getTableColumn().widthProperty().subtract(20));
+
+                        // Imposta il nodo grafico
+                        setGraphic(nodoTesto);
+                    }
+                }
+            };
+        });
         
         
         //imposta l'archivioUtentiFiltrato come lista osservabile da cui prendere i dati
@@ -118,7 +143,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         }
         
         //aggiorna la visualizzazione della tabella nella pagina
-        tabellaUtenti.refresh();
+        aggiornaStatoVisualizzazione();
     }
 
     /**
@@ -136,7 +161,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         }
         
         //aggiorna la visualizzazione della tabella nella pagina
-        tabellaUtenti.refresh();
+        aggiornaStatoVisualizzazione();
     }
 
     /**
@@ -154,7 +179,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         }
         
         //aggiorna la visualizzazione della tabella nella pagina
-        tabellaUtenti.refresh();
+        aggiornaStatoVisualizzazione();
     }
     
     /**
@@ -192,9 +217,9 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         } else {
             archivioUtentiFiltrato.setPredicate(u -> {
                 if (tipo.equals("Cognome")) {
-                    return u.getCognome().toLowerCase().contains(filtro.toLowerCase());
+                    return u.getCognome().toLowerCase().contains(filtro.toLowerCase());  //si usa contains perche' deve verificare che il filtro sia presente nell'elemento discriminante
                 } else if (tipo.equals("Matricola")) {
-                    return u.getMatricola().toLowerCase().contains(filtro.toLowerCase());
+                    return u.getMatricola().contains(filtro);
                 }
                 return false;
             });
@@ -242,7 +267,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
     
     public void registraCopiaPrestata(Utente noleggiatore, Libro prestato){
         for(Utente u : archivioUtenti){
-            if(u.equals(u)){
+            if(u.equals(noleggiatore)){
                 u.prendiCopia(prestato);
             }
         }
@@ -250,10 +275,14 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
     
     public void registraCopiaRestituita(Utente noleggiatore, Libro prestato){
         for(Utente u : archivioUtenti){
-            if(u.equals(u)){
+            if(u.equals(noleggiatore)){
                 u.restituisciCopia(prestato);
             }
         }
+    }
+    
+    public void aggiornaStatoVisualizzazione(){
+        tabellaUtenti.refresh();
     }
     
     public void setControlloreRegistrazionePrestiti(ControlloreRegPrestito crp){

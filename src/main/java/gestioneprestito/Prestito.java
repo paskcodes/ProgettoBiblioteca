@@ -86,21 +86,21 @@ public class Prestito implements Comparable<Prestito>, Serializable {
     }
 
     /**
-     * @brief Restituisce lo stato del prestito.
-     * @return Stato attuale del prestito.
-     */
-    public Stato getStato() {
-        if (dataScadenza != null && LocalDate.now().isAfter(dataScadenza)) return Stato.SCADUTO;
-        return Stato.REGOLARE;
-    }
-
-    /**
      * @brief Verifica se la data di scadenza è valida.
      * @param daValidare Data di scadenza da controllare.
      * @return true se la data è valida, false altrimenti.
      */
     public boolean isDataScadenzaValida(LocalDate daValidare) {
         return daValidare != null && daValidare.isAfter(LocalDate.now());
+    }
+    
+    /**
+     * @brief Restituisce lo stato del prestito.
+     * @return Stato attuale del prestito.
+     */
+    public Stato determinaStato() {
+        if (dataScadenza != null && LocalDate.now().isAfter(dataScadenza)) return Stato.SCADUTO;
+        return Stato.REGOLARE;
     }
 
     /**

@@ -87,7 +87,9 @@ public class ControlloreHome implements Initializable {
         pannelloVisualizzazioneLibriController.setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
         pannelloVisualizzazioneUtentiController.setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
         pannelloVisualizzazioneLibriController.setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
-        
+        pannelloVisualizzazionePrestitiController.setControlloreVisUtenti(pannelloVisualizzazioneUtentiController);
+        pannelloVisualizzazionePrestitiController.setControlloreVisLibri(pannelloVisualizzazioneLibriController);
+                
         //mostra le schermate di registrazione utente e visualizzazione utenti di default
         mostraPannello(pannelloRegistrazioneUtente, pannelliRegistrazione.getChildren());
         mostraPannello(pannelloVisualizzazioneUtenti, pannelliVisualizzazione.getChildren());

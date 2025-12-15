@@ -12,18 +12,15 @@ package gestioneutente.eccezioni;
 public class UtenteMatricolaException extends UtenteInvalidoException{
 
     /**
-     * Creates a new instance of <code>UtenteMatricolaException</code> without
-     * detail message.
+     * 
      */
     public UtenteMatricolaException() {
-        super("Matricola vuota o non valida!");
+        super("La matricola deve essere inserita e può contenere solo numeri!");
     }
 
     /**
-     * Constructs an instance of <code>UtenteMatricolaException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
+     * @brief Costruttore con messaggio personalizzato.
+     * @param msg Messaggio di errore.
      */
     public UtenteMatricolaException(String msg) {
         super(msg);

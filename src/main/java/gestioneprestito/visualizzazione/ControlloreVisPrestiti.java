@@ -6,14 +6,15 @@ import gestionelibro.eccezioni.LibroPrestitoAttivoException;
 import gestionelibro.visualizzazione.ControlloreVisLibri;
 import gestioneprestito.ComparatoreDataScadenzaPrestito;
 import gestioneprestito.Prestito;
+import static gestioneprestito.Stato.*;
 import gestioneprestito.eccezioni.PrestitoDuplicatoException;
 import gestioneprestito.eccezioni.PrestitoInvalidoException;
 import gestioneutente.Utente;
 import gestioneutente.eccezioni.UtentePrestitoAttivoException;
 import gestioneutente.visualizzazione.ControlloreVisUtenti;
 import java.net.URL;
-
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -27,6 +28,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -49,21 +51,21 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
     @FXML
     private TableView<Prestito> tabellaPrestiti;
     @FXML
-    private TableColumn<Prestito, String> colonnaUtenteTabellaPrestiti;
+    private TableColumn<Prestito, Utente> colonnaUtenteTabellaPrestiti;
     @FXML
     private TableColumn<Prestito, String> colonnaLibroTabellaPrestiti;
     @FXML
-    private TableColumn<Prestito, LocalDate> colonnaDataScadenzaTabellaPrestiti;
+    private TableColumn<Prestito, String> colonnaDataScadenzaTabellaPrestiti;
 
     private ControlloreVisUtenti cvu;
 
     private ControlloreVisLibri cvl;
 
-    private ObservableList<Prestito> archivioPrestiti = FXCollections.observableArrayList();
+    private final ObservableList<Prestito> archivioPrestiti = FXCollections.observableArrayList();
    
-   private SortedList<Prestito> archivioPrestitiOrdinato = new SortedList<Prestito>(archivioPrestiti, new ComparatoreDataScadenzaPrestito());
+    private final SortedList<Prestito> archivioPrestitiOrdinato = new SortedList<Prestito>(archivioPrestiti, new ComparatoreDataScadenzaPrestito());
    
-   private FilteredList<Prestito> archivioPrestitiFiltrato = new FilteredList<>(archivioPrestitiOrdinato);
+    private final FilteredList<Prestito> archivioPrestitiFiltrato = new FilteredList<>(archivioPrestitiOrdinato);
 
     /**
      * \endcond
@@ -78,30 +80,35 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //permette di visualizzare il valore di ogni campo del prestito nella rispettiva colonna
-        colonnaUtenteTabellaPrestiti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getUtente().toString()));
+        colonnaUtenteTabellaPrestiti.setCellValueFactory(r -> new SimpleObjectProperty<Utente>(r.getValue().getUtente()));
         colonnaLibroTabellaPrestiti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getLibro().toString()));
-        colonnaDataScadenzaTabellaPrestiti.setCellValueFactory(r -> new SimpleObjectProperty<LocalDate>(r.getValue().getDataScadenza()));
+        colonnaDataScadenzaTabellaPrestiti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getDataScadenza().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+        
+        //colora la riga della tabellaPrestiti di verde se il prestito è regolare o di rosso se è scaduto
+        tabellaPrestiti.setRowFactory(tv -> new TableRow<Prestito>() {
+                @Override
+                protected void updateItem(Prestito item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || item.getDataScadenza() == null) {
+                        setStyle("");
+                    } else if (item.determinaStato() == REGOLARE){
+                        setStyle("-fx-background-color: #6dd100;");
+                    } else if (item.determinaStato() == SCADUTO) {
+                        setStyle("-fx-background-color: #ff0000;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            });
         
         //imposta l'archivioPrestitiFiltrato come lista osservabile da cui prendere i dati
         tabellaPrestiti.setItems(archivioPrestitiFiltrato);
         
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
-        tabellaPrestiti.setRowFactory(tv -> {
-            TableRow <Prestito> row = new TableRow<>();
-            row.selectedProperty().addListener((obs, oldVal, newVal) -> {
-                if (newVal) {
-                    row.setStyle("-fx-background-color: #22bad9;");
-                } else {
-                    row.setStyle("");
-                }
-
-            });
-            
-            return row;
-            });
-        
+        Timeline timerAggiornamento = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
             tabellaPrestiti.refresh();
         }));
+        timerAggiornamento.setCycleCount(Timeline.INDEFINITE);
+        timerAggiornamento.play();
     }
 
     /**
@@ -114,6 +121,10 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
         if (daEstinguere!= null) {
             archivioPrestiti.remove(daEstinguere);
         }
+        cvu.registraCopiaRestituita(daEstinguere.getUtente(), daEstinguere.getLibro());
+        cvl.registraCopiaRestituita(daEstinguere.getLibro());
+        cvu.aggiornaStatoVisualizzazione();
+        cvl.aggiornaStatoVisualizzazione();
     }
 
     /**
@@ -128,6 +139,10 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
     public void inserisciNuovoElemento(Prestito nuovoElemento) throws PrestitoDuplicatoException {
         if(isElementoPresente(nuovoElemento)) throw new PrestitoDuplicatoException();
         archivioPrestiti.add(nuovoElemento);
+        cvu.registraCopiaPrestata(nuovoElemento.getUtente(), nuovoElemento.getLibro());
+        cvl.registraCopiaPrestata(nuovoElemento.getLibro());
+        cvu.aggiornaStatoVisualizzazione();
+        cvl.aggiornaStatoVisualizzazione();
     }
 
     @Override
@@ -152,6 +167,10 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
 
     public void setControlloreVisUtenti(ControlloreVisUtenti cvu) {
         this.cvu = cvu;
+    }
+    
+    public void setControlloreVisLibri(ControlloreVisLibri cvl) {
+        this.cvl = cvl;
     }
 
 }

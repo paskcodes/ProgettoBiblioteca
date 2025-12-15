@@ -5,6 +5,7 @@
  */
 package gestionelibro;
 
+import gestionelibro.eccezioni.LibroCampoVuotoException;
 import gestionelibro.eccezioni.LibroDataPubblicazioneException;
 import gestionelibro.eccezioni.LibroNumeroCopieException;
 import java.io.Serializable;
@@ -25,7 +26,6 @@ public class Libro implements Comparable<Libro>, Serializable {
     private LocalDate dataPubblicazione;
     private final String ISBN;
     private int copie;
-    private int prestitiAttivi = 0;
 
     /**
      * @brief Costruttore della classe Libro
@@ -35,11 +35,16 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @param ISBN              L'ISBN del libro
      * @param copie             Il numero di copie disponibili del libro
      */
-    public Libro(String titolo, String autori, LocalDate dataPubblicazione, String ISBN, int copie) {
+    public Libro(String titolo, String autori, LocalDate dataPubblicazione, String ISBN, int copie) throws LibroDataPubblicazioneException, LibroNumeroCopieException, LibroCampoVuotoException{
+        if(titolo.equals("")) throw new LibroCampoVuotoException();
         this.titolo = titolo;
+        if(autori.equals("")) throw new LibroCampoVuotoException();
         this.autori = autori;
+        if(!isDataPubblicazioneValida(dataPubblicazione)) throw new LibroDataPubblicazioneException();
         this.dataPubblicazione = dataPubblicazione;
+        if(ISBN.equals("")) throw new LibroCampoVuotoException();
         this.ISBN = ISBN;
+        if(!isNumCopieValido(copie)) throw new LibroNumeroCopieException();
         this.copie = copie;
     }
 
@@ -47,7 +52,8 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @brief Imposta il titolo del libro
      * @param titolo Il nuovo titolo del libro
      */
-    public void setTitolo(String titolo) {
+    public void setTitolo(String titolo) throws LibroCampoVuotoException{
+        if(titolo.equals("")) throw new LibroCampoVuotoException();
         this.titolo = titolo;
     }
 
@@ -55,7 +61,8 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @brief Imposta gli autori del libro
      * @param autori I nuovi autori del libro
      */
-    public void setAutori(String autori) {
+    public void setAutori(String autori) throws LibroCampoVuotoException{
+        if(autori.equals("")) throw new LibroCampoVuotoException();
         this.autori = autori;
     }
 
@@ -64,9 +71,7 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @param dataPubblicazione La nuova data di pubblicazione del libro
      */
     public void setDataPubblicazione(LocalDate dataPubblicazione) throws LibroDataPubblicazioneException {
-        if (!isDataPubblicazioneValida(dataPubblicazione)) {
-            throw new LibroDataPubblicazioneException("La data di pubblicazione non può essere futura");
-        }
+        if (!isDataPubblicazioneValida(dataPubblicazione)) throw new LibroDataPubblicazioneException();
         this.dataPubblicazione = dataPubblicazione;
     }
 
@@ -75,15 +80,8 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @param copie Il nuovo numero di copie disponibili del libro
      */
     public void setCopie(int copie) throws LibroNumeroCopieException {
-        if (!isNumCopieValido(copie)) {
-            throw new LibroNumeroCopieException("Il numero di copie deve essere almeno 1");
-        }
+        if (!isNumCopieValido(copie)) throw new LibroNumeroCopieException();
         this.copie = copie;
-    }
-
-    public void setNumPrestitiAttivi(int prestitiAttivi) {
-
-        this.prestitiAttivi = prestitiAttivi;
     }
 
     /**
@@ -126,19 +124,13 @@ public class Libro implements Comparable<Libro>, Serializable {
         return this.copie;
     }
 
-    public int getNumPrestitiAttivi() {
-        return 1;
-    }
-
-    // statiche per rendere le verifiche utilizzabili ovunque
-
     /**
      * @brief Verifica se una data è valida
      * @param daValidare La data da verificare
      * @return true se la data è valida, false altrimenti
      */
-    public static boolean isDataPubblicazioneValida(LocalDate daValidare) {
-        return !daValidare.isAfter(LocalDate.now());
+    public boolean isDataPubblicazioneValida(LocalDate daValidare) {
+        return daValidare != null && !daValidare.isAfter(LocalDate.now());
     }
 
     /**
@@ -146,7 +138,7 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @param daValidare Il numero di copie da verificare
      * @return true se il numero di copie è valido, false altrimenti
      */
-    public static boolean isNumCopieValido(int daValidare) {
+    public boolean isNumCopieValido(int daValidare) {
         return daValidare >= 1;
     }
 
@@ -155,9 +147,17 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @return true se una copia è disponibile, false altrimenti
      */
     public boolean isCopiaDisponibile() {
-        return true;
+        return this.copie >= 1;
     }
 
+    public void prendiCopia() {
+        copie--;
+    }
+
+    public void restituisciCopia() {
+        copie++;
+    }
+    
     /**
      * @brief Confronta due oggetti Libro
      * @param o L'oggetto da confrontare
@@ -165,10 +165,8 @@ public class Libro implements Comparable<Libro>, Serializable {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) return true;
         Libro libro = (Libro) o;
         return this.ISBN.equals(libro.ISBN);
     }
@@ -197,7 +195,7 @@ public class Libro implements Comparable<Libro>, Serializable {
      */
     @Override
     public String toString() {
-        return titolo + " - " + autori + " (" + ISBN + ")";
+        return this.ISBN;
     }
 
 }

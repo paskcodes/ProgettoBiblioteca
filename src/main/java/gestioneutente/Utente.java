@@ -1,7 +1,6 @@
 package gestioneutente;
 
 import gestionelibro.Libro;
-import gestioneutente.eccezioni.UtenteInvalidoException;
 import gestioneutente.eccezioni.UtenteMailException;
 import gestioneutente.eccezioni.UtenteMatricolaException;
 import gestioneutente.eccezioni.UtenteNomeCognomeException;
@@ -9,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-import javafx.collections.ObservableList;
 
 /**
  * @class Utente
@@ -35,7 +33,7 @@ public class Utente implements Comparable<Utente>, Serializable {
     public Utente(String nome, String cognome, String mail, String matricola) throws UtenteNomeCognomeException, UtenteMailException , UtenteMatricolaException{
         if(!isNomeCognomeValido(nome)) throw  new UtenteNomeCognomeException();
             this.nome = nome;
-        if(!isNomeCognomeValido(cognome)) throw  new UtenteNomeCognomeException("Cognome vuoto o non valido!");
+        if(!isNomeCognomeValido(cognome)) throw  new UtenteNomeCognomeException("Il cognome deve essere inserito e può contenere solo lettere e spazi!");
             this.cognome = cognome;
         if(!isMailValida(mail)) throw  new UtenteMailException();
             this.mail = mail;
@@ -49,9 +47,7 @@ public class Utente implements Comparable<Utente>, Serializable {
      * @param nome Nome da impostare.
      */
     public void setNome(String nome) throws UtenteNomeCognomeException{
-        if (!isNomeCognomeValido(nome)) {
-            throw new UtenteNomeCognomeException();
-        }
+        if (!isNomeCognomeValido(nome)) throw new UtenteNomeCognomeException();
         this.nome = nome;
     }
 
@@ -60,9 +56,7 @@ public class Utente implements Comparable<Utente>, Serializable {
      * @param cognome Cognome da impostare.
      */
     public void setCognome(String cognome) throws UtenteNomeCognomeException{
-        if (!isNomeCognomeValido(cognome)) {
-            throw new UtenteNomeCognomeException("Cognome vuoto o non valido!");
-        }
+        if (!isNomeCognomeValido(cognome)) throw new UtenteNomeCognomeException("Il cognome deve essere inserito e può contenere solo lettere e spazi!");
         this.cognome = cognome;
     }
 
@@ -71,9 +65,7 @@ public class Utente implements Comparable<Utente>, Serializable {
      * @param mail Email da impostare.
      */
     public void setMail(String mail) throws UtenteMailException{
-        if (!isMailValida(mail)) {
-            throw new UtenteMailException();
-        }
+        if (!isMailValida(mail)) throw new UtenteMailException();
         this.mail = mail;
     }
 
@@ -219,7 +211,7 @@ public class Utente implements Comparable<Utente>, Serializable {
      */
     @Override
     public String toString() {
-        return this.nome.toString() + this.cognome.toString() + "/n" + this.matricola.toString();
+        return this.matricola.toString();
     }
 
 }

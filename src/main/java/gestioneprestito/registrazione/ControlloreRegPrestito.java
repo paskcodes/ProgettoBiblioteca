@@ -56,7 +56,6 @@ public class ControlloreRegPrestito implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
     /**
@@ -66,10 +65,13 @@ public class ControlloreRegPrestito implements Initializable {
     @FXML
     private void registraPrestito(ActionEvent event) {
         try{
-            Prestito u = new Prestito(utentePrePrestito, libroPrePrestito, LocalDate.parse(testoRegistraDataScadenzaPrestito.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            cvp.inserisciNuovoElemento(u);
+            Prestito p = new Prestito(utentePrePrestito, libroPrePrestito, LocalDate.parse(testoRegistraDataScadenzaPrestito.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            cvp.inserisciNuovoElemento(p);
         }catch(PrestitoInvalidoException ex){
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+            a.showAndWait();
+        }catch(DateTimeParseException ex){
+            Alert a = new Alert(Alert.AlertType.WARNING, "Il formato della data non è valido!", ButtonType.CLOSE);
             a.showAndWait();
         }
     }
