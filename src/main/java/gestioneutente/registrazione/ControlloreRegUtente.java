@@ -65,15 +65,14 @@ public class ControlloreRegUtente implements Initializable {
         try{
             Utente u = new Utente(testoRegistraNomeUtente.getText(), testoRegistraCognomeUtente.getText(), testoRegistraMailUtente.getText(), testoRegistraMatricolaUtente.getText());
             cvu.inserisciNuovoElemento(u);
+            testoRegistraNomeUtente.clear();
+            testoRegistraCognomeUtente.clear();
+            testoRegistraMailUtente.clear();
+            testoRegistraMatricolaUtente.clear();
         }catch(UtenteInvalidoException ex){
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
         }
-        
-        testoRegistraNomeUtente.clear();
-        testoRegistraCognomeUtente.clear();
-        testoRegistraMailUtente.clear();
-        testoRegistraMatricolaUtente.clear();
                 
     }
     

@@ -70,6 +70,11 @@ public class ControlloreRegLibro implements Initializable {
             int copie = Integer.parseInt(testoRegistraNumCopieLibro.getText());
             Libro l = new Libro(titolo, autori, dataScadenza, isbn, copie);
             cvl.inserisciNuovoElemento(l);
+            testoRegistraLibroTitolo.clear();
+            testoRegistraAutoriLibro.clear();
+            testoRegistraDataPubblicazioneLibro.clear();
+            testoRegistraISBNLibro.clear();
+            testoRegistraNumCopieLibro.clear();
         }catch(LibroInvalidoException ex){
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
@@ -80,12 +85,6 @@ public class ControlloreRegLibro implements Initializable {
             Alert a = new Alert(Alert.AlertType.WARNING, "Il numero di copie non è valido!", ButtonType.CLOSE);
             a.showAndWait();
         }
-        
-        testoRegistraLibroTitolo.clear();
-        testoRegistraAutoriLibro.clear();
-        testoRegistraDataPubblicazioneLibro.clear();
-        testoRegistraISBNLibro.clear();
-        testoRegistraNumCopieLibro.clear();
     }
 
     public void setControlloreVisualizzazione(ControlloreVisLibri cvl) {

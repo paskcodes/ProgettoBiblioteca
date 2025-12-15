@@ -68,14 +68,7 @@ public class Utente implements Comparable<Utente>, Serializable {
         if (!isMailValida(mail)) throw new UtenteMailException();
         this.mail = mail;
     }
-
-    public void setLibriInPrestito(ArrayList<Libro> libriInPrestito) {
-        this.libriInPrestito = libriInPrestito;
-    }
-
-    public void setNumPrestitiAttivi(int prestitiAttivi) {
-        this.prestitiAttivi = prestitiAttivi;
-    }
+    
 
     /**
      * @brief Restituisce il nome dell'utente.
