@@ -13,26 +13,29 @@ import java.time.LocalDate;
 /**
  * @class Libro
  * @brief Implementa un libro con i suoi attributi principali
- * @details La classe Libro implementa un libro con i suoi attributi principali come titolo, autori, data di pubblicazione, ISBN e numero di copie disponibili.
- *          Fornisce metodi per accedere e modificare questi attributi, confrontare libri e per verificare la disponibilità delle copie.
+ * @details La classe Libro implementa un libro con i suoi attributi principali
+ *          come titolo, autori, data di pubblicazione, ISBN e numero di copie
+ *          disponibili.
+ *          Fornisce metodi per accedere e modificare questi attributi,
+ *          confrontare libri e per verificare la disponibilità delle copie.
  */
-public class Libro implements Comparable<Libro>, Serializable{
+public class Libro implements Comparable<Libro>, Serializable {
     private String titolo;
     private String autori;
     private LocalDate dataPubblicazione;
     private final String ISBN;
     private int copie;
     private int prestitiAttivi = 0;
-    
+
     /**
      * @brief Costruttore della classe Libro
-     * @param titolo Il titolo del libro
-     * @param autori Gli autori del libro
+     * @param titolo            Il titolo del libro
+     * @param autori            Gli autori del libro
      * @param dataPubblicazione La data di pubblicazione del libro
-     * @param ISBN L'ISBN del libro
-     * @param copie Il numero di copie disponibili del libro
+     * @param ISBN              L'ISBN del libro
+     * @param copie             Il numero di copie disponibili del libro
      */
-    public Libro(String titolo, String autori, LocalDate dataPubblicazione, String ISBN, int copie){
+    public Libro(String titolo, String autori, LocalDate dataPubblicazione, String ISBN, int copie) {
         this.titolo = titolo;
         this.autori = autori;
         this.dataPubblicazione = dataPubblicazione;
@@ -44,7 +47,7 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @brief Imposta il titolo del libro
      * @param titolo Il nuovo titolo del libro
      */
-    public void setTitolo(String titolo){
+    public void setTitolo(String titolo) {
         this.titolo = titolo;
     }
 
@@ -60,7 +63,10 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @brief Imposta la data di pubblicazione del libro
      * @param dataPubblicazione La nuova data di pubblicazione del libro
      */
-    public void setDataPubblicazione(LocalDate dataPubblicazione) throws LibroDataPubblicazioneException{
+    public void setDataPubblicazione(LocalDate dataPubblicazione) throws LibroDataPubblicazioneException {
+        if (!isDataPubblicazioneValida(dataPubblicazione)) {
+            throw new LibroDataPubblicazioneException("La data di pubblicazione non può essere futura");
+        }
         this.dataPubblicazione = dataPubblicazione;
     }
 
@@ -68,14 +74,18 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @brief Imposta il numero di copie disponibili del libro
      * @param copie Il nuovo numero di copie disponibili del libro
      */
-    public void setCopie(int copie) throws LibroNumeroCopieException{
+    public void setCopie(int copie) throws LibroNumeroCopieException {
+        if (!isNumCopieValido(copie)) {
+            throw new LibroNumeroCopieException("Il numero di copie deve essere almeno 1");
+        }
         this.copie = copie;
     }
-    
-    public void setNumPrestitiAttivi(int prestitiAttivi){
-        
+
+    public void setNumPrestitiAttivi(int prestitiAttivi) {
+
+        this.prestitiAttivi = prestitiAttivi;
     }
-  
+
     /**
      * @brief Restituisce il titolo del libro
      * @return Il titolo del libro
@@ -115,37 +125,36 @@ public class Libro implements Comparable<Libro>, Serializable{
     public int getCopie() {
         return this.copie;
     }
-    
-    public int getNumPrestitiAttivi(){
+
+    public int getNumPrestitiAttivi() {
         return 1;
     }
-    
-    
-    //statiche per rendere le verifiche utilizzabili ovunque
-    
+
+    // statiche per rendere le verifiche utilizzabili ovunque
+
     /**
      * @brief Verifica se una data è valida
      * @param daValidare La data da verificare
      * @return true se la data è valida, false altrimenti
      */
-    public static boolean isDataPubblicazioneValida(LocalDate daValidare){
-        return true;
+    public static boolean isDataPubblicazioneValida(LocalDate daValidare) {
+        return !daValidare.isAfter(LocalDate.now());
     }
-    
+
     /**
      * @brief Verifica se un numero di copie è valido
      * @param daValidare Il numero di copie da verificare
      * @return true se il numero di copie è valido, false altrimenti
      */
-    public static boolean isNumCopieValido(int daValidare){
-            return true;
+    public static boolean isNumCopieValido(int daValidare) {
+        return daValidare >= 1;
     }
-    
+
     /**
      * @brief Verifica se una copia del libro è disponibile
      * @return true se una copia è disponibile, false altrimenti
      */
-    public boolean isCopiaDisponibile(){
+    public boolean isCopiaDisponibile() {
         return true;
     }
 
@@ -155,37 +164,40 @@ public class Libro implements Comparable<Libro>, Serializable{
      * @return true se i due oggetti sono uguali, false altrimenti
      */
     @Override
-    public boolean equals(Object o){
-        return true;
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Libro libro = (Libro) o;
+        return this.ISBN.equals(libro.ISBN);
     }
-    
+
     /**
      * @brief Restituisce l'hash code dell'oggetto Libro
      * @return L'hash code dell'oggetto Libro
      */
     @Override
-    public int hashCode(){
-        return 0;
+    public int hashCode() {
+        return this.ISBN.hashCode();
     }
-    
+
     /**
      * @brief Confronta due oggetti per l'ordinamento
      * @param o L'oggetto da confrontare
      */
     @Override
     public int compareTo(Libro o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.titolo.compareTo(o.titolo);
     }
-    
+
     /**
      * @brief Restituisce una rappresentazione in stringa dell'oggetto Libro
      * @return Una stringa che rappresenta l'oggetto Libro
      */
     @Override
-    public String toString(){
-        return "LIBRO";
+    public String toString() {
+        return titolo + " - " + autori + " (" + ISBN + ")";
     }
 
-    
-    
 }
