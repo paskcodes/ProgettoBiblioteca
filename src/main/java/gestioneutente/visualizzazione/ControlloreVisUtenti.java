@@ -33,7 +33,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -68,6 +67,10 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
     private ControlloreVisPrestiti cvp;
     
    private ObservableList<Utente> archivioUtenti = FXCollections.observableArrayList();
+   
+   private SortedList<Utente> archivioUtentiOrdinato = new SortedList<>(archivioUtenti, new ComparatoreCognomeNomeUtente());
+   
+   private FilteredList<Utente> archivioUtentiFiltrato = new FilteredList<>(archivioUtentiOrdinato);
     
     /**
      * @brief Inizializza il controller della vista utenti.
@@ -95,8 +98,9 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         colonnaMailTabellaUtenti.setCellFactory(TextFieldTableCell.forTableColumn());
         
         
-        //imposta l'archivioUtenti come lista osservabile da cui prendere i dati
-        tabellaUtenti.setItems(archivioUtenti);
+        
+        //imposta l'archivioUtentiFiltrato come lista osservabile da cui prendere i dati
+        tabellaUtenti.setItems(archivioUtentiFiltrato);
     }
 
     /**
@@ -167,10 +171,11 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
             cvp.inPrestitoAttivoUtente(daEliminare);
             archivioUtenti.remove(daEliminare);
         }catch(UtenteInvalidoException ex){
-            
+        ///////////////////////////////////////////////////////
         }
-        
+
         //aggiorna il valore di utentePrePrestito
+        crp.resetUtentePrePrestito();
     }    
     
     /**
@@ -181,11 +186,9 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
     private void ricercaUtenti(KeyEvent event) {
         String filtro = testoRicercaUtenti.getText();
         String tipo = filtroRicercaUtenti.getValue();
-        FilteredList<Utente> archivioUtentiFiltrato = new FilteredList<>(archivioUtenti, p -> true);;
-        tabellaUtenti.setItems(archivioUtentiFiltrato);
         
         if (filtro == null || filtro.length() == 0) {
-            tabellaUtenti.setItems(archivioUtenti);
+            archivioUtentiFiltrato.setPredicate(u -> true);
         } else {
             archivioUtentiFiltrato.setPredicate(u -> {
                 if (tipo.equals("Cognome")) {
@@ -218,12 +221,11 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
     @Override
     public void inserisciNuovoElemento(Utente nuovoElemento) throws UtenteDuplicatoException {
         //se l'utente è già presente allora lancia un'eccezione
-        if(isElementoPresente(nuovoElemento) == true) throw new UtenteDuplicatoException();
+        if(isElementoPresente(nuovoElemento)) throw new UtenteDuplicatoException();
         archivioUtenti.add(nuovoElemento);
         
         //altrimenti aggiunge l'elemento all'archivioUtenti
-        FXCollections.sort(archivioUtenti, new ComparatoreCognomeNomeUtente());
-        System.out.println("AGGIUNTO");
+        //FXCollections.sort(archivioUtenti, new ComparatoreCognomeNomeUtente()); ////////////////////////////////////// forse va tolto
     }
 
     @Override

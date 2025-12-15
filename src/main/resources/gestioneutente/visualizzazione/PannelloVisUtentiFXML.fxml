@@ -17,8 +17,8 @@
    <children>
       <TableView fx:id="tabellaUtenti" editable="true" layoutX="179.0" layoutY="122.0" onMouseClicked="#selezionaUtente" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columns>
-          <TableColumn fx:id="colonnaNomeTabellaUtenti" onEditCommit="#aggiornaNomeUtenti" prefWidth="75.0" text="Nome" />
           <TableColumn fx:id="colonnaCognomeTabellaUtenti" onEditCommit="#aggiornaCognomeUtenti" prefWidth="75.0" text="Cognome" />
+          <TableColumn fx:id="colonnaNomeTabellaUtenti" onEditCommit="#aggiornaNomeUtenti" prefWidth="75.0" text="Nome" />
             <TableColumn fx:id="colonnaMailTabellaUtenti" onEditCommit="#aggiornaMailUtenti" prefWidth="75.0" text="Mail" />
             <TableColumn fx:id="colonnaMatricolaTabellaUtenti" prefWidth="75.0" text="Matricola" />
             <TableColumn fx:id="colonnaCopiePrestitiTabellaUtente" prefWidth="75.0" text="Libri in prestito" />
