@@ -82,6 +82,10 @@ public class ControlloreRegLibro implements Initializable {
         }
         
         testoRegistraLibroTitolo.clear();
+        testoRegistraAutoriLibro.clear();
+        testoRegistraDataPubblicazioneLibro.clear();
+        testoRegistraISBNLibro.clear();
+        testoRegistraNumCopieLibro.clear();
     }
 
     public void setControlloreVisualizzazione(ControlloreVisLibri cvl) {

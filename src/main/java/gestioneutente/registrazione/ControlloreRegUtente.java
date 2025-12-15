@@ -69,6 +69,12 @@ public class ControlloreRegUtente implements Initializable {
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
         }
+        
+        testoRegistraNomeUtente.clear();
+        testoRegistraCognomeUtente.clear();
+        testoRegistraMailUtente.clear();
+        testoRegistraMatricolaUtente.clear();
+                
     }
     
     public void setControlloreVisualizzazione(ControlloreVisUtenti cvu){

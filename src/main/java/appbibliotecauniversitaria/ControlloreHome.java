@@ -1,11 +1,16 @@
 package appbibliotecauniversitaria;
 
+import gestionelibro.Libro;
 import gestionelibro.registrazione.ControlloreRegLibro;
 import gestionelibro.visualizzazione.ControlloreVisLibri;
+import gestioneprestito.Prestito;
 import gestioneprestito.registrazione.ControlloreRegPrestito;
 import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
+import gestioneutente.Utente;
 import gestioneutente.registrazione.ControlloreRegUtente;
 import gestioneutente.visualizzazione.ControlloreVisUtenti;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
@@ -101,6 +107,22 @@ public class ControlloreHome implements Initializable {
      */
     @FXML
     private void salvaArchivio(ActionEvent event) {
+        try {
+            salvaUtenti();
+            salvaLibri();
+            salvaPrestiti();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Salvataggio completato");
+            alert.setContentText("Archivio salvato con successo!");
+            alert.showAndWait();
+
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore Salvataggio");
+            alert.setContentText("Errore durante il salvataggio: " + e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     /**
@@ -163,11 +185,40 @@ public class ControlloreHome implements Initializable {
         mostraPannello(pannelloVisualizzazionePrestiti, pannelliVisualizzazione.getChildren());
     }
     
-    /**
-     * @brief Mostra una finestra di eccezione con il messaggio dell'eccezione.
-     * @param ex L'eccezione da mostrare.
-     */
-    public static void mostraFinestraEccezione(Exception ex){
+    private void salvaUtenti() throws IOException {
+        FileWriter writer = new FileWriter("utenti.csv");
+        writer.write("Nome;Cognome;Matricola;Email;Libri in Prestito\n");
+
+        for (Utente u : pannelloVisualizzazioneUtentiController.getListaElementi()) {
+            writer.write(u.getNome() + ";" + u.getCognome() + ";" +
+                    u.getMatricola() + ";" + u.getMail() + ";" + u.getLibriInPrestito() +"\n");
+        }
+        writer.close();
+    }
+
+    private void salvaLibri() throws IOException {
+        FileWriter writer = new FileWriter("libri.csv");
+        writer.write("Titolo;Autori;DataPubblicazione;ISBN;Copie\n");
+
+        for (Libro l : pannelloVisualizzazioneLibriController.getListaElementi()) {
+            writer.write(l.getTitolo() + ";" + l.getAutori() + ";" +
+                    l.getDataPubblicazione() + ";" + l.getISBN() + ";" +
+                    l.getCopie() + "\n");
+        }
+        writer.close();
+    }
+
+    private void salvaPrestiti() throws IOException {
+        FileWriter writer = new FileWriter("prestiti.csv");
+        writer.write("UtenteMatricola;LibroISBN;DataScadenza;Stato\n");
+
+        for (Prestito p : pannelloVisualizzazionePrestitiController.getListaElementi()) {
+            writer.write(p.getUtente().getMatricola() + ";" +
+                    p.getLibro().getISBN() + ";" +
+                    p.getDataScadenza() + ";" +
+                    p.determinaStato() + "\n");
+        }
+        writer.close();
     }
     
     /**
