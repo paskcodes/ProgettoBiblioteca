@@ -196,7 +196,8 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
             cvp.inPrestitoAttivoUtente(daEliminare);
             archivioUtenti.remove(daEliminare);
         }catch(UtenteInvalidoException ex){
-        ///////////////////////////////////////////////////////
+            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+            a.showAndWait();
         }
 
         //aggiorna il valore di utentePrePrestito

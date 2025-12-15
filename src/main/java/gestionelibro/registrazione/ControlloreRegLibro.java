@@ -80,6 +80,8 @@ public class ControlloreRegLibro implements Initializable {
             Alert a = new Alert(Alert.AlertType.WARNING, "Il numero di copie non è valido!", ButtonType.CLOSE);
             a.showAndWait();
         }
+        
+        testoRegistraLibroTitolo.clear();
     }
 
     public void setControlloreVisualizzazione(ControlloreVisLibri cvl) {

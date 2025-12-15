@@ -123,7 +123,8 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
             cvp.inPrestitoAttivoLibro(daEliminare);
             archivioLibri.remove(daEliminare);
         }catch(LibroInvalidoException ex){
-        ///////////////////////////////////////////////////////
+            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+            a.showAndWait();
         }
         
         crp.resetLibroPrePrestito();

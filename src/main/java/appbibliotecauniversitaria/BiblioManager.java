@@ -29,6 +29,8 @@ public class BiblioManager extends Application {
         
         stage.setTitle("BiblioManager");
         stage.setScene(scene);
+        stage.setWidth(850);
+        stage.setHeight(650);
         stage.setResizable(false);
         stage.show();
     }

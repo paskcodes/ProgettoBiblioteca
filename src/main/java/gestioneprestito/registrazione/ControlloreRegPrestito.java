@@ -64,16 +64,21 @@ public class ControlloreRegPrestito implements Initializable {
      */
     @FXML
     private void registraPrestito(ActionEvent event) {
-        try{
-            Prestito p = new Prestito(utentePrePrestito, libroPrePrestito, LocalDate.parse(testoRegistraDataScadenzaPrestito.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            cvp.inserisciNuovoElemento(p);
-        }catch(PrestitoInvalidoException ex){
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
-        }catch(DateTimeParseException ex){
-            Alert a = new Alert(Alert.AlertType.WARNING, "Il formato della data non è valido!", ButtonType.CLOSE);
-            a.showAndWait();
-        }
+
+            try {
+                Prestito p = new Prestito(utentePrePrestito, libroPrePrestito, LocalDate.parse(testoRegistraDataScadenzaPrestito.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                cvp.inserisciNuovoElemento(p);
+            } catch (PrestitoInvalidoException ex) {
+                Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
+                a.showAndWait();
+            } catch (DateTimeParseException ex) {
+                Alert a = new Alert(Alert.AlertType.WARNING, "Il formato della data non è valido!", ButtonType.CLOSE);
+                a.showAndWait();
+            }catch (NullPointerException ex){
+                Alert a = new Alert(Alert.AlertType.WARNING, "Bisogna prima selezionare un utente e un libro", ButtonType.CLOSE);
+                a.showAndWait();
+            }
+
     }
 
     public void setUtentePrePrestito(Utente utenteDelPrestito) {
@@ -93,11 +98,13 @@ public class ControlloreRegPrestito implements Initializable {
     public void resetUtentePrePrestito() {
         // resetta il valore di utentePrePrestito
         utentePrePrestito = null;
+        selezioneRegistraUtentePrestito.setText("");
     }
     
     public void resetLibroPrePrestito() {
         // resetta il valore di libroPrePrestito
         libroPrePrestito = null;
+        selezioneRegistraLibroPrestito.setText("");
     }
 
     public void setControlloreVisualizzazione(ControlloreVisPrestiti cvp) {
