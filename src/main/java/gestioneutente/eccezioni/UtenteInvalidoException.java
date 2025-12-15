@@ -4,7 +4,7 @@ package gestioneutente.eccezioni;
  * @class UtenteInvalidoException
  * @brief Eccezione lanciata quando un utente non risulta valido
  */
-public class UtenteInvalidoException extends Exception{
+public class UtenteInvalidoException extends Exception {
 
     /**
      * @brief Costruttore di default

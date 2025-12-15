@@ -4,7 +4,6 @@ package gestioneprestito;
 import java.io.Serializable;
 import gestioneutente.Utente;
 import gestionelibro.Libro;
-import static gestioneprestito.Stato.*;
 import gestioneprestito.eccezioni.PrestitoCopieEsauriteException;
 import gestioneprestito.eccezioni.PrestitoDataScadenzaException;
 import gestioneprestito.eccezioni.PrestitoLimitePrestitiRaggiuntoException;
@@ -24,16 +23,25 @@ public class Prestito implements Comparable<Prestito>, Serializable {
 
     /**
      * @brief Costruttore della classe Prestito
-     * @param utente L'utente che ha effettuato il prestito
-     * @param libro Il libro prestato
+     * @details Crea un nuovo prestito associando un utente, un libro e una data di
+     *          scadenza. Controlla
+     *          che l'utente non abbia raggiunto il limite di prestiti, che il libro
+     *          abbia copie disponibili
+     *          e che la data di scadenza sia valida.
+     * @param utente       L'utente che ha effettuato il prestito
+     * @param libro        Il libro prestato
      * @param dataScadenza La data di scadenza del prestito
      */
-    public Prestito(Utente utente, Libro libro, LocalDate dataScadenza) throws PrestitoLimitePrestitiRaggiuntoException, PrestitoCopieEsauriteException, PrestitoDataScadenzaException{
-         if(utente.isLimitePrestitiRaggiunto()) throw new PrestitoLimitePrestitiRaggiuntoException();
+    public Prestito(Utente utente, Libro libro, LocalDate dataScadenza) throws PrestitoLimitePrestitiRaggiuntoException,
+            PrestitoCopieEsauriteException, PrestitoDataScadenzaException {
+        if (utente.isLimitePrestitiRaggiunto())
+            throw new PrestitoLimitePrestitiRaggiuntoException();
         this.utente = utente;
-         if(!libro.isCopiaDisponibile()) throw new PrestitoCopieEsauriteException();
+        if (!libro.isCopiaDisponibile())
+            throw new PrestitoCopieEsauriteException();
         this.libro = libro;
-        if(!isDataScadenzaValida(dataScadenza)) throw new PrestitoDataScadenzaException();
+        if (!isDataScadenzaValida(dataScadenza))
+            throw new PrestitoDataScadenzaException();
         this.dataScadenza = dataScadenza;
     }
 
@@ -93,13 +101,14 @@ public class Prestito implements Comparable<Prestito>, Serializable {
     public boolean isDataScadenzaValida(LocalDate daValidare) {
         return daValidare != null && daValidare.isAfter(LocalDate.now());
     }
-    
+
     /**
      * @brief Restituisce lo stato del prestito.
      * @return Stato attuale del prestito.
      */
     public Stato determinaStato() {
-        if (dataScadenza != null && LocalDate.now().isAfter(dataScadenza)) return Stato.SCADUTO;
+        if (dataScadenza != null && LocalDate.now().isAfter(dataScadenza))
+            return Stato.SCADUTO;
         return Stato.REGOLARE;
     }
 
@@ -110,8 +119,10 @@ public class Prestito implements Comparable<Prestito>, Serializable {
      */
     @Override
     public boolean equals(Object o) {
-        if (o == null && this.getClass() != o.getClass()) return false;
-        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass())
+            return false;
+        if (this == o)
+            return true;
         Prestito prestito = (Prestito) o;
         return utente.equals(prestito.utente) && libro.equals(prestito.libro);
     }

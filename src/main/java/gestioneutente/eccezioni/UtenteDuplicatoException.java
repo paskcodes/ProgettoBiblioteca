@@ -1,11 +1,11 @@
 package gestioneutente.eccezioni;
 
-
 /**
  * @class UtenteDuplicatoException
- * @brief Eccezione lanciata quando si tenta di registrare un utente con dati già esistenti.
+ * @brief Eccezione lanciata quando si tenta di registrare un utente con dati
+ *        già esistenti.
  */
-public class UtenteDuplicatoException extends UtenteInvalidoException{
+public class UtenteDuplicatoException extends UtenteInvalidoException {
 
     /**
      * @brief Costruttore di default

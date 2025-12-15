@@ -1,11 +1,11 @@
 package gestioneutente.eccezioni;
 
-
 /**
  * @class UtenteNomeCognomeException
- * @brief Eccezione lanciata quando il nome o il cognome di un utente non sono validi
+ * @brief Eccezione lanciata quando il nome o il cognome di un utente non sono
+ *        validi
  */
-public class UtenteNomeCognomeException extends UtenteInvalidoException{
+public class UtenteNomeCognomeException extends UtenteInvalidoException {
 
     /**
      * @brief Costruttore di default

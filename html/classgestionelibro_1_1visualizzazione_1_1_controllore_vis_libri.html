@@ -98,18 +98,252 @@ $(function(){initNavTree('classgestionelibro_1_1visualizzazione_1_1_controllore_
 Diagramma delle classi per gestionelibro.visualizzazione.ControlloreVisLibri</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.png" alt=""/>
- </div></div>
+  <img src="classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.png" usemap="#gestionelibro_2Evisualizzazione_2EControlloreVisLibri_map" alt=""/>
+  <map id="gestionelibro_2Evisualizzazione_2EControlloreVisLibri_map" name="gestionelibro_2Evisualizzazione_2EControlloreVisLibri_map">
+<area href="interfacegestionearchivio_1_1_archiviabile.html" title="Interfaccia che definisce i metodi comuni per la gestione di un archivio." alt="gestionearchivio.Archiviabile&lt; T, E extends Exception &gt;" shape="rect" coords="379,0,748,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
-<tr class="memitem:a9b2e485e33b0323ad4dce5c54102d83f" id="r_a9b2e485e33b0323ad4dce5c54102d83f"><td class="memItemLeft" align="right" valign="top"><a id="a9b2e485e33b0323ad4dce5c54102d83f" name="a9b2e485e33b0323ad4dce5c54102d83f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> (URL url, ResourceBundle rb)</td></tr>
-<tr class="memdesc:a9b2e485e33b0323ad4dce5c54102d83f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il controller della visualizzazione dei libri. Configura le colonne della tabella e carica i dati iniziali. <br /></td></tr>
+<tr class="memitem:a9b2e485e33b0323ad4dce5c54102d83f" id="r_a9b2e485e33b0323ad4dce5c54102d83f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b2e485e33b0323ad4dce5c54102d83f">initialize</a> (URL url, ResourceBundle rb)</td></tr>
+<tr class="memdesc:a9b2e485e33b0323ad4dce5c54102d83f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il controller della visualizzazione dei libri.  <br /></td></tr>
+<tr class="memitem:a83b988d891a11077d97cc0d5e182e7aa" id="r_a83b988d891a11077d97cc0d5e182e7aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83b988d891a11077d97cc0d5e182e7aa">inserisciNuovoElemento</a> (<a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> nuovoElemento)  throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_invalido_exception.html">LibroInvalidoException</a> </td></tr>
+<tr class="memdesc:a83b988d891a11077d97cc0d5e182e7aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserisce un nuovo libro nell'archivio.  <br /></td></tr>
+<tr class="memitem:a8c6b2cbfdc42e952720c6416e2f65468" id="r_a8c6b2cbfdc42e952720c6416e2f65468"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c6b2cbfdc42e952720c6416e2f65468">isElementoPresente</a> (<a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> daCercare)</td></tr>
+<tr class="memdesc:a8c6b2cbfdc42e952720c6416e2f65468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un libro è già presente nell'archivio.  <br /></td></tr>
+<tr class="memitem:a8337c82bc1b0db4aa5fc1e9ff7b44f11" id="r_a8337c82bc1b0db4aa5fc1e9ff7b44f11"><td class="memItemLeft" align="right" valign="top">ObservableList&lt; <a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8337c82bc1b0db4aa5fc1e9ff7b44f11">getListaElementi</a> ()</td></tr>
+<tr class="memdesc:a8337c82bc1b0db4aa5fc1e9ff7b44f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la lista dei libri nell'archivio.  <br /></td></tr>
+<tr class="memitem:ada870961b9d9d6a98ed1f364a7b8f3ed" id="r_ada870961b9d9d6a98ed1f364a7b8f3ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada870961b9d9d6a98ed1f364a7b8f3ed">registraCopiaPrestata</a> (<a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> prestato)</td></tr>
+<tr class="memdesc:ada870961b9d9d6a98ed1f364a7b8f3ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra una copia prestata di un libro.  <br /></td></tr>
+<tr class="memitem:ac32913a181bf9840f284985f02647100" id="r_ac32913a181bf9840f284985f02647100"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac32913a181bf9840f284985f02647100">registraCopiaRestituita</a> (<a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> prestato)</td></tr>
+<tr class="memdesc:ac32913a181bf9840f284985f02647100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra una copia restituita di un libro.  <br /></td></tr>
+<tr class="memitem:afff05eb3b596611971b9cbefb933430b" id="r_afff05eb3b596611971b9cbefb933430b"><td class="memItemLeft" align="right" valign="top"><a id="afff05eb3b596611971b9cbefb933430b" name="afff05eb3b596611971b9cbefb933430b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>aggiornaStatoVisualizzazione</b> ()</td></tr>
+<tr class="memdesc:afff05eb3b596611971b9cbefb933430b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiorna lo stato di visualizzazione della tabella dei libri. <br /></td></tr>
+<tr class="memitem:a6e9b8ab988f25cbfbf10c74f00126b8a" id="r_a6e9b8ab988f25cbfbf10c74f00126b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e9b8ab988f25cbfbf10c74f00126b8a">setControlloreRegistrazionePrestiti</a> (<a class="el" href="classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito.html">ControlloreRegPrestito</a> crp)</td></tr>
+<tr class="memdesc:a6e9b8ab988f25cbfbf10c74f00126b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controllore di registrazione prestiti.  <br /></td></tr>
+<tr class="memitem:a216abb7de73872a7bb1b212df4f27190" id="r_a216abb7de73872a7bb1b212df4f27190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a216abb7de73872a7bb1b212df4f27190">setControlloreVisualizzazionePrestiti</a> (<a class="el" href="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.html">ControlloreVisPrestiti</a> cvp)</td></tr>
+<tr class="memdesc:a216abb7de73872a7bb1b212df4f27190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controllore di visualizzazione prestiti.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Classe controller per la visualizzazione e gestione dei libri. Gestisce l'interazione con la tabella dei libri, inclusa l'aggiunta, la rimozione e l'aggiornamento delle informazioni sui libri. </p>
-</div><hr/>La documentazione per questa classe è stata generata a partire dal seguente file:<ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni membro</h2>
+<a id="a8337c82bc1b0db4aa5fc1e9ff7b44f11" name="a8337c82bc1b0db4aa5fc1e9ff7b44f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8337c82bc1b0db4aa5fc1e9ff7b44f11">&#9670;&#160;</a></span>getListaElementi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ObservableList&lt; <a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> &gt; gestionelibro.visualizzazione.ControlloreVisLibri.getListaElementi </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la lista dei libri nell'archivio. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>La lista dei libri. </dd></dl>
+
+<p>Implementa <a class="el" href="interfacegestionearchivio_1_1_archiviabile.html">gestionearchivio.Archiviabile&lt; T, E extends Exception &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a9b2e485e33b0323ad4dce5c54102d83f" name="a9b2e485e33b0323ad4dce5c54102d83f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b2e485e33b0323ad4dce5c54102d83f">&#9670;&#160;</a></span>initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionelibro.visualizzazione.ControlloreVisLibri.initialize </td>
+          <td>(</td>
+          <td class="paramtype">URL</td>          <td class="paramname"><span class="paramname"><em>url</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ResourceBundle</td>          <td class="paramname"><span class="paramname"><em>rb</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inizializza il controller della visualizzazione dei libri. </p>
+<p>Configura le colonne della tabella, il filtro di ricerca e imposta l'archivio dei libri come fonte dati della tabella. </p><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">url</td><td>URL della risorsa FXML. </td></tr>
+    <tr><td class="paramname">rb</td><td>Bundle delle risorse. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NullPointerException</td><td>Se si verifica un errore durante l'inizializzazione. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a83b988d891a11077d97cc0d5e182e7aa" name="a83b988d891a11077d97cc0d5e182e7aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b988d891a11077d97cc0d5e182e7aa">&#9670;&#160;</a></span>inserisciNuovoElemento()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionelibro.visualizzazione.ControlloreVisLibri.inserisciNuovoElemento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>nuovoElemento</em></span></td><td>)</td>
+          <td> throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_invalido_exception.html">LibroInvalidoException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserisce un nuovo libro nell'archivio. </p>
+<p>Verifica che il libro non sia già presente nell'archivio prima di inserirlo. </p><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nuovoElemento</td><td>Il libro da inserire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_invalido_exception.html" title="Classe che rappresenta l&#39;eccezione lanciata quando un libro non rispetta i vincoli imposti.">LibroInvalidoException</a></td><td>Se il libro è già presente nell'archivio. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8c6b2cbfdc42e952720c6416e2f65468" name="a8c6b2cbfdc42e952720c6416e2f65468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c6b2cbfdc42e952720c6416e2f65468">&#9670;&#160;</a></span>isElementoPresente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean gestionelibro.visualizzazione.ControlloreVisLibri.isElementoPresente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>daCercare</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica se un libro è già presente nell'archivio. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">daCercare</td><td>Il libro da cercare. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ada870961b9d9d6a98ed1f364a7b8f3ed" name="ada870961b9d9d6a98ed1f364a7b8f3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada870961b9d9d6a98ed1f364a7b8f3ed">&#9670;&#160;</a></span>registraCopiaPrestata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionelibro.visualizzazione.ControlloreVisLibri.registraCopiaPrestata </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>prestato</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registra una copia prestata di un libro. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prestato</td><td>Il libro di cui registrare la copia prestata. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac32913a181bf9840f284985f02647100" name="ac32913a181bf9840f284985f02647100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac32913a181bf9840f284985f02647100">&#9670;&#160;</a></span>registraCopiaRestituita()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionelibro.visualizzazione.ControlloreVisLibri.registraCopiaRestituita </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>prestato</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registra una copia restituita di un libro. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prestato</td><td>Il libro di cui registrare la copia restituita. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6e9b8ab988f25cbfbf10c74f00126b8a" name="a6e9b8ab988f25cbfbf10c74f00126b8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e9b8ab988f25cbfbf10c74f00126b8a">&#9670;&#160;</a></span>setControlloreRegistrazionePrestiti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionelibro.visualizzazione.ControlloreVisLibri.setControlloreRegistrazionePrestiti </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito.html">ControlloreRegPrestito</a></td>          <td class="paramname"><span class="paramname"><em>crp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controllore di registrazione prestiti. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">crp</td><td>Il controllore di registrazione prestiti. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a216abb7de73872a7bb1b212df4f27190" name="a216abb7de73872a7bb1b212df4f27190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a216abb7de73872a7bb1b212df4f27190">&#9670;&#160;</a></span>setControlloreVisualizzazionePrestiti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionelibro.visualizzazione.ControlloreVisLibri.setControlloreVisualizzazionePrestiti </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.html">ControlloreVisPrestiti</a></td>          <td class="paramname"><span class="paramname"><em>cvp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controllore di visualizzazione prestiti. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cvp</td><td>Il controllore di visualizzazione prestiti. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>La documentazione per questa classe è stata generata a partire dal seguente file:<ul>
 <li>src/main/java/gestionelibro/visualizzazione/<b>ControlloreVisLibri.java</b></li>
 </ul>
 </div><!-- contents -->

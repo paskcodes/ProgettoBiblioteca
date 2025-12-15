@@ -92,7 +92,7 @@ $(function(){initNavTree('classappbibliotecauniversitaria_1_1_controllore_home.h
 </div><!--header-->
 <div class="contents">
 
-<p>Controller per la schermata principale dell'applicazione della biblioteca universitaria. Gestisce la visualizzazione e l'interazione con i pannelli di registrazione e visualizzazione di utenti, libri e prestiti.  
+<p>Controller per la schermata principale dell'applicazione della biblioteca universitaria.  
  <a href="#details">Continua...</a></p>
 <div class="dynheader">
 Diagramma delle classi per appbibliotecauniversitaria.ControlloreHome</div>
@@ -105,14 +105,10 @@ Diagramma delle classi per appbibliotecauniversitaria.ControlloreHome</div>
 Membri pubblici</h2></td></tr>
 <tr class="memitem:a84faab08beff4fa51fb176dbc493e9a8" id="r_a84faab08beff4fa51fb176dbc493e9a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84faab08beff4fa51fb176dbc493e9a8">initialize</a> (URL url, ResourceBundle rb)</td></tr>
 <tr class="memdesc:a84faab08beff4fa51fb176dbc493e9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il controller della schermata principale. Imposta la visibilità iniziale dei pannelli.  <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Membri pubblici statici</h2></td></tr>
-<tr class="memitem:ad375295a5a02ee804ba15d1285ca3cec" id="r_ad375295a5a02ee804ba15d1285ca3cec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad375295a5a02ee804ba15d1285ca3cec">mostraFinestraEccezione</a> (Exception ex)</td></tr>
-<tr class="memdesc:ad375295a5a02ee804ba15d1285ca3cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mostra una finestra di eccezione con il messaggio dell'eccezione.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock"><p>Controller per la schermata principale dell'applicazione della biblioteca universitaria. Gestisce la visualizzazione e l'interazione con i pannelli di registrazione e visualizzazione di utenti, libri e prestiti. </p>
+<div class="textblock"><p>Controller per la schermata principale dell'applicazione della biblioteca universitaria. </p>
+<p>Gestisce la visualizzazione e l'interazione con i pannelli di registrazione e visualizzazione di utenti, libri e prestiti. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni membro</h2>
 <a id="a84faab08beff4fa51fb176dbc493e9a8" name="a84faab08beff4fa51fb176dbc493e9a8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84faab08beff4fa51fb176dbc493e9a8">&#9670;&#160;</a></span>initialize()</h2>
@@ -134,43 +130,16 @@ Membri pubblici statici</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inizializza il controller della schermata principale. Imposta la visibilità iniziale dei pannelli. </p>
-<dl class="params"><dt>Parametri</dt><dd>
+<p>Collega i controller dei pannelli di registrazione e visualizzazione tra loro per consentire l'interazione. </p><dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">url</td><td>L'URL di riferimento. </td></tr>
     <tr><td class="paramname">rb</td><td>Il ResourceBundle di riferimento. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="ad375295a5a02ee804ba15d1285ca3cec" name="ad375295a5a02ee804ba15d1285ca3cec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad375295a5a02ee804ba15d1285ca3cec">&#9670;&#160;</a></span>mostraFinestraEccezione()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void appbibliotecauniversitaria.ControlloreHome.mostraFinestraEccezione </td>
-          <td>(</td>
-          <td class="paramtype">Exception</td>          <td class="paramname"><span class="paramname"><em>ex</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Mostra una finestra di eccezione con il messaggio dell'eccezione. </p>
-<dl class="params"><dt>Parametri</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ex</td><td>L'eccezione da mostrare. </td></tr>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>Se si verifica un errore durante l'inizializzazione. </td></tr>
   </table>
   </dd>
 </dl>

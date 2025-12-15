@@ -3,10 +3,10 @@ package gestioneprestito.eccezioni;
 /**
  * @class PrestitoLimitePrestitiRaggiuntoException
  * @brief Eccezione per superamento del limite massimo di prestiti consentiti.
- * @details Lanciata quando un utente tenta di creare un nuovo prestito oltre il limite previsto.
- * @author Antonio Franco
+ * @details Lanciata quando un utente tenta di creare un nuovo prestito oltre il
+ *          limite previsto.
  */
-public class PrestitoLimitePrestitiRaggiuntoException extends PrestitoInvalidoException{
+public class PrestitoLimitePrestitiRaggiuntoException extends PrestitoInvalidoException {
 
     /**
      * @brief Crea una nuova eccezione senza messaggio di dettaglio.

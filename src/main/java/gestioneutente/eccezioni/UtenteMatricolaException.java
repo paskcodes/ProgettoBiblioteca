@@ -6,13 +6,13 @@
 package gestioneutente.eccezioni;
 
 /**
- *
- * @author Antonio Franco
+ * @class UtenteMatricolaException
+ * @brief Eccezione lanciata quando la matricola di un utente non rispetta il formato
  */
-public class UtenteMatricolaException extends UtenteInvalidoException{
+public class UtenteMatricolaException extends UtenteInvalidoException {
 
     /**
-     * 
+     * @brief Costruttore di default.
      */
     public UtenteMatricolaException() {
         super("La matricola deve essere inserita e può contenere solo numeri!");

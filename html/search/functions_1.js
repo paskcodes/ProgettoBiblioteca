@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['equals_0',['equals',['../classgestionelibro_1_1_libro.html#a7a4c9a5dfdc1abe1d586fbfdf096b8f6',1,'gestionelibro.Libro.equals()'],['../classgestioneprestito_1_1_prestito.html#a568e42cb65379dc49ff753dda3d6f590',1,'gestioneprestito.Prestito.equals()'],['../classgestioneutente_1_1_utente.html#a151fb026f6b1cc1fdb2151969fc9c49a',1,'gestioneutente.Utente.equals()']]],
-  ['estrailibro_1',['estraiLibro',['../classappbibliotecauniversitaria_1_1_archivio.html#a6181f0a21cb33747da946bca5b318b69',1,'appbibliotecauniversitaria::Archivio']]],
-  ['estraiprestito_2',['estraiPrestito',['../classappbibliotecauniversitaria_1_1_archivio.html#a2794c69c00818e50489a8da6d819d26b',1,'appbibliotecauniversitaria::Archivio']]],
-  ['estraiutente_3',['estraiUtente',['../classappbibliotecauniversitaria_1_1_archivio.html#ab4c0b043cb518b492b63b489f9a7db63',1,'appbibliotecauniversitaria::Archivio']]]
+  ['compare_0',['compare',['../classgestionelibro_1_1_comparatore_titolo_libro.html#a1bfbdb0dd595c3820c63dc1343fc082f',1,'gestionelibro.ComparatoreTitoloLibro.compare()'],['../classgestioneutente_1_1_comparatore_cognome_nome_utente.html#afc77eca178fb7e0bf87c828c5f9c815c',1,'gestioneutente.ComparatoreCognomeNomeUtente.compare()']]],
+  ['compareto_1',['compareTo',['../classgestionelibro_1_1_libro.html#a1e084f981103bf1d50194d4bdabc27e5',1,'gestionelibro.Libro.compareTo()'],['../classgestioneprestito_1_1_prestito.html#ae2931a567cb7bd2523bf4a0972f4caa5',1,'gestioneprestito.Prestito.compareTo()'],['../classgestioneutente_1_1_utente.html#a327952adacde1482a620f46e86f0a852',1,'gestioneutente.Utente.compareTo()']]]
 ];

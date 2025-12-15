@@ -13,7 +13,6 @@ import gestioneutente.Utente;
 import gestioneutente.eccezioni.UtentePrestitoAttivoException;
 import gestioneutente.visualizzazione.ControlloreVisUtenti;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
@@ -25,14 +24,11 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.control.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -62,9 +58,10 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
     private ControlloreVisLibri cvl;
 
     private final ObservableList<Prestito> archivioPrestiti = FXCollections.observableArrayList();
-   
-    private final SortedList<Prestito> archivioPrestitiOrdinato = new SortedList<Prestito>(archivioPrestiti, new ComparatoreDataScadenzaPrestito());
-   
+
+    private final SortedList<Prestito> archivioPrestitiOrdinato = new SortedList<Prestito>(archivioPrestiti,
+            new ComparatoreDataScadenzaPrestito());
+
     private final FilteredList<Prestito> archivioPrestitiFiltrato = new FilteredList<>(archivioPrestitiOrdinato);
 
     /**
@@ -74,36 +71,39 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
     /**
      * @brief Inizializza il controller della schermata di visualizzazione dei
      *        prestiti
+     * @details Configura le colonne della tabella, il filtro di ricerca e il
+     *          timer di aggiornamento. Colora le righe in base allo stato del
+     *          prestito.
      * @param url L'URL di riferimento
      * @param rb  Il ResourceBundle di riferimento
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //permette di visualizzare il valore di ogni campo del prestito nella rispettiva colonna
-        colonnaUtenteTabellaPrestiti.setCellValueFactory(r -> new SimpleObjectProperty<Utente>(r.getValue().getUtente()));
-        colonnaLibroTabellaPrestiti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getLibro().toString()));
-        colonnaDataScadenzaTabellaPrestiti.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getDataScadenza().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
-        
-        //colora la riga della tabellaPrestiti di verde se il prestito è regolare o di rosso se è scaduto
+        colonnaUtenteTabellaPrestiti
+                .setCellValueFactory(r -> new SimpleObjectProperty<Utente>(r.getValue().getUtente()));
+        colonnaLibroTabellaPrestiti
+                .setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getLibro().toString()));
+        colonnaDataScadenzaTabellaPrestiti.setCellValueFactory(r -> new SimpleStringProperty(
+                r.getValue().getDataScadenza().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+
         tabellaPrestiti.setRowFactory(tv -> new TableRow<Prestito>() {
-                @Override
-                protected void updateItem(Prestito item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (item == null || item.getDataScadenza() == null) {
-                        setStyle("");
-                    } else if (item.determinaStato() == REGOLARE){
-                        setStyle("-fx-background-color: #6dd100;");
-                    } else if (item.determinaStato() == SCADUTO) {
-                        setStyle("-fx-background-color: #ff0000;");
-                    } else {
-                        setStyle("");
-                    }
+            @Override
+            protected void updateItem(Prestito item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || item.getDataScadenza() == null) {
+                    setStyle("");
+                } else if (item.determinaStato() == REGOLARE) {
+                    setStyle("-fx-background-color: #6dd100;");
+                } else if (item.determinaStato() == SCADUTO) {
+                    setStyle("-fx-background-color: #ff0000;");
+                } else {
+                    setStyle("");
                 }
-            });
-        
-        //imposta l'archivioPrestitiFiltrato come lista osservabile da cui prendere i dati
+            }
+        });
+
         tabellaPrestiti.setItems(archivioPrestitiFiltrato);
-        
+
         Timeline timerAggiornamento = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
             tabellaPrestiti.refresh();
         }));
@@ -113,12 +113,14 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
 
     /**
      * @brief Gestisce l'estinzione del prestito
-     * @param event L'evento di ricerca
+     * @details Rimuove il prestito selezionato dalla tabella e aggiorna lo
+     *          stato di utente e libro associati.
+     * @param event L'evento generato dal click sul bottone di estinzione.
      */
     @FXML
     private void estinguiPrestito(ActionEvent event) {
         Prestito daEstinguere = tabellaPrestiti.getSelectionModel().getSelectedItem();
-        if (daEstinguere!= null) {
+        if (daEstinguere != null) {
             archivioPrestiti.remove(daEstinguere);
         }
         cvu.registraCopiaRestituita(daEstinguere.getUtente(), daEstinguere.getLibro());
@@ -128,16 +130,16 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
     }
 
     /**
-     * @brief Esegue la ricerca e il filtraggio dei prestiti nella tabella.
-     * @param event Evento di tastiera generato dall'input di ricerca.
+     * @brief Inserisce un nuovo prestito nell'archivio.
+     * @details Aggiorna lo stato di utente e libro associati al prestito.
+     * @param nuovoElemento Il prestito da inserire.
+     * @throws PrestitoDuplicatoException Se il prestito è già presente
+     *                                    nell'archivio.
      */
-    @FXML
-    private void ricercaPrestiti(KeyEvent event) {
-    }
-
     @Override
     public void inserisciNuovoElemento(Prestito nuovoElemento) throws PrestitoDuplicatoException {
-        if(isElementoPresente(nuovoElemento)) throw new PrestitoDuplicatoException();
+        if (isElementoPresente(nuovoElemento))
+            throw new PrestitoDuplicatoException();
         archivioPrestiti.add(nuovoElemento);
         cvu.registraCopiaPrestata(nuovoElemento.getUtente(), nuovoElemento.getLibro());
         cvl.registraCopiaPrestata(nuovoElemento.getLibro());
@@ -145,30 +147,61 @@ public class ControlloreVisPrestiti implements Initializable, Archiviabile<Prest
         cvl.aggiornaStatoVisualizzazione();
     }
 
+    /**
+     * @brief Verifica se un prestito è già presente nell'archivio.
+     * @param daCercare Il prestito da cercare.
+     */
     @Override
     public boolean isElementoPresente(Prestito daCercare) {
         return archivioPrestiti.contains(daCercare);
     }
 
+    /**
+     * @brief Restituisce la lista dei prestiti nell'archivio.
+     * @return La lista dei prestiti.
+     */
     @Override
     public ObservableList<Prestito> getListaElementi() {
         return this.archivioPrestiti;
     }
 
+    /**
+     * @brief Verifica se un utente ha prestiti attivi.
+     * @param indagato L'utente da verificare.
+     * @return true se l'utente ha prestiti attivi, false altrimenti.
+     * @throws UtentePrestitoAttivoException Se l'utente ha troppi prestiti attivi.
+     */
     public boolean inPrestitoAttivoUtente(Utente indagato) throws UtentePrestitoAttivoException {
-        if (archivioPrestiti.stream().anyMatch(p -> p.getUtente().getMatricola().equals(indagato.getMatricola()))) throw new UtentePrestitoAttivoException();
+        if (archivioPrestiti.stream().anyMatch(p -> p.getUtente().getMatricola().equals(indagato.getMatricola())))
+            throw new UtentePrestitoAttivoException();
         return false;
     }
 
+    /**
+     * @brief Verifica se un libro è attualmente in prestito.
+     * @param indagato Il libro da verificare.
+     * @return true se il libro è in prestito, false altrimenti.
+     * @throws LibroPrestitoAttivoException Se il libro, attualmente in prestito,
+     *                                      non ha più copie disponibili.
+     */
     public boolean inPrestitoAttivoLibro(Libro indagato) throws LibroPrestitoAttivoException {
-        if (archivioPrestiti.stream().anyMatch(p -> p.getLibro().getISBN().equals(indagato.getISBN()))) throw new LibroPrestitoAttivoException();
+        if (archivioPrestiti.stream().anyMatch(p -> p.getLibro().getISBN().equals(indagato.getISBN())))
+            throw new LibroPrestitoAttivoException();
         return false;
     }
 
+    /**
+     * @brief Imposta il controller di visualizzazione utenti
+     * @param cvu Il controller di visualizzazione utenti
+     */
     public void setControlloreVisUtenti(ControlloreVisUtenti cvu) {
         this.cvu = cvu;
     }
-    
+
+    /**
+     * @brief Imposta il controller di visualizzazione libri
+     * @param cvl Il controller di visualizzazione libri
+     */
     public void setControlloreVisLibri(ControlloreVisLibri cvl) {
         this.cvl = cvl;
     }

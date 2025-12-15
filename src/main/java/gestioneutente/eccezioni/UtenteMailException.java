@@ -1,12 +1,11 @@
 package gestioneutente.eccezioni;
 
-
-
 /**
  * @class UtenteMailException
- * @brief Eccezione lanciata quando la mail di un utente non rispetta il formato stabilito.
+ * @brief Eccezione lanciata quando la mail di un utente non rispetta il formato
+ *        stabilito.
  */
-public class UtenteMailException extends UtenteInvalidoException{
+public class UtenteMailException extends UtenteInvalidoException {
 
     /**
      * @brief Costruttore di default.

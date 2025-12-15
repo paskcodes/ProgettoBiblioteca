@@ -1,19 +1,7 @@
 var searchData=
 [
-  ['scaduto_0',['SCADUTO',['../enumgestioneprestito_1_1_stato.html#a45808c0ae99367dcb80fe245f7d4a81c',1,'gestioneprestito::Stato']]],
-  ['setautori_1',['setAutori',['../classgestionelibro_1_1_libro.html#a6929938009f5ab4b76380b38aa5363bd',1,'gestionelibro::Libro']]],
-  ['setcognome_2',['setCognome',['../classgestioneutente_1_1_utente.html#ab3c581ce57fa31098a5e2cf9243746d4',1,'gestioneutente::Utente']]],
-  ['setcopie_3',['setCopie',['../classgestionelibro_1_1_libro.html#ab724964849208412ed15c88c35889b90',1,'gestionelibro::Libro']]],
-  ['setdatapubblicazione_4',['setDataPubblicazione',['../classgestionelibro_1_1_libro.html#a215bfe9ed1c8e6fce05b8478a4a90e47',1,'gestionelibro::Libro']]],
-  ['setdatascadenza_5',['setDataScadenza',['../classgestioneprestito_1_1_prestito.html#a3ac530c0572641695685c13b339b5f28',1,'gestioneprestito::Prestito']]],
-  ['setlibro_6',['setLibro',['../classgestioneprestito_1_1_prestito.html#a4e2e8247a003f73ead0f0cb48a9e4a53',1,'gestioneprestito::Prestito']]],
-  ['setlibropreprestito_7',['setLibroPrePrestito',['../classgestioneprestito_1_1_prestito.html#a6c0cd682ddc7e5a1ce96e670c97d8a43',1,'gestioneprestito::Prestito']]],
-  ['setmail_8',['setMail',['../classgestioneutente_1_1_utente.html#a1bdab19ca6629fe228972f0eb2bcb7c0',1,'gestioneutente::Utente']]],
-  ['setnome_9',['setNome',['../classgestioneutente_1_1_utente.html#a007d633ca70d7e1eaad5b3b5419a5fe0',1,'gestioneutente::Utente']]],
-  ['settitolo_10',['setTitolo',['../classgestionelibro_1_1_libro.html#a167cccfb257d1ec51b947a6a4a97ddfd',1,'gestionelibro::Libro']]],
-  ['setutente_11',['setUtente',['../classgestioneprestito_1_1_prestito.html#ad5c8aa719840f6176eb99ba1956b4f70',1,'gestioneprestito::Prestito']]],
-  ['setutentepreprestito_12',['setUtentePrePrestito',['../classgestioneprestito_1_1_prestito.html#a77b848535f3931fb04584f5f4294f5bd',1,'gestioneprestito::Prestito']]],
-  ['shouldanswerwithtrue_13',['shouldAnswerWithTrue',['../classcom_1_1libraryproject_1_1_app_test.html#ae3adb9c6f45a7674e91e8c8fefa1223a',1,'com::libraryproject::AppTest']]],
-  ['start_14',['start',['../classappbibliotecauniversitaria_1_1_biblio_manager.html#af1037eb63ed645bcf973347c878057b3',1,'appbibliotecauniversitaria::BiblioManager']]],
-  ['stato_15',['Stato',['../enumgestioneprestito_1_1_stato.html',1,'gestioneprestito']]]
+  ['registracopiaprestata_0',['registraCopiaPrestata',['../classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html#ada870961b9d9d6a98ed1f364a7b8f3ed',1,'gestionelibro.visualizzazione.ControlloreVisLibri.registraCopiaPrestata()'],['../classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html#a64c62d09925a2a6219690eba43cc3b4a',1,'gestioneutente.visualizzazione.ControlloreVisUtenti.registraCopiaPrestata()']]],
+  ['registracopiarestituita_1',['registraCopiaRestituita',['../classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html#ac32913a181bf9840f284985f02647100',1,'gestionelibro.visualizzazione.ControlloreVisLibri.registraCopiaRestituita()'],['../classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html#a2cf59ec80eed2f34fee7d252035791bd',1,'gestioneutente.visualizzazione.ControlloreVisUtenti.registraCopiaRestituita()']]],
+  ['regolare_2',['REGOLARE',['../enumgestioneprestito_1_1_stato.html#af0d53245beacccfa249ebc2599b9ffcd',1,'gestioneprestito::Stato']]],
+  ['restituiscicopia_3',['restituisciCopia',['../classgestionelibro_1_1_libro.html#a82ba4408e9c92bd112f17099aa98edca',1,'gestionelibro.Libro.restituisciCopia()'],['../classgestioneutente_1_1_utente.html#aacfb092fc090e67a553eeab103d111fd',1,'gestioneutente.Utente.restituisciCopia()']]]
 ];

@@ -2,9 +2,10 @@ package gestioneutente.eccezioni;
 
 /**
  * @class UtentePrestitoAttivoException
- * @brief Eccezione lanciata quando si tenta di eliminare un utente che ha prestiti attivi.
+ * @brief Eccezione lanciata quando si tenta di eliminare un utente che ha
+ *        prestiti attivi.
  */
-public class UtentePrestitoAttivoException extends UtenteInvalidoException{
+public class UtentePrestitoAttivoException extends UtenteInvalidoException {
 
     /**
      * @brief Costruttore di default

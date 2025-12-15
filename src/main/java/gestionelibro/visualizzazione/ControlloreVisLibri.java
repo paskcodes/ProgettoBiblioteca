@@ -1,7 +1,6 @@
 package gestionelibro.visualizzazione;
 
 import gestionearchivio.Archiviabile;
-import appbibliotecauniversitaria.ControlloreHome;
 import gestionelibro.ComparatoreTitoloLibro;
 import gestionelibro.Libro;
 import gestionelibro.eccezioni.LibroCampoVuotoException;
@@ -13,7 +12,6 @@ import gestioneprestito.registrazione.ControlloreRegPrestito;
 import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
 import java.net.URL;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -21,8 +19,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,7 +32,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Duration;
 
 /**
  * @class ControlloreVisLibri
@@ -71,9 +66,10 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
     private ControlloreVisPrestiti cvp;
 
     private final ObservableList<Libro> archivioLibri = FXCollections.observableArrayList();
-    
-    private final SortedList<Libro> archivioLibriOrdinato = new SortedList<>(archivioLibri, new ComparatoreTitoloLibro());
-   
+
+    private final SortedList<Libro> archivioLibriOrdinato = new SortedList<>(archivioLibri,
+            new ComparatoreTitoloLibro());
+
     private final FilteredList<Libro> archivioLibriFiltrato = new FilteredList<>(archivioLibriOrdinato);
 
     /**
@@ -82,212 +78,235 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
 
     /**
      * @brief Inizializza il controller della visualizzazione dei libri.
-     *        Configura le colonne della tabella e carica i dati iniziali.
+     * @details Configura le colonne della tabella, il filtro di ricerca e imposta
+     *          l'archivio dei libri come fonte dati della tabella.
+     * @param url URL della risorsa FXML.
+     * @param rb  Bundle delle risorse.
+     * @throws NullPointerException Se si verifica un errore durante
+     *                              l'inizializzazione.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // aggiunge i filtri possibili
         filtroRicercaLibri.getItems().addAll("Titolo", "ISBN");
 
-        // imposta un filtro di default
         filtroRicercaLibri.setValue("Titolo");
 
-        // permette di visualizzare il valore di ogni campo del libro nella rispettiva colonna
         colonnaTitoloTabellaLibri.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getTitolo()));
         colonnaAutoriTabellaLibri.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getAutori()));
-        colonnaDataPubblicazioneTabellaLibri.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getDataPubblicazione().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+        colonnaDataPubblicazioneTabellaLibri.setCellValueFactory(r -> new SimpleStringProperty(
+                r.getValue().getDataPubblicazione().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
         colonnaISBNTabellaLibri.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getISBN()));
-        colonnaNumCopieTabellaLibri.setCellValueFactory(r -> new SimpleStringProperty(String.valueOf(r.getValue().getCopie())));
+        colonnaNumCopieTabellaLibri
+                .setCellValueFactory(r -> new SimpleStringProperty(String.valueOf(r.getValue().getCopie())));
 
-        // permette di modificare il valore della cella nella tabella (tranne ISBN che è l'identificativo)
         colonnaTitoloTabellaLibri.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaAutoriTabellaLibri.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaDataPubblicazioneTabellaLibri.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaNumCopieTabellaLibri.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        //imposta l'archivioUtentiFiltrato come lista osservabile da cui prendere i dati
         tabellaLibri.setItems(archivioLibriFiltrato);
     }
 
     /**
      * @brief Rimuove un libro dalla tabella.
+     * @details Verifica che il libro non sia attualmente in prestito prima di
+     *          rimuoverlo dall'archivio.
      * @param event Evento di azione generato dal pulsante di aggiunta.
+     * @throws LibroInvalidoException Se il libro è attualmente in prestito.
      */
     @FXML
     private void rimuoviLibro(ActionEvent event) {
-        //mantiene il riferimento al libro selezionato
         Libro daEliminare = tabellaLibri.getSelectionModel().getSelectedItem();
-        
-        //verifica che non sia in prestiti attivi e rimuove il libro, altrimenti cattura un eccezione
-        try{
+
+        try {
             cvp.inPrestitoAttivoLibro(daEliminare);
             archivioLibri.remove(daEliminare);
-        }catch(LibroInvalidoException ex){
+        } catch (LibroInvalidoException ex) {
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
         }
-        
-        crp.resetLibroPrePrestito();
+
     }
 
     /**
      * @brief Aggiorna il titolo di un libro selezionato dalla tabella.
+     * @details Verifica che il nuovo titolo non sia vuoto prima di aggiornarlo.
      * @param event Evento di azione generato dal pulsante di rimozione.
+     * @throws LibroCampoVuotoException Se il nuovo titolo è vuoto.
      */
     @FXML
     private void aggiornaTitoloLibri(TableColumn.CellEditEvent<Libro, String> event) {
-        try{
-        event.getRowValue().setTitolo(event.getNewValue());
-        }catch(LibroCampoVuotoException ex){
+        try {
+            event.getRowValue().setTitolo(event.getNewValue());
+        } catch (LibroCampoVuotoException ex) {
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
         }
-        
-        //aggiorna la visualizzazione della tabella nella pagina
+
         aggiornaStatoVisualizzazione();
     }
 
     /**
      * @brief Aggiorna gli autori di un libro selezionato dalla tabella.
+     * @details Verifica che il nuovo campo autori non sia vuoto prima di
+     *          aggiornarlo.
      * @param event Evento di azione generato dal pulsante di rimozione.
+     * @throws LibroCampoVuotoException Se il nuovo campo autori è vuoto.
      */
     @FXML
     private void aggiornaAutoriLibri(TableColumn.CellEditEvent<Libro, String> event) {
-        try{
-        event.getRowValue().setAutori(event.getNewValue());
-        }catch(LibroCampoVuotoException ex){
+        try {
+            event.getRowValue().setAutori(event.getNewValue());
+        } catch (LibroCampoVuotoException ex) {
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
         }
-        
-        //aggiorna la visualizzazione della tabella nella pagina
         aggiornaStatoVisualizzazione();
     }
 
     /**
      * @brief Aggiorna la data di pubblicazione di un libro selezionato dalla
      *        tabella.
+     * @details Verifica che la nuova data di pubblicazione sia valida prima di
+     *          aggiornarla.
      * @param event Evento di azione generato dal pulsante di rimozione.
+     * @throws LibroDataPubblicazioneException Se la nuova data di pubblicazione non
+     *                                         è valida.
      */
     @FXML
     private void aggiornaDataPubblicazioneLibri(TableColumn.CellEditEvent<Libro, LocalDate> event) {
-        //modifica il campo titolo dell'elemento all'interno dell'archivioLibri, corrispondente a quella riga nella tabella, con il testo inserito a mano per la modifica
-        try{
-            event.getRowValue().setDataPubblicazione(LocalDate.parse(event.getNewValue().toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        }catch(LibroDataPubblicazioneException |DateTimeParseException  ex){
+        try {
+            event.getRowValue().setDataPubblicazione(
+                    LocalDate.parse(event.getNewValue().toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        } catch (LibroDataPubblicazioneException | DateTimeParseException ex) {
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
         }
-        
-        //aggiorna la visualizzazione della tabella nella pagina
+
         aggiornaStatoVisualizzazione();
-        
     }
 
     /**
      * @brief Aggiorna il numero di copie di un libro selezionato dalla tabella.
+     * @details Verifica che il nuovo numero di copie sia valido prima di
+     *          aggiornarlo.
      * @param event Evento di azione generato dal pulsante di rimozione.
+     * @throws LibroNumeroCopieException Se il nuovo numero di copie non è valido.
      */
     @FXML
     private void aggiornaNumCopieLibri(TableColumn.CellEditEvent<Libro, Integer> event) {
-        //modifica il campo titolo dell'elemento all'interno dell'archivioLibri, corrispondente a quella riga nella tabella, con il testo inserito a mano per la modifica
-        try{
+        try {
             event.getRowValue().setCopie(Integer.parseInt(event.getNewValue().toString()));
-        }catch(LibroNumeroCopieException ex){
+        } catch (LibroNumeroCopieException ex) {
             Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
             a.showAndWait();
         }
-        
-        //aggiorna la visualizzazione della tabella nella pagina
+
         aggiornaStatoVisualizzazione();
     }
 
     /**
      * @brief Gestisce la ricerca dei libri filtrando i risultati.
+     * @details Filtra i libri in base al tipo di ricerca selezionato e al testo
+     *          inserito.
      * @param event Evento di tastiera generato dall'input di ricerca.
      */
     @FXML
     private void ricercaLibri(KeyEvent event) {
-        
+
         String filtro = testoRicercaLibri.getText();
         String tipo = filtroRicercaLibri.getValue();
-        
+
         if (filtro == null || filtro.length() == 0) {
             archivioLibriFiltrato.setPredicate(u -> true);
         } else {
             archivioLibriFiltrato.setPredicate(u -> {
                 if (tipo.equals("Titolo")) {
-                    return u.getTitolo().toLowerCase().contains(filtro.toLowerCase()); //si usa contains perche' deve verificare che il filtro sia presente nell'elemento discriminante
+                    return u.getTitolo().toLowerCase().contains(filtro.toLowerCase());
                 } else if (tipo.equals("ISBN")) {
                     return u.getISBN().contains(filtro);
                 }
                 return false;
             });
         }
-        
-        
-        
-        
     }
 
     /**
-     * @brief Gestisce la selezione di un libro nella tabella.
-     * @param event Evento di click del mouse sulla tabella.
+     * @brief Inserisce un nuovo libro nell'archivio.
+     * @details Verifica che il libro non sia già presente nell'archivio prima di
+     *          inserirlo.
+     * @param nuovoElemento Il libro da inserire.
+     * @throws LibroInvalidoException Se il libro è già presente nell'archivio.
      */
-    @FXML
-    private void selezionaLibro(MouseEvent event) {
-        //carica il libro selezionato nel libroPrePrestito, altrimenti cattura un'eccezione
-        try{
-            crp.setLibroPrePrestito(tabellaLibri.getSelectionModel().getSelectedItem());
-        }catch(NullPointerException ex){
-            Alert a = new Alert(Alert.AlertType.WARNING, "Seleziona un libro se presente!", ButtonType.CLOSE);
-            a.showAndWait();
-        }
-    }
-
     @Override
     public void inserisciNuovoElemento(Libro nuovoElemento) throws LibroInvalidoException {
-        //se l'utente è già presente allora lancia un'eccezione
-        if(isElementoPresente(nuovoElemento)) throw new LibroDuplicatoException();
+        if (isElementoPresente(nuovoElemento))
+            throw new LibroDuplicatoException();
         archivioLibri.add(nuovoElemento);
     }
 
+    /**
+     * @brief Verifica se un libro è già presente nell'archivio.
+     * @param daCercare Il libro da cercare.
+     */
     @Override
     public boolean isElementoPresente(Libro daCercare) {
         return archivioLibri.stream().anyMatch(l -> l.getISBN().equals(daCercare.getISBN()));
     }
 
+    /**
+     * @brief Restituisce la lista dei libri nell'archivio.
+     * @return La lista dei libri.
+     */
     @Override
     public ObservableList<Libro> getListaElementi() {
         return this.archivioLibri;
     }
-    
-    public void registraCopiaPrestata(Libro prestato){
-        for(Libro l : archivioLibri){
-            if(l.equals(l)){
+
+    /**
+     * @brief Registra una copia prestata di un libro.
+     * @param prestato Il libro di cui registrare la copia prestata.
+     */
+    public void registraCopiaPrestata(Libro prestato) {
+        for (Libro l : archivioLibri) {
+            if (l.equals(prestato)) {
                 l.prendiCopia();
             }
         }
     }
-    
-    public void registraCopiaRestituita(Libro prestato){
-        for(Libro l : archivioLibri){
-            if(l.equals(l)){
+
+    /**
+     * @brief Registra una copia restituita di un libro.
+     * @param prestato Il libro di cui registrare la copia restituita.
+     */
+    public void registraCopiaRestituita(Libro prestato) {
+        for (Libro l : archivioLibri) {
+            if (l.equals(prestato)) {
                 l.restituisciCopia();
             }
         }
     }
-    
-    public void aggiornaStatoVisualizzazione(){
+
+    /**
+     * @brief Aggiorna lo stato di visualizzazione della tabella dei libri.
+     */
+    public void aggiornaStatoVisualizzazione() {
         tabellaLibri.refresh();
     }
 
+    /**
+     * @brief Imposta il controllore di registrazione prestiti.
+     * @param crp Il controllore di registrazione prestiti.
+     */
     public void setControlloreRegistrazionePrestiti(ControlloreRegPrestito crp) {
         this.crp = crp;
     }
 
+    /**
+     * @brief Imposta il controllore di visualizzazione prestiti.
+     * @param cvp Il controllore di visualizzazione prestiti.
+     */
     public void setControlloreVisualizzazionePrestiti(ControlloreVisPrestiti cvp) {
         this.cvp = cvp;
     }
-
 }

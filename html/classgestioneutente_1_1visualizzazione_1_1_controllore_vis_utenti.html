@@ -98,18 +98,79 @@ $(function(){initNavTree('classgestioneutente_1_1visualizzazione_1_1_controllore
 Diagramma delle classi per gestioneutente.visualizzazione.ControlloreVisUtenti</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.png" alt=""/>
- </div></div>
+  <img src="classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.png" usemap="#gestioneutente_2Evisualizzazione_2EControlloreVisUtenti_map" alt=""/>
+  <map id="gestioneutente_2Evisualizzazione_2EControlloreVisUtenti_map" name="gestioneutente_2Evisualizzazione_2EControlloreVisUtenti_map">
+<area href="interfacegestionearchivio_1_1_archiviabile.html" title="Interfaccia che definisce i metodi comuni per la gestione di un archivio." alt="gestionearchivio.Archiviabile&lt; T, E extends Exception &gt;" shape="rect" coords="391,0,772,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
 <tr class="memitem:ac6eec250e8cf0697d6c0567f6eacb641" id="r_ac6eec250e8cf0697d6c0567f6eacb641"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6eec250e8cf0697d6c0567f6eacb641">initialize</a> (URL url, ResourceBundle rb)</td></tr>
 <tr class="memdesc:ac6eec250e8cf0697d6c0567f6eacb641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il controller della vista utenti.  <br /></td></tr>
+<tr class="memitem:a91af18f5d14206a0a507139c556e6617" id="r_a91af18f5d14206a0a507139c556e6617"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91af18f5d14206a0a507139c556e6617">inserisciNuovoElemento</a> (<a class="el" href="classgestioneutente_1_1_utente.html">Utente</a> nuovoElemento)  throws <a class="el" href="classgestioneutente_1_1eccezioni_1_1_utente_duplicato_exception.html">UtenteDuplicatoException</a> </td></tr>
+<tr class="memdesc:a91af18f5d14206a0a507139c556e6617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserisce un nuovo utente nell'archivio.  <br /></td></tr>
+<tr class="memitem:aa313c10b9c2c28e8e447373c9c1db2d8" id="r_aa313c10b9c2c28e8e447373c9c1db2d8"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa313c10b9c2c28e8e447373c9c1db2d8">isElementoPresente</a> (<a class="el" href="classgestioneutente_1_1_utente.html">Utente</a> daCercare)</td></tr>
+<tr class="memdesc:aa313c10b9c2c28e8e447373c9c1db2d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un utente è già presente nell'archivio.  <br /></td></tr>
+<tr class="memitem:a1435fb20d4dedb183a460450c73065b8" id="r_a1435fb20d4dedb183a460450c73065b8"><td class="memItemLeft" align="right" valign="top">ObservableList&lt; <a class="el" href="classgestioneutente_1_1_utente.html">Utente</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1435fb20d4dedb183a460450c73065b8">getListaElementi</a> ()</td></tr>
+<tr class="memdesc:a1435fb20d4dedb183a460450c73065b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la lista degli utenti nell'archivio.  <br /></td></tr>
+<tr class="memitem:a64c62d09925a2a6219690eba43cc3b4a" id="r_a64c62d09925a2a6219690eba43cc3b4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64c62d09925a2a6219690eba43cc3b4a">registraCopiaPrestata</a> (<a class="el" href="classgestioneutente_1_1_utente.html">Utente</a> noleggiatore, <a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> prestato)</td></tr>
+<tr class="memdesc:a64c62d09925a2a6219690eba43cc3b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra una copia di un libro come prestata ad un utente.  <br /></td></tr>
+<tr class="memitem:a2cf59ec80eed2f34fee7d252035791bd" id="r_a2cf59ec80eed2f34fee7d252035791bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cf59ec80eed2f34fee7d252035791bd">registraCopiaRestituita</a> (<a class="el" href="classgestioneutente_1_1_utente.html">Utente</a> noleggiatore, <a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> prestato)</td></tr>
+<tr class="memdesc:a2cf59ec80eed2f34fee7d252035791bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra una copia di un libro come restituita da un utente.  <br /></td></tr>
+<tr class="memitem:a8e0f2d9e28c31c70f6c5de4afe00d0ac" id="r_a8e0f2d9e28c31c70f6c5de4afe00d0ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e0f2d9e28c31c70f6c5de4afe00d0ac">aggiornaStatoVisualizzazione</a> ()</td></tr>
+<tr class="memdesc:a8e0f2d9e28c31c70f6c5de4afe00d0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiorna lo stato di visualizzazione della tabella utenti.  <br /></td></tr>
+<tr class="memitem:ab28fe293e1430b1f732aa39c58f2dcee" id="r_ab28fe293e1430b1f732aa39c58f2dcee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab28fe293e1430b1f732aa39c58f2dcee">setControlloreRegistrazionePrestiti</a> (<a class="el" href="classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito.html">ControlloreRegPrestito</a> crp)</td></tr>
+<tr class="memdesc:ab28fe293e1430b1f732aa39c58f2dcee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controller di registrazione prestiti.  <br /></td></tr>
+<tr class="memitem:a258a9245997e3cb2f35aed771e48d3cf" id="r_a258a9245997e3cb2f35aed771e48d3cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a258a9245997e3cb2f35aed771e48d3cf">setControlloreVisualizzazionePrestiti</a> (<a class="el" href="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.html">ControlloreVisPrestiti</a> cvp)</td></tr>
+<tr class="memdesc:a258a9245997e3cb2f35aed771e48d3cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controller di visualizzazione prestiti.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Controller FXML per la visualizzazione e gestione degli utenti. </p>
-<p>Gestisce tabella, filtri di ricerca e operazioni di modifica/rimozione utenti. </p><dl class="section author"><dt>Autore</dt><dd>Antonio Franco </dd></dl>
+<p>Gestisce tabella, filtri di ricerca e operazioni di modifica/rimozione utenti. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni membro</h2>
+<a id="a8e0f2d9e28c31c70f6c5de4afe00d0ac" name="a8e0f2d9e28c31c70f6c5de4afe00d0ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e0f2d9e28c31c70f6c5de4afe00d0ac">&#9670;&#160;</a></span>aggiornaStatoVisualizzazione()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneutente.visualizzazione.ControlloreVisUtenti.aggiornaStatoVisualizzazione </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aggiorna lo stato di visualizzazione della tabella utenti. </p>
+<p>Ricarica la tabella per riflettere eventuali modifiche ai dati. </p>
+
+</div>
+</div>
+<a id="a1435fb20d4dedb183a460450c73065b8" name="a1435fb20d4dedb183a460450c73065b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1435fb20d4dedb183a460450c73065b8">&#9670;&#160;</a></span>getListaElementi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ObservableList&lt; <a class="el" href="classgestioneutente_1_1_utente.html">Utente</a> &gt; gestioneutente.visualizzazione.ControlloreVisUtenti.getListaElementi </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la lista degli utenti nell'archivio. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>Lista osservabile degli utenti. </dd></dl>
+
+<p>Implementa <a class="el" href="interfacegestionearchivio_1_1_archiviabile.html">gestionearchivio.Archiviabile&lt; T, E extends Exception &gt;</a>.</p>
+
+</div>
+</div>
 <a id="ac6eec250e8cf0697d6c0567f6eacb641" name="ac6eec250e8cf0697d6c0567f6eacb641"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6eec250e8cf0697d6c0567f6eacb641">&#9670;&#160;</a></span>initialize()</h2>
 
@@ -130,10 +191,183 @@ Membri pubblici</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inizializza il controller della vista utenti. </p>
-<dl class="params"><dt>Parametri</dt><dd>
+<p>Configura colonne tabella, filtri di ricerca e dati iniziali. </p><dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">url</td><td>URL di riferimento. </td></tr>
     <tr><td class="paramname">rb</td><td>ResourceBundle di riferimento. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a91af18f5d14206a0a507139c556e6617" name="a91af18f5d14206a0a507139c556e6617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91af18f5d14206a0a507139c556e6617">&#9670;&#160;</a></span>inserisciNuovoElemento()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneutente.visualizzazione.ControlloreVisUtenti.inserisciNuovoElemento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneutente_1_1_utente.html">Utente</a></td>          <td class="paramname"><span class="paramname"><em>nuovoElemento</em></span></td><td>)</td>
+          <td> throws <a class="el" href="classgestioneutente_1_1eccezioni_1_1_utente_duplicato_exception.html">UtenteDuplicatoException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserisce un nuovo utente nell'archivio. </p>
+<p>Verifica che l'utente non sia già presente prima di aggiungerlo. </p><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nuovoElemento</td><td>Nuovo utente da inserire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgestioneutente_1_1eccezioni_1_1_utente_duplicato_exception.html" title="Eccezione lanciata quando si tenta di registrare un utente con dati già esistenti.">UtenteDuplicatoException</a></td><td>Se l'utente è già presente nell'archivio. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa313c10b9c2c28e8e447373c9c1db2d8" name="aa313c10b9c2c28e8e447373c9c1db2d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa313c10b9c2c28e8e447373c9c1db2d8">&#9670;&#160;</a></span>isElementoPresente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean gestioneutente.visualizzazione.ControlloreVisUtenti.isElementoPresente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneutente_1_1_utente.html">Utente</a></td>          <td class="paramname"><span class="paramname"><em>daCercare</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica se un utente è già presente nell'archivio. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">daCercare</td><td><a class="el" href="classgestioneutente_1_1_utente.html" title="Classe che modella un utente del sistema di gestione biblioteca.">Utente</a> da cercare. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>true se l'utente è presente, false altrimenti. </dd></dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgestioneutente_1_1eccezioni_1_1_utente_invalido_exception.html" title="Eccezione lanciata quando un utente non risulta valido.">UtenteInvalidoException</a></td><td>Se l'utente da cercare non è valido. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a64c62d09925a2a6219690eba43cc3b4a" name="a64c62d09925a2a6219690eba43cc3b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64c62d09925a2a6219690eba43cc3b4a">&#9670;&#160;</a></span>registraCopiaPrestata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneutente.visualizzazione.ControlloreVisUtenti.registraCopiaPrestata </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneutente_1_1_utente.html">Utente</a></td>          <td class="paramname"><span class="paramname"><em>noleggiatore</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>prestato</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registra una copia di un libro come prestata ad un utente. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">noleggiatore</td><td><a class="el" href="classgestioneutente_1_1_utente.html" title="Classe che modella un utente del sistema di gestione biblioteca.">Utente</a> che prende in prestito il libro. </td></tr>
+    <tr><td class="paramname">prestato</td><td>Copia del libro prestata. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2cf59ec80eed2f34fee7d252035791bd" name="a2cf59ec80eed2f34fee7d252035791bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf59ec80eed2f34fee7d252035791bd">&#9670;&#160;</a></span>registraCopiaRestituita()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneutente.visualizzazione.ControlloreVisUtenti.registraCopiaRestituita </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneutente_1_1_utente.html">Utente</a></td>          <td class="paramname"><span class="paramname"><em>noleggiatore</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>prestato</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registra una copia di un libro come restituita da un utente. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">noleggiatore</td><td><a class="el" href="classgestioneutente_1_1_utente.html" title="Classe che modella un utente del sistema di gestione biblioteca.">Utente</a> che restituisce il libro. </td></tr>
+    <tr><td class="paramname">prestato</td><td>Copia del libro restituita. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab28fe293e1430b1f732aa39c58f2dcee" name="ab28fe293e1430b1f732aa39c58f2dcee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab28fe293e1430b1f732aa39c58f2dcee">&#9670;&#160;</a></span>setControlloreRegistrazionePrestiti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneutente.visualizzazione.ControlloreVisUtenti.setControlloreRegistrazionePrestiti </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito.html">ControlloreRegPrestito</a></td>          <td class="paramname"><span class="paramname"><em>crp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controller di registrazione prestiti. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">crp</td><td>Controller di registrazione prestiti. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a258a9245997e3cb2f35aed771e48d3cf" name="a258a9245997e3cb2f35aed771e48d3cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a258a9245997e3cb2f35aed771e48d3cf">&#9670;&#160;</a></span>setControlloreVisualizzazionePrestiti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneutente.visualizzazione.ControlloreVisUtenti.setControlloreVisualizzazionePrestiti </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.html">ControlloreVisPrestiti</a></td>          <td class="paramname"><span class="paramname"><em>cvp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controller di visualizzazione prestiti. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cvp</td><td>Controller di visualizzazione prestiti. </td></tr>
   </table>
   </dd>
 </dl>
