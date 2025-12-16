@@ -2,9 +2,10 @@ package gestioneprestito.eccezioni;
 
 /**
  * @class PrestitoDataScadenzaException
- * @brief Eccezione lanciata quando la data di scadenza di un prestito non è valida
+ * @brief Eccezione lanciata quando la data di scadenza di un prestito non è
+ *        valida
  */
-public class PrestitoDataScadenzaException extends PrestitoInvalidoException{
+public class PrestitoDataScadenzaException extends PrestitoInvalidoException {
 
     /**
      * @brief Costruttore di default

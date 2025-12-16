@@ -5,7 +5,7 @@ package gestionelibro.eccezioni;
  * @brief Classe che rappresenta l'eccezione lanciata quando un libro
  *        non rispetta i vincoli imposti.
  */
-public class LibroInvalidoException extends Exception{
+public class LibroInvalidoException extends Exception {
 
     /**
      * @brief Costruttore di default della classe LibroInvalidoException.

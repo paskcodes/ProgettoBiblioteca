@@ -98,18 +98,57 @@ $(function(){initNavTree('classgestioneprestito_1_1visualizzazione_1_1_controllo
 Diagramma delle classi per gestioneprestito.visualizzazione.ControlloreVisPrestiti</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.png" alt=""/>
- </div></div>
+  <img src="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.png" usemap="#gestioneprestito_2Evisualizzazione_2EControlloreVisPrestiti_map" alt=""/>
+  <map id="gestioneprestito_2Evisualizzazione_2EControlloreVisPrestiti_map" name="gestioneprestito_2Evisualizzazione_2EControlloreVisPrestiti_map">
+<area href="interfacegestionearchivio_1_1_archiviabile.html" title="Interfaccia che definisce i metodi comuni per la gestione di un archivio." alt="gestionearchivio.Archiviabile&lt; T, E extends Exception &gt;" shape="rect" coords="405,0,800,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
 <tr class="memitem:afa5a9ce0aa1b3873fce5a9c856cbf916" id="r_afa5a9ce0aa1b3873fce5a9c856cbf916"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa5a9ce0aa1b3873fce5a9c856cbf916">initialize</a> (URL url, ResourceBundle rb)</td></tr>
 <tr class="memdesc:afa5a9ce0aa1b3873fce5a9c856cbf916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il controller della schermata di visualizzazione dei prestiti.  <br /></td></tr>
+<tr class="memitem:a4a11fa1469d160962e8b5663b9794532" id="r_a4a11fa1469d160962e8b5663b9794532"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a11fa1469d160962e8b5663b9794532">inserisciNuovoElemento</a> (<a class="el" href="classgestioneprestito_1_1_prestito.html">Prestito</a> nuovoElemento)  throws <a class="el" href="classgestioneprestito_1_1eccezioni_1_1_prestito_duplicato_exception.html">PrestitoDuplicatoException</a> </td></tr>
+<tr class="memdesc:a4a11fa1469d160962e8b5663b9794532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserisce un nuovo prestito nell'archivio.  <br /></td></tr>
+<tr class="memitem:affea8a71393e528441e736730571a6a9" id="r_affea8a71393e528441e736730571a6a9"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affea8a71393e528441e736730571a6a9">isElementoPresente</a> (<a class="el" href="classgestioneprestito_1_1_prestito.html">Prestito</a> daCercare)</td></tr>
+<tr class="memdesc:affea8a71393e528441e736730571a6a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un prestito è già presente nell'archivio.  <br /></td></tr>
+<tr class="memitem:a3fd079706f0d27853f5759d4ff7eb9de" id="r_a3fd079706f0d27853f5759d4ff7eb9de"><td class="memItemLeft" align="right" valign="top">ObservableList&lt; <a class="el" href="classgestioneprestito_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fd079706f0d27853f5759d4ff7eb9de">getListaElementi</a> ()</td></tr>
+<tr class="memdesc:a3fd079706f0d27853f5759d4ff7eb9de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la lista dei prestiti nell'archivio.  <br /></td></tr>
+<tr class="memitem:a9b771bf3ae7500cbc80f6f6cf4dcc0c9" id="r_a9b771bf3ae7500cbc80f6f6cf4dcc0c9"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b771bf3ae7500cbc80f6f6cf4dcc0c9">inPrestitoAttivoUtente</a> (<a class="el" href="classgestioneutente_1_1_utente.html">Utente</a> indagato)  throws <a class="el" href="classgestioneutente_1_1eccezioni_1_1_utente_prestito_attivo_exception.html">UtentePrestitoAttivoException</a> </td></tr>
+<tr class="memdesc:a9b771bf3ae7500cbc80f6f6cf4dcc0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un utente ha prestiti attivi.  <br /></td></tr>
+<tr class="memitem:a6d5ac75f25b4fb86d11fa7f02bc4b3fa" id="r_a6d5ac75f25b4fb86d11fa7f02bc4b3fa"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d5ac75f25b4fb86d11fa7f02bc4b3fa">inPrestitoAttivoLibro</a> (<a class="el" href="classgestionelibro_1_1_libro.html">Libro</a> indagato)  throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_prestito_attivo_exception.html">LibroPrestitoAttivoException</a> </td></tr>
+<tr class="memdesc:a6d5ac75f25b4fb86d11fa7f02bc4b3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se un libro è attualmente in prestito.  <br /></td></tr>
+<tr class="memitem:a9b0c8aae5dde8242214472405ba1461d" id="r_a9b0c8aae5dde8242214472405ba1461d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b0c8aae5dde8242214472405ba1461d">setControlloreVisUtenti</a> (<a class="el" href="classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html">ControlloreVisUtenti</a> cvu)</td></tr>
+<tr class="memdesc:a9b0c8aae5dde8242214472405ba1461d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controller di visualizzazione utenti.  <br /></td></tr>
+<tr class="memitem:aa8c254e8774a8095b6ebc83a4ef0b14f" id="r_aa8c254e8774a8095b6ebc83a4ef0b14f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8c254e8774a8095b6ebc83a4ef0b14f">setControlloreVisLibri</a> (<a class="el" href="classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html">ControlloreVisLibri</a> cvl)</td></tr>
+<tr class="memdesc:aa8c254e8774a8095b6ebc83a4ef0b14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controller di visualizzazione libri.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Controller della schermata di visualizzazione dei prestiti. </p>
 <p>Gestisce tabella, filtri e azioni di estinzione prestiti nella UI. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni membro</h2>
+<a id="a3fd079706f0d27853f5759d4ff7eb9de" name="a3fd079706f0d27853f5759d4ff7eb9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fd079706f0d27853f5759d4ff7eb9de">&#9670;&#160;</a></span>getListaElementi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ObservableList&lt; <a class="el" href="classgestioneprestito_1_1_prestito.html">Prestito</a> &gt; gestioneprestito.visualizzazione.ControlloreVisPrestiti.getListaElementi </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce la lista dei prestiti nell'archivio. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>La lista dei prestiti. </dd></dl>
+
+<p>Implementa <a class="el" href="interfacegestionearchivio_1_1_archiviabile.html">gestionearchivio.Archiviabile&lt; T, E extends Exception &gt;</a>.</p>
+
+</div>
+</div>
 <a id="afa5a9ce0aa1b3873fce5a9c856cbf916" name="afa5a9ce0aa1b3873fce5a9c856cbf916"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa5a9ce0aa1b3873fce5a9c856cbf916">&#9670;&#160;</a></span>initialize()</h2>
 
@@ -130,10 +169,180 @@ Membri pubblici</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inizializza il controller della schermata di visualizzazione dei prestiti. </p>
-<dl class="params"><dt>Parametri</dt><dd>
+<p>Configura le colonne della tabella, il filtro di ricerca e il timer di aggiornamento. Colora le righe in base allo stato del prestito. </p><dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">url</td><td>L'URL di riferimento </td></tr>
     <tr><td class="paramname">rb</td><td>Il ResourceBundle di riferimento </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6d5ac75f25b4fb86d11fa7f02bc4b3fa" name="a6d5ac75f25b4fb86d11fa7f02bc4b3fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d5ac75f25b4fb86d11fa7f02bc4b3fa">&#9670;&#160;</a></span>inPrestitoAttivoLibro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean gestioneprestito.visualizzazione.ControlloreVisPrestiti.inPrestitoAttivoLibro </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>indagato</em></span></td><td>)</td>
+          <td> throws <a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_prestito_attivo_exception.html">LibroPrestitoAttivoException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica se un libro è attualmente in prestito. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indagato</td><td>Il libro da verificare. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>true se il libro è in prestito, false altrimenti. </dd></dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgestionelibro_1_1eccezioni_1_1_libro_prestito_attivo_exception.html" title="Eccezione lanciata quando si tenta di eliminare un libro che ha prestiti attivi.">LibroPrestitoAttivoException</a></td><td>Se il libro, attualmente in prestito, non ha più copie disponibili. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9b771bf3ae7500cbc80f6f6cf4dcc0c9" name="a9b771bf3ae7500cbc80f6f6cf4dcc0c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b771bf3ae7500cbc80f6f6cf4dcc0c9">&#9670;&#160;</a></span>inPrestitoAttivoUtente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean gestioneprestito.visualizzazione.ControlloreVisPrestiti.inPrestitoAttivoUtente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneutente_1_1_utente.html">Utente</a></td>          <td class="paramname"><span class="paramname"><em>indagato</em></span></td><td>)</td>
+          <td> throws <a class="el" href="classgestioneutente_1_1eccezioni_1_1_utente_prestito_attivo_exception.html">UtentePrestitoAttivoException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica se un utente ha prestiti attivi. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indagato</td><td>L'utente da verificare. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>true se l'utente ha prestiti attivi, false altrimenti. </dd></dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgestioneutente_1_1eccezioni_1_1_utente_prestito_attivo_exception.html" title="Eccezione lanciata quando si tenta di eliminare un utente che ha prestiti attivi.">UtentePrestitoAttivoException</a></td><td>Se l'utente ha troppi prestiti attivi. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a11fa1469d160962e8b5663b9794532" name="a4a11fa1469d160962e8b5663b9794532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a11fa1469d160962e8b5663b9794532">&#9670;&#160;</a></span>inserisciNuovoElemento()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneprestito.visualizzazione.ControlloreVisPrestiti.inserisciNuovoElemento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneprestito_1_1_prestito.html">Prestito</a></td>          <td class="paramname"><span class="paramname"><em>nuovoElemento</em></span></td><td>)</td>
+          <td> throws <a class="el" href="classgestioneprestito_1_1eccezioni_1_1_prestito_duplicato_exception.html">PrestitoDuplicatoException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserisce un nuovo prestito nell'archivio. </p>
+<p>Aggiorna lo stato di utente e libro associati al prestito. </p><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nuovoElemento</td><td>Il prestito da inserire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgestioneprestito_1_1eccezioni_1_1_prestito_duplicato_exception.html" title="Eccezione lanciata quando si tenta di aggiungere un prestito già esistente.">PrestitoDuplicatoException</a></td><td>Se il prestito è già presente nell'archivio. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="affea8a71393e528441e736730571a6a9" name="affea8a71393e528441e736730571a6a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affea8a71393e528441e736730571a6a9">&#9670;&#160;</a></span>isElementoPresente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean gestioneprestito.visualizzazione.ControlloreVisPrestiti.isElementoPresente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneprestito_1_1_prestito.html">Prestito</a></td>          <td class="paramname"><span class="paramname"><em>daCercare</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica se un prestito è già presente nell'archivio. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">daCercare</td><td>Il prestito da cercare. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa8c254e8774a8095b6ebc83a4ef0b14f" name="aa8c254e8774a8095b6ebc83a4ef0b14f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c254e8774a8095b6ebc83a4ef0b14f">&#9670;&#160;</a></span>setControlloreVisLibri()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneprestito.visualizzazione.ControlloreVisPrestiti.setControlloreVisLibri </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html">ControlloreVisLibri</a></td>          <td class="paramname"><span class="paramname"><em>cvl</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controller di visualizzazione libri. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cvl</td><td>Il controller di visualizzazione libri </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9b0c8aae5dde8242214472405ba1461d" name="a9b0c8aae5dde8242214472405ba1461d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b0c8aae5dde8242214472405ba1461d">&#9670;&#160;</a></span>setControlloreVisUtenti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneprestito.visualizzazione.ControlloreVisPrestiti.setControlloreVisUtenti </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html">ControlloreVisUtenti</a></td>          <td class="paramname"><span class="paramname"><em>cvu</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controller di visualizzazione utenti. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cvu</td><td>Il controller di visualizzazione utenti </td></tr>
   </table>
   </dd>
 </dl>

@@ -2,9 +2,10 @@ package gestioneprestito.eccezioni;
 
 /**
  * @class PrestitoDuplicatoException
- * @brief Eccezione lanciata quando si tenta di aggiungere un prestito già esistente.
+ * @brief Eccezione lanciata quando si tenta di aggiungere un prestito già
+ *        esistente.
  */
-public class PrestitoDuplicatoException extends PrestitoInvalidoException{
+public class PrestitoDuplicatoException extends PrestitoInvalidoException {
 
     /**
      * @brief Costruttore di default

@@ -15,7 +15,7 @@
         <URL value="@pannllovisutentifxml.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="tabellaUtenti" editable="true" layoutX="179.0" layoutY="122.0" onMouseClicked="#selezionaUtente" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <TableView fx:id="tabellaUtenti" editable="true" layoutX="179.0" layoutY="122.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columns>
           <TableColumn fx:id="colonnaCognomeTabellaUtenti" onEditCommit="#aggiornaCognomeUtenti" prefWidth="75.0" text="Cognome" />
           <TableColumn fx:id="colonnaNomeTabellaUtenti" onEditCommit="#aggiornaNomeUtenti" prefWidth="75.0" text="Nome" />

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestionelibro;
 
 import gestionelibro.eccezioni.LibroCampoVuotoException;
@@ -29,58 +24,80 @@ public class Libro implements Comparable<Libro>, Serializable {
 
     /**
      * @brief Costruttore della classe Libro
+     * @details Crea un nuovo libro con i parametri forniti, verificando la validità
+     *          di ciascun attributo.
      * @param titolo            Il titolo del libro
      * @param autori            Gli autori del libro
      * @param dataPubblicazione La data di pubblicazione del libro
      * @param ISBN              L'ISBN del libro
      * @param copie             Il numero di copie disponibili del libro
      */
-    public Libro(String titolo, String autori, LocalDate dataPubblicazione, String ISBN, int copie) throws LibroDataPubblicazioneException, LibroNumeroCopieException, LibroCampoVuotoException{
-        if(titolo.equals("")) throw new LibroCampoVuotoException();
+    public Libro(String titolo, String autori, LocalDate dataPubblicazione, String ISBN, int copie)
+            throws LibroDataPubblicazioneException, LibroNumeroCopieException, LibroCampoVuotoException {
+        if (titolo == null || titolo.equals(""))
+            throw new LibroCampoVuotoException();
         this.titolo = titolo;
-        if(autori.equals("")) throw new LibroCampoVuotoException();
+        if (autori == null || autori.equals(""))
+            throw new LibroCampoVuotoException();
         this.autori = autori;
-        if(!isDataPubblicazioneValida(dataPubblicazione)) throw new LibroDataPubblicazioneException();
+        if (!isDataPubblicazioneValida(dataPubblicazione))
+            throw new LibroDataPubblicazioneException();
         this.dataPubblicazione = dataPubblicazione;
-        if(ISBN.equals("")) throw new LibroCampoVuotoException();
+        if (ISBN == null || ISBN.equals(""))
+            throw new LibroCampoVuotoException();
         this.ISBN = ISBN;
-        if(!isNumCopieValido(copie)) throw new LibroNumeroCopieException();
+        if (!isNumCopieValido(copie))
+            throw new LibroNumeroCopieException();
         this.copie = copie;
     }
 
     /**
      * @brief Imposta il titolo del libro
+     * @details Verifica che il titolo non sia vuoto prima di impostarlo.
      * @param titolo Il nuovo titolo del libro
+     * @throws LibroCampoVuotoException Se il titolo è vuoto
      */
-    public void setTitolo(String titolo) throws LibroCampoVuotoException{
-        if(titolo.equals("")) throw new LibroCampoVuotoException();
+    public void setTitolo(String titolo) throws LibroCampoVuotoException {
+        if (titolo == null || titolo.equals(""))
+            throw new LibroCampoVuotoException();
         this.titolo = titolo;
     }
 
     /**
      * @brief Imposta gli autori del libro
+     * @details Verifica che gli autori non siano vuoti prima di impostarli.
      * @param autori I nuovi autori del libro
+     * @throws LibroCampoVuotoException Se gli autori sono vuoti
      */
-    public void setAutori(String autori) throws LibroCampoVuotoException{
-        if(autori.equals("")) throw new LibroCampoVuotoException();
+    public void setAutori(String autori) throws LibroCampoVuotoException {
+        if (autori == null || autori.equals(""))
+            throw new LibroCampoVuotoException();
         this.autori = autori;
     }
 
     /**
      * @brief Imposta la data di pubblicazione del libro
+     * @details Verifica che la data di pubblicazione sia valida prima di
+     *          impostarla.
      * @param dataPubblicazione La nuova data di pubblicazione del libro
+     * @throws LibroDataPubblicazioneException Se la data di pubblicazione non è
+     *                                         valida
      */
     public void setDataPubblicazione(LocalDate dataPubblicazione) throws LibroDataPubblicazioneException {
-        if (!isDataPubblicazioneValida(dataPubblicazione)) throw new LibroDataPubblicazioneException();
+        if (!isDataPubblicazioneValida(dataPubblicazione))
+            throw new LibroDataPubblicazioneException();
         this.dataPubblicazione = dataPubblicazione;
     }
 
     /**
      * @brief Imposta il numero di copie disponibili del libro
+     * @details Verifica che il numero di copie sia valido prima di impostarlo.
      * @param copie Il nuovo numero di copie disponibili del libro
+     * @throws LibroNumeroCopieException Se il numero di copie non è valido
      */
     public void setCopie(int copie) throws LibroNumeroCopieException {
-        if (!isNumCopieValido(copie)) throw new LibroNumeroCopieException();
+        if (!isNumCopieValido(copie))
+            throw new LibroNumeroCopieException();
         this.copie = copie;
     }
 
@@ -150,14 +167,20 @@ public class Libro implements Comparable<Libro>, Serializable {
         return this.copie >= 1;
     }
 
+    /**
+     * @brief Riduce il numero di copie disponibili del libro di una unità
+     */
     public void prendiCopia() {
         copie--;
     }
 
+    /**
+     * @brief Aumenta il numero di copie disponibili del libro di una unità
+     */
     public void restituisciCopia() {
         copie++;
     }
-    
+
     /**
      * @brief Confronta due oggetti Libro
      * @param o L'oggetto da confrontare
@@ -165,8 +188,10 @@ public class Libro implements Comparable<Libro>, Serializable {
      */
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        if (this == o) return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (this == o)
+            return true;
         Libro libro = (Libro) o;
         return this.ISBN.equals(libro.ISBN);
     }

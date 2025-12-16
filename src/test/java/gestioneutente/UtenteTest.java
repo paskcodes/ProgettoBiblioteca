@@ -3,13 +3,12 @@ package gestioneutente;
 
 import gestionelibro.Libro;
 import gestionelibro.eccezioni.LibroInvalidoException;
-import gestioneutente.Utente;
 import gestioneutente.eccezioni.UtenteInvalidoException;
-import gestioneutente.eccezioni.UtenteNomeCognomeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -78,7 +77,6 @@ public class UtenteTest {
         
     }
     
-    
     @Test
     public void testSetNome() {
         System.out.println("setNome");
@@ -91,29 +89,29 @@ public class UtenteTest {
         }
         
         try{
-            Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u2.setNome("");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setNome("");
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
         
         try{
-            Utente u3 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u3.setNome("123");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setNome("123");
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
         
         try{
-            Utente u4 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u4.setNome("mario gerardo");
-            assertTrue(u4.getNome().equals("mario gerardo"));
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setNome("mario gerardo");
+            assertTrue(u1.getNome().equals("mario gerardo"));
         }catch(UtenteInvalidoException ex){
         }
         
         try{
-            Utente u5 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u5.setNome(" ");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setNome(" ");
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
@@ -130,29 +128,29 @@ public class UtenteTest {
         }
 
         try {
-            Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u2.setCognome("");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setCognome("");
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
 
         try {
-            Utente u3 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u3.setCognome("123");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setCognome("123");
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
 
         try {
-            Utente u4 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u4.setCognome("lionti lorito");
-            assertTrue(u4.getCognome().equals("lionti lorito"));
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setCognome("lionti lorito");
+            assertTrue(u1.getCognome().equals("lionti lorito"));
         } catch (UtenteInvalidoException ex) {
         }
 
         try {
-            Utente u5 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u5.setCognome(" ");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setCognome(" ");
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -171,22 +169,22 @@ public class UtenteTest {
         }
         
         try {
-            Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u2.setMail("");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setMail("");
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
         
         try {
-            Utente u3 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u3.setMail(" ");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setMail(" ");
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
         
         try {
-            Utente u4 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            u4.setMail("123@studenti.unisa.it");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            u1.setMail("123@studenti.unisa.it");
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -230,8 +228,10 @@ public class UtenteTest {
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            List<Libro> lista = new ArrayList<>();
+            lista.add(l1);
             u1.prendiCopia(l1);
-            assertTrue(u1.getLibriInPrestito().contains(l1));
+            assertTrue(u1.getLibriInPrestito().equals(lista));
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
         }
     }
@@ -250,40 +250,276 @@ public class UtenteTest {
     @Test
     public void testIsNomeCognomeValido(){
         
-        try {
-            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            assertTrue(u1.isNomeCognomeValido("Mario"));
-            assertFalse(u1.isNomeCognomeValido("2342342342523"));
-            assertFalse(u1.isNomeCognomeValido("}{{}][][][]"));
-        } catch (UtenteInvalidoException ex) {
-            
+        try{
+            Utente u1 = new Utente("antonio", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u1.getNome().equals("antonio"));
+        }catch(UtenteInvalidoException ex){
         }
         
+        try{
+            Utente u1 = new Utente("", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+        }catch(UtenteInvalidoException ex){
+            assertTrue(true);
+        }
+        
+        try{
+            Utente u1 = new Utente("123", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+        }catch(UtenteInvalidoException ex){
+            assertTrue(true);
+        }
+        
+        try{
+            Utente u1 = new Utente("mario gerardo", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u1.getNome().equals("mario gerardo"));
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente(" ", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+        }catch(UtenteInvalidoException ex){
+            assertTrue(true);
+        }
     }
     
     @Test
     public void testIsMailValida() {
         try {
-            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            assertTrue(u1.isMailValida("mario.rossi@studenti.unisa.it"));
-        } catch (UtenteInvalidoException ex) {
-        }
-        
-        try {
-            Utente u2 = new Utente("Mario", "Rossi", "[][]]][@studenti.unisa.it", "123456");
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi1@studenti.unisa.it", "123456");
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
         
         try {
-            Utente u3 = new Utente("Mario", "Rossi", "123@studenti.unisa.it", "123456");
+            Utente u1 = new Utente("Mario", "Rossi", "", "123456");
         } catch (UtenteInvalidoException ex) {
+            assertTrue(true);
+        }
+        
+        try {
+            Utente u1 = new Utente("Mario", "Rossi", " ", "123456");
+        } catch (UtenteInvalidoException ex) {
+            assertTrue(true);
+        }
+        
+        try {
+            Utente u1 = new Utente("Mario", "Rossi", "123@studenti.unisa.it", "123456");
+        } catch (UtenteInvalidoException ex) {
+            assertTrue(true);
+        }
+        
+        try {
+            Utente u1 = new Utente("Mario", "Rossi", "@studenti.unisa.it", "123456");
+        } catch (UtenteInvalidoException ex) {
+            assertTrue(true);
+        }
+    }
+    
+    @Test
+    private void testIsMatricolaValida(String daValidare) {
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertEquals(u1.getMatricola(), "123456");
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "");
+        }catch(UtenteInvalidoException ex){
+            assertTrue(true);
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", " ");
+        }catch(UtenteInvalidoException ex){
+            assertTrue(true);
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "dfewdfs][?><,.");
+        }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
         
     }
-    /**
-     * Test of setCognome method, of class Utente.
-     */
 
+    @Test
+    public void testIsLimitePrestitiRaggiunto() {
+        try {
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            u1.prendiCopia(l1);
+            u1.prendiCopia(l1);
+            u1.prendiCopia(l1);
+            assertTrue(u1.isLimitePrestitiRaggiunto());
+        } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+        }
+        
+        try {
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            u1.prendiCopia(l1);
+            assertFalse(u1.isLimitePrestitiRaggiunto());
+        } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+        }
+    }
+    
+    @Test
+    public void testPrendiCopia() {
+
+        try {
+        Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+        Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+        u1.prendiCopia(l1);
+        assertTrue(u1.getLibriInPrestito().contains(l1));
+        } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+        }
+        
+        try {
+         Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+         Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+         u1.prendiCopia(l1);
+         u1.prendiCopia(l1);
+         u1.prendiCopia(l1);
+         assertEquals(u1.getLibriInPrestito().size(), 3);
+         assertTrue(u1.isLimitePrestitiRaggiunto());
+        } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+        }
+        
+    }
+
+    @Test
+    public void testRestituisciCopia() {
+        //libriInPrestito.remove(copia);
+        //prestitiAttivi--;
+        
+        try {
+        Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+        Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+        u1.prendiCopia(l1);
+        u1.restituisciCopia(l1);
+        assertFalse(u1.getLibriInPrestito().contains(l1));
+        } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+        }
+        
+        try {
+         Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+         Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+         u1.prendiCopia(l1);
+         u1.prendiCopia(l1);
+         u1.prendiCopia(l1);
+         u1.restituisciCopia(l1);
+         assertEquals(u1.getLibriInPrestito().size(), 2);
+         assertFalse(u1.isLimitePrestitiRaggiunto());
+        } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+        }
+        
+    }
+
+    @Test
+    public void testEquals() {
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertFalse(u1.equals(null));
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            assertFalse(u1.equals(l1));
+        }catch(UtenteInvalidoException | LibroInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u1.equals(u1));
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Lorenzo", "Malesani", "cabrizio@studenti.unisa.it", "123456");
+            assertTrue(u1.equals(u2));
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "789456");
+            assertFalse(u1.equals(u2));
+        }catch(UtenteInvalidoException ex){
+        }
+
+
+    }
+
+    @Test
+    public void testHashCode() {
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u1.equals(u2));
+            assertEquals(u1.hashCode(), u2.hashCode());
+        }catch(UtenteInvalidoException ex){
+        }
+
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Luigi", "Bianchi", "luigi.bianchi@studenti.unisa.it", "654321");
+            assertFalse(u1.equals(u2));
+            assertTrue(u1.hashCode() != u2.hashCode());
+        }catch(UtenteInvalidoException ex){
+        }
+    }
+
+    @Test
+    public void testCompareTo() {
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertEquals(u1.compareTo(u2), 0);
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "asd@studenti.unisa.it", "3453452");
+            Utente u2 = new Utente("Mario", "Rossi", "fre@studenti.unisa.it", "2363464");
+            assertEquals(u1.compareTo(u2), 0);
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Mario", "Rossini", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u2.compareTo(u1) > 0);
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Mario", "Sossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u2.compareTo(u1) > 0);
+        }catch(UtenteInvalidoException ex){
+        }
+        
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Utente u2 = new Utente("Mario", "Sossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u1.compareTo(u2) < 0);
+        }catch(UtenteInvalidoException ex){
+        }
+        
+    }
+
+    @Test
+    public void testToString() {
+        try{
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            String matricola1 = "123456";
+            String matricola2 = u1.toString();
+            assertTrue(matricola1.equals(matricola2));
+        }catch(UtenteInvalidoException ex){
+        }
+    }
 }

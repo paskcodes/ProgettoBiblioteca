@@ -3,13 +3,13 @@ package gestioneprestito.eccezioni;
 /**
  * @class PrestitoCopieEsauriteException
  * @brief Eccezione per tentativi di prestito senza copie disponibili.
- * @details Lanciata quando si richiede un prestito ma tutte le copie del libro risultano esaurite.
- * @author Antonio Franco
+ * @details Lanciata quando si richiede un prestito ma tutte le copie del libro
+ *          risultano esaurite.
  */
-public class PrestitoCopieEsauriteException extends PrestitoInvalidoException{
+public class PrestitoCopieEsauriteException extends PrestitoInvalidoException {
 
     /**
-     * @brief Crea una nuova eccezione senza messaggio di dettaglio.
+     * @brief Crea una nuova eccezione con messaggio di default.
      */
     public PrestitoCopieEsauriteException() {
         super("Il libro non ha più nessuna copia disponibile per un prestito!");

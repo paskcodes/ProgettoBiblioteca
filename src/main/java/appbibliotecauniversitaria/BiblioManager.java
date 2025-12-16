@@ -8,14 +8,15 @@ import javafx.stage.Stage;
 
 /**
  * @class BiblioManager
- * * @brief Classe principale dell'applicazione BiblioManager.
- * * Questa classe estende Application e gestisce l'avvio dell'applicazione JavaFX.
- * * @details La classe BiblioManager carica il file FXML che definisce l'interfaccia utente
- * * e imposta la scena principale dell'applicazione.
+ * @brief Classe principale dell'applicazione BiblioManager.
+ *        Questa classe estende Application e gestisce l'avvio
+ *        dell'applicazione JavaFX.
+ * @details La classe BiblioManager carica il file FXML che definisce
+ *          l'interfaccia utente e imposta la scena principale dell'applicazione.
  */
 
 public class BiblioManager extends Application {
-    
+
     /**
      * @brief Avvia l'applicazione JavaFX caricando la vista principale.
      * @param stage Stage principale fornito dal runtime JavaFX.
@@ -24,9 +25,9 @@ public class BiblioManager extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("VistaFXML.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+
         stage.setTitle("BiblioManager");
         stage.setScene(scene);
         stage.setWidth(850);
@@ -42,5 +43,5 @@ public class BiblioManager extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

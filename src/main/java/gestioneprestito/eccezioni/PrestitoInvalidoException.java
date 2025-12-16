@@ -4,7 +4,7 @@ package gestioneprestito.eccezioni;
  * @class PrestitoInvalidoException
  * @brief Eccezione lanciata quando si tenta di creare un prestito non valido
  */
-public class PrestitoInvalidoException extends Exception{
+public class PrestitoInvalidoException extends Exception {
 
     /**
      * @brief Costruttore di default

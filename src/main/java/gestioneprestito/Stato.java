@@ -7,8 +7,8 @@ package gestioneprestito;
 public enum Stato {
 
     /** @brief Prestito in corso e regolare */
-    REGOLARE, 
-    
+    REGOLARE,
+
     /** @brief Prestito scaduto */
     SCADUTO
 }

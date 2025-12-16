@@ -94,45 +94,88 @@ $(function(){initNavTree('classgestioneprestito_1_1registrazione_1_1_controllore
 
 <p>Controller della schermata di registrazione di un prestito.  
  <a href="#details">Continua...</a></p>
-<div class="dynheader">
-Diagramma delle classi per gestioneprestito.registrazione.ControlloreRegPrestito</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classgestioneprestito_1_1registrazione_1_1_controllore_reg_prestito.png" alt=""/>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
-<tr class="memitem:a490ae77f28633c8a8c1f10060ac77f96" id="r_a490ae77f28633c8a8c1f10060ac77f96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a490ae77f28633c8a8c1f10060ac77f96">initialize</a> (URL url, ResourceBundle rb)</td></tr>
-<tr class="memdesc:a490ae77f28633c8a8c1f10060ac77f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il controller della schermata di registrazione di un prestito.  <br /></td></tr>
+<tr class="memitem:a2429dabe54872e699971aa7ae76f8d6b" id="r_a2429dabe54872e699971aa7ae76f8d6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2429dabe54872e699971aa7ae76f8d6b">setControlloreVisualizzazione</a> (<a class="el" href="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.html">ControlloreVisPrestiti</a> cvp)</td></tr>
+<tr class="memdesc:a2429dabe54872e699971aa7ae76f8d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controller di visualizzazione prestiti.  <br /></td></tr>
+<tr class="memitem:a173bf12531352bba133a01f07385c33c" id="r_a173bf12531352bba133a01f07385c33c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a173bf12531352bba133a01f07385c33c">setControlloreVisUtenti</a> (<a class="el" href="classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html">ControlloreVisUtenti</a> cvu)</td></tr>
+<tr class="memdesc:a173bf12531352bba133a01f07385c33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controller di visualizzazione utenti.  <br /></td></tr>
+<tr class="memitem:a862b25b8b556a99dc0d1fb8990ee5021" id="r_a862b25b8b556a99dc0d1fb8990ee5021"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a862b25b8b556a99dc0d1fb8990ee5021">setControlloreVisLibri</a> (<a class="el" href="classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html">ControlloreVisLibri</a> cvl)</td></tr>
+<tr class="memdesc:a862b25b8b556a99dc0d1fb8990ee5021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il controller di visualizzazione libri.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Controller della schermata di registrazione di un prestito. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni membro</h2>
-<a id="a490ae77f28633c8a8c1f10060ac77f96" name="a490ae77f28633c8a8c1f10060ac77f96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a490ae77f28633c8a8c1f10060ac77f96">&#9670;&#160;</a></span>initialize()</h2>
+<a id="a862b25b8b556a99dc0d1fb8990ee5021" name="a862b25b8b556a99dc0d1fb8990ee5021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a862b25b8b556a99dc0d1fb8990ee5021">&#9670;&#160;</a></span>setControlloreVisLibri()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gestioneprestito.registrazione.ControlloreRegPrestito.initialize </td>
+          <td class="memname">void gestioneprestito.registrazione.ControlloreRegPrestito.setControlloreVisLibri </td>
           <td>(</td>
-          <td class="paramtype">URL</td>          <td class="paramname"><span class="paramname"><em>url</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="classgestionelibro_1_1visualizzazione_1_1_controllore_vis_libri.html">ControlloreVisLibri</a></td>          <td class="paramname"><span class="paramname"><em>cvl</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">ResourceBundle</td>          <td class="paramname"><span class="paramname"><em>rb</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inizializza il controller della schermata di registrazione di un prestito. </p>
+<p>Imposta il controller di visualizzazione libri. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">url</td><td>L'URL della risorsa </td></tr>
-    <tr><td class="paramname">rb</td><td>Il ResourceBundle </td></tr>
+    <tr><td class="paramname">cvl</td><td>Controller di visualizzazione libri. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2429dabe54872e699971aa7ae76f8d6b" name="a2429dabe54872e699971aa7ae76f8d6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2429dabe54872e699971aa7ae76f8d6b">&#9670;&#160;</a></span>setControlloreVisualizzazione()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneprestito.registrazione.ControlloreRegPrestito.setControlloreVisualizzazione </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneprestito_1_1visualizzazione_1_1_controllore_vis_prestiti.html">ControlloreVisPrestiti</a></td>          <td class="paramname"><span class="paramname"><em>cvp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controller di visualizzazione prestiti. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cvp</td><td>Controller di visualizzazione prestiti. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a173bf12531352bba133a01f07385c33c" name="a173bf12531352bba133a01f07385c33c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a173bf12531352bba133a01f07385c33c">&#9670;&#160;</a></span>setControlloreVisUtenti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestioneprestito.registrazione.ControlloreRegPrestito.setControlloreVisUtenti </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgestioneutente_1_1visualizzazione_1_1_controllore_vis_utenti.html">ControlloreVisUtenti</a></td>          <td class="paramname"><span class="paramname"><em>cvu</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imposta il controller di visualizzazione utenti. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cvu</td><td>Controller di visualizzazione utenti. </td></tr>
   </table>
   </dd>
 </dl>

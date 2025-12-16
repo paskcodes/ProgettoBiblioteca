@@ -2,9 +2,10 @@ package gestionelibro.eccezioni;
 
 /**
  * @class LibroDuplicatoException
- * @brief Eccezione lanciata quando si tenta di aggiungere un libro che gia' esiste nella collezione.
+ * @brief Eccezione lanciata quando si tenta di aggiungere un libro che gia'
+ *        esiste nella collezione.
  */
-public class LibroDuplicatoException extends LibroInvalidoException{
+public class LibroDuplicatoException extends LibroInvalidoException {
 
     /**
      * @brief Costruttore di default.
