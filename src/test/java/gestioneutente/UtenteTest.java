@@ -67,12 +67,13 @@ public class UtenteTest {
         
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(u1 != null);
             assertEquals(u1.getNome(), "Mario");
             assertEquals(u1.getCognome(), "Rossi");
             assertEquals(u1.getMail(), "mario.rossi@studenti.unisa.it");
             assertEquals(u1.getMatricola(), "123456");
         }catch(UtenteInvalidoException ex){
-            
+            assertFalse(true);
         }
         
     }
@@ -86,11 +87,13 @@ public class UtenteTest {
             u1.setNome("antonio");
             assertTrue(u1.getNome().equals("antonio"));
         }catch(UtenteInvalidoException ex){
+            assertFalse(true);
         }
         
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setNome("");
+            assertFalse(true);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
@@ -98,6 +101,7 @@ public class UtenteTest {
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setNome("123");
+            assertFalse(true);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
@@ -107,11 +111,13 @@ public class UtenteTest {
             u1.setNome("mario gerardo");
             assertTrue(u1.getNome().equals("mario gerardo"));
         }catch(UtenteInvalidoException ex){
+            assertFalse(true);
         }
         
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setNome(" ");
+            assertFalse(true);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
@@ -125,11 +131,13 @@ public class UtenteTest {
             u1.setCognome("franco");
             assertTrue(u1.getCognome().equals("franco"));
         } catch (UtenteInvalidoException ex) {
+            assertFalse(true);
         }
 
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setCognome("");
+            assertFalse(true);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -137,6 +145,7 @@ public class UtenteTest {
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setCognome("123");
+            assertFalse(true);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -146,11 +155,13 @@ public class UtenteTest {
             u1.setCognome("lionti lorito");
             assertTrue(u1.getCognome().equals("lionti lorito"));
         } catch (UtenteInvalidoException ex) {
+            assertFalse(true);
         }
 
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setCognome(" ");
+            assertFalse(true);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -163,7 +174,7 @@ public class UtenteTest {
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setMail("mario.rossi1@studenti.unisa.it");
-            assertFalse(u1.getCognome().equals("mario.rossi@studenti.unisa.it"));
+            assertFalse(u1.getMail().equals("mario.rossi@studenti.unisa.it"));
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -171,6 +182,7 @@ public class UtenteTest {
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setMail("");
+            assertFalse(true);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -178,6 +190,7 @@ public class UtenteTest {
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setMail(" ");
+            assertFalse(true);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -185,8 +198,9 @@ public class UtenteTest {
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             u1.setMail("123@studenti.unisa.it");
+            assertEquals(u1.getMail(), "123@studenti.unisa.it");
         } catch (UtenteInvalidoException ex) {
-            assertTrue(true);
+            assertTrue(false);
         }
     
     }
@@ -198,6 +212,7 @@ public class UtenteTest {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             assertEquals(u1.getNome(), "Mario");
         } catch (UtenteInvalidoException ex) {
+            assertTrue(false);
         }
         
     }
@@ -209,6 +224,7 @@ public class UtenteTest {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             assertEquals(u1.getCognome(), "Rossi");
         } catch (UtenteInvalidoException ex) {
+            assertTrue(false);
         }
         
     }
@@ -220,6 +236,7 @@ public class UtenteTest {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             assertEquals(u1.getMatricola(), "123456");
         } catch (UtenteInvalidoException ex) {
+            assertTrue(false);
         }
     }
         
@@ -233,6 +250,7 @@ public class UtenteTest {
             u1.prendiCopia(l1);
             assertTrue(u1.getLibriInPrestito().equals(lista));
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+            assertTrue(false);
         }
     }
     
@@ -243,6 +261,7 @@ public class UtenteTest {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             assertEquals(u1.getNumPrestitiAttivi(), 0);
         } catch (UtenteInvalidoException ex) {
+            assertTrue(false);
         }
         
     }
@@ -252,30 +271,35 @@ public class UtenteTest {
         
         try{
             Utente u1 = new Utente("antonio", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            assertTrue(u1.getNome().equals("antonio"));
+            assertTrue(u1.isNomeCognomeValido("antonio"));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
             Utente u1 = new Utente("", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(false);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
         
         try{
             Utente u1 = new Utente("123", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(false);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
         
         try{
             Utente u1 = new Utente("mario gerardo", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            assertTrue(u1.getNome().equals("mario gerardo"));
+            assertTrue(u1.isNomeCognomeValido("mario gerardo"));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
             Utente u1 = new Utente(" ", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            assertTrue(false);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
@@ -285,30 +309,35 @@ public class UtenteTest {
     public void testIsMailValida() {
         try {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi1@studenti.unisa.it", "123456");
+            assertTrue(u1.isMailValida("mario.rossi1@studenti.unisa.it"));
         } catch (UtenteInvalidoException ex) {
-            assertTrue(true);
+            assertTrue(false);
         }
         
         try {
             Utente u1 = new Utente("Mario", "Rossi", "", "123456");
+            assertTrue(false);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
         
         try {
             Utente u1 = new Utente("Mario", "Rossi", " ", "123456");
+            assertTrue(false);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
         
         try {
             Utente u1 = new Utente("Mario", "Rossi", "123@studenti.unisa.it", "123456");
+            assertTrue(u1.isMailValida("123@studenti.unisa.it"));
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
         
         try {
             Utente u1 = new Utente("Mario", "Rossi", "@studenti.unisa.it", "123456");
+            assertTrue(false);
         } catch (UtenteInvalidoException ex) {
             assertTrue(true);
         }
@@ -318,24 +347,28 @@ public class UtenteTest {
     private void testIsMatricolaValida(String daValidare) {
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-            assertEquals(u1.getMatricola(), "123456");
+            assertTrue(u1.isMatricolaValida("123456"));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "");
+            assertTrue(false);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
         
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", " ");
+            assertTrue(false);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
         
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "dfewdfs][?><,.");
+            assertTrue(false);
         }catch(UtenteInvalidoException ex){
             assertTrue(true);
         }
@@ -352,6 +385,7 @@ public class UtenteTest {
             u1.prendiCopia(l1);
             assertTrue(u1.isLimitePrestitiRaggiunto());
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+            assertTrue(false);
         }
         
         try {
@@ -360,6 +394,7 @@ public class UtenteTest {
             u1.prendiCopia(l1);
             assertFalse(u1.isLimitePrestitiRaggiunto());
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+            assertTrue(false);
         }
     }
     
@@ -367,22 +402,24 @@ public class UtenteTest {
     public void testPrendiCopia() {
 
         try {
-        Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-        Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
-        u1.prendiCopia(l1);
-        assertTrue(u1.getLibriInPrestito().contains(l1));
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            u1.prendiCopia(l1);
+            assertTrue(u1.getLibriInPrestito().contains(l1));
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+            assertTrue(false);
         }
         
         try {
-         Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-         Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
-         u1.prendiCopia(l1);
-         u1.prendiCopia(l1);
-         u1.prendiCopia(l1);
-         assertEquals(u1.getLibriInPrestito().size(), 3);
-         assertTrue(u1.isLimitePrestitiRaggiunto());
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            u1.prendiCopia(l1);
+            u1.prendiCopia(l1);
+            u1.prendiCopia(l1);
+            assertEquals(u1.getLibriInPrestito().size(), 3);
+            assertTrue(u1.isLimitePrestitiRaggiunto());
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+            assertTrue(false);
         }
         
     }
@@ -393,24 +430,26 @@ public class UtenteTest {
         //prestitiAttivi--;
         
         try {
-        Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-        Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
-        u1.prendiCopia(l1);
-        u1.restituisciCopia(l1);
-        assertFalse(u1.getLibriInPrestito().contains(l1));
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            u1.prendiCopia(l1);
+            u1.restituisciCopia(l1);
+            assertFalse(u1.getLibriInPrestito().contains(l1));
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+            assertTrue(false);
         }
         
         try {
-         Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
-         Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
-         u1.prendiCopia(l1);
-         u1.prendiCopia(l1);
-         u1.prendiCopia(l1);
-         u1.restituisciCopia(l1);
-         assertEquals(u1.getLibriInPrestito().size(), 2);
-         assertFalse(u1.isLimitePrestitiRaggiunto());
+            Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
+            Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
+            u1.prendiCopia(l1);
+            u1.prendiCopia(l1);
+            u1.prendiCopia(l1);
+            u1.restituisciCopia(l1);
+            assertEquals(u1.getLibriInPrestito().size(), 2);
+            assertFalse(u1.isLimitePrestitiRaggiunto());
         } catch (UtenteInvalidoException | LibroInvalidoException ex) {
+            assertTrue(false);
         }
         
     }
@@ -422,6 +461,7 @@ public class UtenteTest {
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             assertFalse(u1.equals(null));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
@@ -429,12 +469,14 @@ public class UtenteTest {
             Libro l1 = new Libro("1994", "George Orwell", LocalDate.parse("2023-12-16"), "9-123-412-4234235", 3);
             assertFalse(u1.equals(l1));
         }catch(UtenteInvalidoException | LibroInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
             Utente u1 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             assertTrue(u1.equals(u1));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
@@ -442,6 +484,7 @@ public class UtenteTest {
             Utente u2 = new Utente("Lorenzo", "Malesani", "cabrizio@studenti.unisa.it", "123456");
             assertTrue(u1.equals(u2));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
@@ -449,6 +492,7 @@ public class UtenteTest {
             Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "789456");
             assertFalse(u1.equals(u2));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
 
 
@@ -462,6 +506,7 @@ public class UtenteTest {
             assertTrue(u1.equals(u2));
             assertEquals(u1.hashCode(), u2.hashCode());
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
 
         try{
@@ -470,6 +515,7 @@ public class UtenteTest {
             assertFalse(u1.equals(u2));
             assertTrue(u1.hashCode() != u2.hashCode());
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
     }
 
@@ -480,6 +526,7 @@ public class UtenteTest {
             Utente u2 = new Utente("Mario", "Rossi", "mario.rossi@studenti.unisa.it", "123456");
             assertEquals(u1.compareTo(u2), 0);
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
@@ -487,6 +534,7 @@ public class UtenteTest {
             Utente u2 = new Utente("Mario", "Rossi", "fre@studenti.unisa.it", "2363464");
             assertEquals(u1.compareTo(u2), 0);
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
@@ -494,6 +542,7 @@ public class UtenteTest {
             Utente u2 = new Utente("Mario", "Rossini", "mario.rossi@studenti.unisa.it", "123456");
             assertTrue(u2.compareTo(u1) > 0);
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
@@ -501,6 +550,7 @@ public class UtenteTest {
             Utente u2 = new Utente("Mario", "Sossi", "mario.rossi@studenti.unisa.it", "123456");
             assertTrue(u2.compareTo(u1) > 0);
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
         try{
@@ -508,6 +558,7 @@ public class UtenteTest {
             Utente u2 = new Utente("Mario", "Sossi", "mario.rossi@studenti.unisa.it", "123456");
             assertTrue(u1.compareTo(u2) < 0);
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
         
     }
@@ -520,6 +571,7 @@ public class UtenteTest {
             String matricola2 = u1.toString();
             assertTrue(matricola1.equals(matricola2));
         }catch(UtenteInvalidoException ex){
+            assertTrue(false);
         }
     }
 }

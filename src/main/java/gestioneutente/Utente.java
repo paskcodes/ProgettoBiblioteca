@@ -138,7 +138,7 @@ public class Utente implements Comparable<Utente>, Serializable {
      * @param daValidare Stringa da validare.
      * @return true se validi, false altrimenti.
      */
-    private boolean isNomeCognomeValido(String daValidare) {
+    public boolean isNomeCognomeValido(String daValidare) {
         return (daValidare != null && Pattern.matches("^[a-zA-Z][a-zA-Z\\s]*$", daValidare));
     }
 
@@ -149,7 +149,7 @@ public class Utente implements Comparable<Utente>, Serializable {
      * @param daValidare Email da validare.
      * @return true se valida, false altrimenti.
      */
-    private boolean isMailValida(String daValidare) {
+    public boolean isMailValida(String daValidare) {
         return (daValidare != null && Pattern.matches("^[a-zA-Z0-9.]+@studenti\\.unisa\\.it$", daValidare));
     }
 
@@ -159,7 +159,7 @@ public class Utente implements Comparable<Utente>, Serializable {
      * @param daValidare Matricola da validare.
      * @return true se valida, false altrimenti.
      */
-    private boolean isMatricolaValida(String daValidare) {
+    public boolean isMatricolaValida(String daValidare) {
         return (daValidare != null && Pattern.matches("[0-9]+", daValidare));
     }
 
