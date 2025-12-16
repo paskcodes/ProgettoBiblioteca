@@ -15,7 +15,7 @@
         <URL value="@pannellovislibrifxml.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="tabellaLibri" editable="true" layoutX="179.0" layoutY="122.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <TableView fx:id="tabellaLibri" editable="true" layoutX="179.0" layoutY="122.0" onMouseClicked="#selezionaLibro" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columns>
           <TableColumn fx:id="colonnaTitoloTabellaLibri" onEditCommit="#aggiornaTitoloLibri" prefWidth="75.0" text="Titolo" />
           <TableColumn fx:id="colonnaAutoriTabellaLibri" onEditCommit="#aggiornaAutoriLibri" prefWidth="75.0" text="Autori" />
