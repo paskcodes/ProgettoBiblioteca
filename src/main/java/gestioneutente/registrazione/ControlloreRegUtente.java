@@ -1,5 +1,6 @@
 package gestioneutente.registrazione;
 
+import appbibliotecauniversitaria.FinestraEccezione;
 import gestioneutente.Utente;
 import gestioneutente.eccezioni.UtenteInvalidoException;
 import gestioneutente.visualizzazione.ControlloreVisUtenti;
@@ -58,8 +59,7 @@ public class ControlloreRegUtente {
             testoRegistraMailUtente.clear();
             testoRegistraMatricolaUtente.clear();
         }catch(UtenteInvalidoException ex){
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
         
     }

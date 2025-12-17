@@ -89,16 +89,11 @@ public class ControlloreHome implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pannelloRegistrazioneUtenteController.setControlloreVisualizzazione(pannelloVisualizzazioneUtentiController);
         pannelloRegistrazioneLibroController.setControlloreVisualizzazione(pannelloVisualizzazioneLibriController);
-        pannelloRegistrazionePrestitoController
-                .setControlloreVisualizzazione(pannelloVisualizzazionePrestitiController);
-        pannelloVisualizzazioneUtentiController
-                .setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
-        pannelloVisualizzazioneLibriController
-                .setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
-        pannelloVisualizzazioneUtentiController
-                .setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
-        pannelloVisualizzazioneLibriController
-                .setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
+        pannelloRegistrazionePrestitoController.setControlloreVisualizzazione(pannelloVisualizzazionePrestitiController);
+        pannelloVisualizzazioneUtentiController.setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
+        pannelloVisualizzazioneLibriController.setControlloreRegistrazionePrestiti(pannelloRegistrazionePrestitoController);
+        pannelloVisualizzazioneUtentiController.setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
+        pannelloVisualizzazioneLibriController.setControlloreVisualizzazionePrestiti(pannelloVisualizzazionePrestitiController);
         pannelloVisualizzazionePrestitiController.setControlloreVisUtenti(pannelloVisualizzazioneUtentiController);
         pannelloVisualizzazionePrestitiController.setControlloreVisLibri(pannelloVisualizzazioneLibriController);
 

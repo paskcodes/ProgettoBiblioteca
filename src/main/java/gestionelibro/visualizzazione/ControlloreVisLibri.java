@@ -1,5 +1,6 @@
-    package gestionelibro.visualizzazione;
+package gestionelibro.visualizzazione;
 
+import appbibliotecauniversitaria.FinestraEccezione;
 import gestionearchivio.Archiviabile;
 import gestionelibro.ComparatoreTitoloLibro;
 import gestionelibro.Libro;
@@ -122,8 +123,7 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
             cvp.inPrestitoAttivoLibro(daEliminare);
             archivioLibri.remove(daEliminare);
         } catch (LibroInvalidoException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
 
         crp.resetLibroPrePrestito();
@@ -140,8 +140,7 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
         try {
             event.getRowValue().setTitolo(event.getNewValue());
         } catch (LibroCampoVuotoException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
 
         aggiornaStatoVisualizzazione();
@@ -159,8 +158,7 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
         try {
             event.getRowValue().setAutori(event.getNewValue());
         } catch (LibroCampoVuotoException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
         aggiornaStatoVisualizzazione();
     }
@@ -175,14 +173,18 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
      *                                         è valida.
      */
     @FXML
-    private void aggiornaDataPubblicazioneLibri(TableColumn.CellEditEvent<Libro, LocalDate> event) {
+    private void aggiornaDataPubblicazioneLibri(TableColumn.CellEditEvent<Libro, String> event) {
         try {
             event.getRowValue().setDataPubblicazione(
-                    LocalDate.parse(event.getNewValue().toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        } catch (LibroDataPubblicazioneException | DateTimeParseException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+                    LocalDate.parse(event.getNewValue(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        } catch (LibroDataPubblicazioneException ex) {
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
+        }catch (ClassCastException ex) {
+            FinestraEccezione fc = new FinestraEccezione("Campo vuoto o non valido");
+        }catch (DateTimeParseException ex) {
+            FinestraEccezione fc = new FinestraEccezione("Campo vuoto o non valido!");
         }
+        
 
         aggiornaStatoVisualizzazione();
     }
@@ -195,12 +197,15 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
      * @throws LibroNumeroCopieException Se il nuovo numero di copie non è valido.
      */
     @FXML
-    private void aggiornaNumCopieLibri(TableColumn.CellEditEvent<Libro, Integer> event) {
+    private void aggiornaNumCopieLibri(TableColumn.CellEditEvent<Libro, String> event) {
         try {
-            event.getRowValue().setCopie(Integer.parseInt(event.getNewValue().toString()));
+            event.getRowValue().setCopie(Integer.parseInt(event.getNewValue()));
         } catch (LibroNumeroCopieException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
+        }catch (ClassCastException ex) {
+            FinestraEccezione fc = new FinestraEccezione("I campi non possono essere lasciati vuoti!");
+        }catch (NumberFormatException ex) {
+            FinestraEccezione fc = new FinestraEccezione("Accetta solo numeri!");
         }
 
         aggiornaStatoVisualizzazione();
@@ -242,8 +247,7 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
         try{
             crp.setLibroPrePrestito(tabellaLibri.getSelectionModel().getSelectedItem());
         }catch(NullPointerException ex){
-            Alert a = new Alert(Alert.AlertType.WARNING, "Seleziona un libro se presente!", ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione("Seleziona un libro se presente!");
         }
     }
     

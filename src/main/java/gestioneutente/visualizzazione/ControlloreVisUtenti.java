@@ -5,6 +5,7 @@
  */
 package gestioneutente.visualizzazione;
 
+import appbibliotecauniversitaria.FinestraEccezione;
 import gestionearchivio.Archiviabile;
 import gestioneutente.Utente;
 import gestionelibro.Libro;
@@ -142,8 +143,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         try {
             event.getRowValue().setNome(event.getNewValue());
         } catch (UtenteNomeCognomeException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
         aggiornaStatoVisualizzazione();
     }
@@ -159,8 +159,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         try {
             event.getRowValue().setCognome(event.getNewValue());
         } catch (UtenteNomeCognomeException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
 
         aggiornaStatoVisualizzazione();
@@ -177,8 +176,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         try {
             event.getRowValue().setMail(event.getNewValue());
         } catch (UtenteMailException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
 
         aggiornaStatoVisualizzazione();
@@ -198,8 +196,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
             cvp.inPrestitoAttivoUtente(daEliminare);
             archivioUtenti.remove(daEliminare);
         } catch (UtenteInvalidoException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         }
         
         crp.resetUtentePrePrestito();
@@ -241,8 +238,7 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
         try{
             crp.setUtentePrePrestito(tabellaUtenti.getSelectionModel().getSelectedItem());
         }catch(NullPointerException ex){
-            Alert a = new Alert(Alert.AlertType.WARNING, "Seleziona un utente se presente!", ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione("Seleziona un utente se presente!");
         }
                 
     }
@@ -268,7 +264,6 @@ public class ControlloreVisUtenti implements Initializable, Archiviabile<Utente,
      * @brief Verifica se un utente è già presente nell'archivio.
      * @param daCercare Utente da cercare.
      * @return true se l'utente è presente, false altrimenti.
-     * @throws UtenteInvalidoException Se l'utente da cercare non è valido.
      */
     @Override
     public boolean isElementoPresente(Utente daCercare) {

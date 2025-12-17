@@ -1,5 +1,6 @@
 package gestionelibro.registrazione;
 
+import appbibliotecauniversitaria.FinestraEccezione;
 import gestionelibro.visualizzazione.ControlloreVisLibri;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,10 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import javafx.scene.control.Alert;
 import gestionelibro.Libro;
 import gestionelibro.eccezioni.LibroInvalidoException;
-import javafx.scene.control.ButtonType;
 
 /**
  * @class ControlloreRegLibro
@@ -76,14 +75,11 @@ public class ControlloreRegLibro {
             testoRegistraISBNLibro.clear();
             testoRegistraNumCopieLibro.clear();
         }catch(LibroInvalidoException ex){
-            Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
         } catch (DateTimeParseException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, "Il formato della data non è valido!", ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione("Il formato della data non è valido!");
         } catch (NumberFormatException ex) {
-            Alert a = new Alert(Alert.AlertType.WARNING, "Il numero di copie non è valido!", ButtonType.CLOSE);
-            a.showAndWait();
+            FinestraEccezione fc = new FinestraEccezione("Il numero di copie non è valido!");
         }
 
     }

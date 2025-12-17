@@ -1,5 +1,6 @@
 package gestioneprestito.registrazione;
 
+import appbibliotecauniversitaria.FinestraEccezione;
 import gestionelibro.Libro;
 import gestioneprestito.visualizzazione.ControlloreVisPrestiti;
 import gestioneutente.Utente;
@@ -69,14 +70,11 @@ public class ControlloreRegPrestito implements Initializable {
                 Prestito p = new Prestito(utentePrePrestito, libroPrePrestito, LocalDate.parse(testoRegistraDataScadenzaPrestito.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 cvp.inserisciNuovoElemento(p);
             } catch (PrestitoInvalidoException ex) {
-                Alert a = new Alert(Alert.AlertType.WARNING, ex.getMessage(), ButtonType.CLOSE);
-                a.showAndWait();
+                FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
             } catch (DateTimeParseException ex) {
-                Alert a = new Alert(Alert.AlertType.WARNING, "Il formato della data non è valido!", ButtonType.CLOSE);
-                a.showAndWait();
+                FinestraEccezione fc = new FinestraEccezione("Il formato della data non è valido!");
             }catch (NullPointerException ex){
-                Alert a = new Alert(Alert.AlertType.WARNING, "Bisogna prima selezionare un utente e un libro", ButtonType.CLOSE);
-                a.showAndWait();
+                FinestraEccezione fc = new FinestraEccezione("Bisogna prima selezionare un utente e un libro");
             }
 
     }
