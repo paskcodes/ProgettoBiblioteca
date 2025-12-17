@@ -25,8 +25,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -179,10 +177,8 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
                     LocalDate.parse(event.getNewValue(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         } catch (LibroDataPubblicazioneException ex) {
             FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
-        }catch (ClassCastException ex) {
+        }catch (ClassCastException | DateTimeParseException ex) {
             FinestraEccezione fc = new FinestraEccezione("Campo vuoto o non valido");
-        }catch (DateTimeParseException ex) {
-            FinestraEccezione fc = new FinestraEccezione("Campo vuoto o non valido!");
         }
         
 
@@ -202,10 +198,8 @@ public class ControlloreVisLibri implements Initializable, Archiviabile<Libro, L
             event.getRowValue().setCopie(Integer.parseInt(event.getNewValue()));
         } catch (LibroNumeroCopieException ex) {
             FinestraEccezione fc = new FinestraEccezione(ex.getMessage());
-        }catch (ClassCastException ex) {
-            FinestraEccezione fc = new FinestraEccezione("I campi non possono essere lasciati vuoti!");
-        }catch (NumberFormatException ex) {
-            FinestraEccezione fc = new FinestraEccezione("Accetta solo numeri!");
+        }catch (ClassCastException | NumberFormatException ex) {
+            FinestraEccezione fc = new FinestraEccezione("Campo vuoto o non valido!");
         }
 
         aggiornaStatoVisualizzazione();

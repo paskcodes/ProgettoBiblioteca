@@ -51,7 +51,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="testoRegistraMatricolaUtente" onKeyPressed="#aggiungiSuInvio">
+            <TextField fx:id="testoRegistraMatricolaUtente">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>

@@ -6,8 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -96,11 +94,5 @@ public class ControlloreRegLibro {
      * @brief Gestisce la pressione del tasto Invio per registrare il libro
      * @param event L'evento di pressione tasto
      */
-    @FXML
-    private void aggiungiSuInvio(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            registraLibro(null);
-        }
-    }
 
 }

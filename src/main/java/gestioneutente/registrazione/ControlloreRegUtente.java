@@ -72,15 +72,4 @@ public class ControlloreRegUtente {
         this.cvu = cvu;
     }
 
-    /**
-     * @brief Gestisce la pressione del tasto Invio per registrare l'utente
-     * @param event L'evento di pressione tasto
-     */
-    @FXML
-    private void aggiungiSuInvio(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            registraUtente(null);
-        }
-    }
-
 }
